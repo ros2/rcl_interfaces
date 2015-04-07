@@ -1,0 +1,7 @@
+# A list of parameters to set
+rcl_interfaces/Param[] parameters
+
+---
+
+#true if all set successfully false otherwise
+bool success

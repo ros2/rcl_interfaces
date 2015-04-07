@@ -1,0 +1,6 @@
+
+string[] prefixes
+
+---
+
+rcl_interfaces/ParamDescription[] param_descriptions

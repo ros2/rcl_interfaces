@@ -9,7 +9,14 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
+# ament_export_dependencies(rcl_interfaces)
 
-ament_export_dependencies(rcl_interfaces)
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/Param.msg"
+  "msg/ParamDescription.msg"
+  "srv/GetParams.srv"
+  "srv/ListParamsByPrefix.srv"
+  "srv/SetParams.srv"
+)
 
 ament_package()
