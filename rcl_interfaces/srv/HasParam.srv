@@ -1,0 +1,7 @@
+# Parameter to test if it exists.
+rcl_interfaces/ParamDescription param_description
+
+---
+
+# Whether the requested parameter exists or not.
+bool result
