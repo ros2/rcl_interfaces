@@ -15,6 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Param.msg"
   "msg/ParamDescription.msg"
+  "msg/ParamEvent.msg"
   "srv/GetParams.srv"
   "srv/HasParam.srv"
   "srv/ListParamsByPrefix.srv"
