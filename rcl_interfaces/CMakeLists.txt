@@ -7,7 +7,6 @@ if(NOT WIN32)
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(builtin_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 # ament_export_dependencies(rcl_interfaces)
@@ -20,7 +19,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/HasParam.srv"
   "srv/ListParamsByPrefix.srv"
   "srv/SetParams.srv"
-  DEPENDENCIES builtin_msgs
 )
 
 ament_package()
