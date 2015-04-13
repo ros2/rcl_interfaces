@@ -17,7 +17,7 @@ The ROS API for a node will be as follows inside the node's namespace.
   * The service to get the value of parameters which are set on this node.
  * `has_params`: `HasParams`
   * Query this node if specific parameters are set.
- * `list_params` : `ListParamsByPrefix`
+ * `list_params`: `ListParamsByPrefix`
   * List the parameters on this node matching the filters.
  * `set_params`: `SetParams`
   * Set parameters on this node.
