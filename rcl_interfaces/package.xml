@@ -14,4 +14,8 @@
 
   <exec_depend>rosidl_default_runtime</exec_depend>
 
+  <!-- Enable linting tests -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
 </package>

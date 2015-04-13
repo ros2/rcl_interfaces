@@ -21,4 +21,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/SetParams.srv"
 )
 
+# this must happen before the invocation of ament_package()
+if(AMENT_ENABLE_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
 ament_package()
