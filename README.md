@@ -3,12 +3,17 @@ This package contains the messages and services which ROS client libraries will 
 communicate higher level concepts such as parameters.
 
 
+## Parameter Groups
+Parameters are contained in groups.
+The default group is '/'.
+It behaves like a filepath, where you can nest sub-groups within groups.
+
 ## Standard topics for parameters
 
 The ROS API for a node will be as follows inside the node's namespace.
 
 ### Topics:
- * `parameter_updates`: `ParameterEvent`
+ * `parameter_updates`: `ParamEvent`
   * This topic provides a way to subscribe to all parameter updates occuring on the node, including addition removal and changes in value.
 
 ### Services:
