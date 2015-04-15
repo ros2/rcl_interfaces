@@ -14,7 +14,10 @@ The ROS API for a node will be as follows inside the node's namespace.
 
 ### Topics:
  * `parameter_updates`: `ParameterEvent`
+  * This topic provides a way to subscribe to all parameter updates occuring on the node, including addition removal and changes in value. Every atomic change will be published separately.
+ * `parameter_update_descriptions`: `ParameterEventDescriptions`
   * This topic provides a way to subscribe to all parameter updates occuring on the node, including addition removal and changes in value.
+    Every atomic change will be published separately. This is provided if large parameter values are expected to slow down the system.
 
 ### Services:
 
