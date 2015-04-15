@@ -12,13 +12,13 @@ find_package(rosidl_default_generators REQUIRED)
 # ament_export_dependencies(rcl_interfaces)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/Param.msg"
-  "msg/ParamDescription.msg"
-  "msg/ParamEvent.msg"
-  "srv/GetParams.srv"
-  "srv/HasParam.srv"
-  "srv/ListParamsByPrefix.srv"
-  "srv/SetParams.srv"
+  "msg/Parameter.msg"
+  "msg/ParameterDescription.msg"
+  "msg/ParameterEvent.msg"
+  "srv/GetParameters.srv"
+  "srv/HasParameters.srv"
+  "srv/ListParameters.srv"
+  "srv/SetParameters.srv"
 )
 
 # this must happen before the invocation of ament_package()

@@ -1,5 +1,5 @@
 # Parameter to test if it exists.
-rcl_interfaces/ParamDescription param_description
+rcl_interfaces/ParameterDescription[] parameter_descriptions
 
 ---
 

@@ -13,16 +13,16 @@ It behaves like a filepath, where you can nest sub-groups within groups.
 The ROS API for a node will be as follows inside the node's namespace.
 
 ### Topics:
- * `parameter_updates`: `ParamEvent`
+ * `parameter_updates`: `ParameterEvent`
   * This topic provides a way to subscribe to all parameter updates occuring on the node, including addition removal and changes in value.
 
 ### Services:
 
- * `get_params`: `GetParams`
+ * `get_parameters`: `GetParameters`
   * The service to get the value of parameters which are set on this node.
- * `has_params`: `HasParams`
+ * `has_parameters`: `HasParameters`
   * Query this node if specific parameters are set.
- * `list_params`: `ListParamsByPrefix`
+ * `list_parameters`: `ListParameters`
   * List the parameters on this node matching the filters.
- * `set_params`: `SetParams`
+ * `set_parameters`: `SetParameters`
   * Set parameters on this node.

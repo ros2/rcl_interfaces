@@ -1,7 +1,7 @@
 # A list of parameters of which to get the value.
-rcl_interfaces/ParamDescription[] param_descriptions
+rcl_interfaces/ParameterDescription[] parameter_descriptions
 
 ---
 
 # The list of parameters requested above, truncated for missing.
-rcl_interfaces/Param[] parameters
+rcl_interfaces/Parameter[] parameters

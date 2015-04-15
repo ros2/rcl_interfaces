@@ -1,7 +1,7 @@
 # This is the message to communicate a parameter.
 # It is an open struct with an enum in the description to select which value is active.
 
-ParamDescription description
+ParameterDescription description
 
 bool bool_value
 int64 integer_value
