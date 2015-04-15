@@ -1,4 +1,4 @@
-# This message contains a description of a parameter event.
+# This message contains descriptions of a parameter event.
 # It was an atomic update.
 
 ParameterDescription[] new_parameters
