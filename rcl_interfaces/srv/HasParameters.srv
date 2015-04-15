@@ -3,5 +3,6 @@ rcl_interfaces/ParameterDescription[] parameter_descriptions
 
 ---
 
-# Whether the requested parameter exists or not.
-bool result
+# Whether each requested parameter exists or not.
+# Each element corresponds to the list in the request.
+bool[] result
