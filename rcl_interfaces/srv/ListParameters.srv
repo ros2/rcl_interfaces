@@ -4,8 +4,5 @@ bool recurse
 
 ---
 
-# All parameters under the parameter_group defined. Recursive if recurse is set.
-rcl_interfaces/ParameterDescription[] parameter_descriptions
-
 # The set of subgroups within the queried groups (full path)
 string[] sub_groups
