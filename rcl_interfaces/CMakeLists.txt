@@ -15,6 +15,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Parameter.msg"
   "msg/ParameterDescription.msg"
   "msg/ParameterEvent.msg"
+  "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
   "srv/HasParameters.srv"
   "srv/ListParameters.srv"
