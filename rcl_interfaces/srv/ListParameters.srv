@@ -1,6 +1,6 @@
 # The list of parameter groups to query.
 string[] parameter_group
-bool recurse
+bool recursive
 
 ---
 
