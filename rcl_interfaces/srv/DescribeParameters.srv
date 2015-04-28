@@ -1,8 +1,7 @@
-# The list of parameter groups to query.
-string[] parameter_group
-bool recursive
+# A list of parameters of which to get the description.
+string[] names
 
 ---
 
-# All parameters under the parameter_group defined. Recursive if recurse is set.
-rcl_interfaces/ParameterDescription[] parameter_descriptions
+# A list of the descriptions of all parameters requested.
+rcl_interfaces/ParameterDescriptor[] descriptors

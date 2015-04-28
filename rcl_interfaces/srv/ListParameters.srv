@@ -1,8 +1,15 @@
-# The list of parameter groups to query.
-string[] parameter_group
-bool recursive
+uint64 DEPTH_RECURSIVE=0
+
+# The list of parameter prefixes to query.
+string[] parameter_prefixes
+# Relative depth from given prefixes to return.
+# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.
+uint64 depth
 
 ---
 
-# The set of subgroups within the queried groups (full path)
-string[] sub_groups
+# All parameters under the given prefixes.
+string[] parameter_names
+# All prefixes under the given prefixes.
+# TODO(wjwwood): link to prefix definition and rules.
+string[] parameter_prefixes

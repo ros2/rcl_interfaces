@@ -3,4 +3,4 @@
 
 Parameter[] new_parameters
 Parameter[] changed_parameters
-ParameterDescription[] deleted_parameters
+ParameterDescriptor[] deleted_parameters
