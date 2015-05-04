@@ -8,4 +8,4 @@ uint64 depth
 
 ---
 
-ParameterListResult result
+ListParametersResult result
