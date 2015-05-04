@@ -4,4 +4,4 @@ Parameter[] parameters
 
 ---
 
-ParameterSetResult result
+SetParametersResult result
