@@ -19,6 +19,7 @@
 
 #include <test_communication/Empty.h>
 #include <test_communication/Primitives.h>
+#include <test_communication/StaticArrayPrimitives.h>
 
 
 std::vector<test_communication::Empty::Ptr>
@@ -86,6 +87,33 @@ get_messages_primitives()
     msg->int64_value = -9223372036854775808UL;
     msg->uint64_value = 0;
     msg->string_value = "min value";
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_communication::StaticArrayPrimitives::Ptr>
+get_messages_static_array_primitives()
+{
+  std::vector<test_communication::StaticArrayPrimitives::Ptr> messages;
+  {
+    auto msg = std::make_shared<test_communication::StaticArrayPrimitives>();
+    msg->bool_values = {false, true, false};
+    msg->byte_values = {0, 0xff, 0};
+    msg->char_values = {'\0', '\255', '\0'};
+    msg->float32_values = {0.0f, 1.11f, -2.22f};
+    msg->float64_values = {0, 1.11, -2.22};
+    msg->int8_values = {0, 127, -128};
+    msg->uint8_values = {0, 255, 0};
+    msg->int16_values = {0, 32767, -32768};
+    msg->uint16_values = {0, 65535, 0};
+    msg->int32_values = {0, 2147483647, -2147483648};
+    msg->uint32_values = {0, 4294967295, 0};
+    msg->int64_values[0] = 0;
+    msg->int64_values[1] = 9223372036854775807;
+    msg->int64_values[2] = -9223372036854775808UL;
+    msg->uint64_values = {0, 18446744073709551615UL, 0};
+    msg->string_values = {"", "max value", "min value"};
     messages.push_back(msg);
   }
   return messages;
