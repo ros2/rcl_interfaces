@@ -19,6 +19,7 @@
 
 #include <test_communication/DynamicArrayPrimitives.h>
 #include <test_communication/Empty.h>
+#include <test_communication/Nested.h>
 #include <test_communication/Primitives.h>
 #include <test_communication/StaticArrayPrimitives.h>
 
@@ -179,6 +180,19 @@ get_messages_dynamic_array_primitives()
     msg->int64_values[2] = -9223372036854775808UL;
     msg->uint64_values = {{0, 18446744073709551615UL}};
     msg->string_values = {{"", "max value", "optional min value"}};
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_communication::Nested::Ptr>
+get_messages_nested()
+{
+  std::vector<test_communication::Nested::Ptr> messages;
+  auto primitive_msgs = get_messages_primitives();
+  for (auto primitive_msg : primitive_msgs) {
+    auto msg = std::make_shared<test_communication::Nested>();
+    msg->primitive_values = *primitive_msg;
     messages.push_back(msg);
   }
   return messages;
