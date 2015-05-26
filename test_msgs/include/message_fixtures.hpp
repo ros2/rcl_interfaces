@@ -17,6 +17,7 @@
 
 #include <vector>
 
+#include <test_communication/Builtins.h>
 #include <test_communication/DynamicArrayPrimitives.h>
 #include <test_communication/Empty.h>
 #include <test_communication/Nested.h>
@@ -193,6 +194,21 @@ get_messages_nested()
   for (auto primitive_msg : primitive_msgs) {
     auto msg = std::make_shared<test_communication::Nested>();
     msg->primitive_values = *primitive_msg;
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_communication::Builtins::Ptr>
+get_messages_builtins()
+{
+  std::vector<test_communication::Builtins::Ptr> messages;
+  {
+    auto msg = std::make_shared<test_communication::Builtins>();
+    msg->duration_value.sec = -1234567890;
+    msg->duration_value.nanosec = 123456789;
+    msg->time_value.sec = -1234567890;
+    msg->time_value.nanosec = 987654321;
     messages.push_back(msg);
   }
   return messages;
