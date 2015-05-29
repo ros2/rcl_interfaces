@@ -17,29 +17,29 @@
 
 #include <vector>
 
-#include <test_communication/Builtins.h>
-#include <test_communication/DynamicArrayPrimitives.h>
-#include <test_communication/Empty.h>
-#include <test_communication/Nested.h>
-#include <test_communication/Primitives.h>
-#include <test_communication/StaticArrayPrimitives.h>
+#include <test_communication/msg/builtins.hpp>
+#include <test_communication/msg/dynamic_array_primitives.hpp>
+#include <test_communication/msg/empty.hpp>
+#include <test_communication/msg/nested.hpp>
+#include <test_communication/msg/primitives.hpp>
+#include <test_communication/msg/static_array_primitives.hpp>
 
 
-std::vector<test_communication::Empty::Ptr>
+std::vector<test_communication::msg::Empty::Ptr>
 get_messages_empty()
 {
-  std::vector<test_communication::Empty::Ptr> messages;
-  auto msg = std::make_shared<test_communication::Empty>();
+  std::vector<test_communication::msg::Empty::Ptr> messages;
+  auto msg = std::make_shared<test_communication::msg::Empty>();
   messages.push_back(msg);
   return messages;
 }
 
-std::vector<test_communication::Primitives::Ptr>
+std::vector<test_communication::msg::Primitives::Ptr>
 get_messages_primitives()
 {
-  std::vector<test_communication::Primitives::Ptr> messages;
+  std::vector<test_communication::msg::Primitives::Ptr> messages;
   {
-    auto msg = std::make_shared<test_communication::Primitives>();
+    auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
     msg->char_value = '\0';
@@ -57,7 +57,7 @@ get_messages_primitives()
     messages.push_back(msg);
   }
   {
-    auto msg = std::make_shared<test_communication::Primitives>();
+    auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 255;
     msg->char_value = 0xff;
@@ -75,7 +75,7 @@ get_messages_primitives()
     messages.push_back(msg);
   }
   {
-    auto msg = std::make_shared<test_communication::Primitives>();
+    auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
     msg->char_value = 0x0;
@@ -95,12 +95,12 @@ get_messages_primitives()
   return messages;
 }
 
-std::vector<test_communication::StaticArrayPrimitives::Ptr>
+std::vector<test_communication::msg::StaticArrayPrimitives::Ptr>
 get_messages_static_array_primitives()
 {
-  std::vector<test_communication::StaticArrayPrimitives::Ptr> messages;
+  std::vector<test_communication::msg::StaticArrayPrimitives::Ptr> messages;
   {
-    auto msg = std::make_shared<test_communication::StaticArrayPrimitives>();
+    auto msg = std::make_shared<test_communication::msg::StaticArrayPrimitives>();
     msg->bool_values = {false, true, false};
     msg->byte_values = {0, 0xff, 0};
     msg->char_values = {'\0', '\255', '\0'};
@@ -122,12 +122,12 @@ get_messages_static_array_primitives()
   return messages;
 }
 
-std::vector<test_communication::DynamicArrayPrimitives::Ptr>
+std::vector<test_communication::msg::DynamicArrayPrimitives::Ptr>
 get_messages_dynamic_array_primitives()
 {
-  std::vector<test_communication::DynamicArrayPrimitives::Ptr> messages;
+  std::vector<test_communication::msg::DynamicArrayPrimitives::Ptr> messages;
   {
-    auto msg = std::make_shared<test_communication::DynamicArrayPrimitives>();
+    auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     msg->bool_values = {{}};
     msg->byte_values = {{}};
     msg->char_values = {{}};
@@ -145,7 +145,7 @@ get_messages_dynamic_array_primitives()
     messages.push_back(msg);
   }
   {
-    auto msg = std::make_shared<test_communication::DynamicArrayPrimitives>();
+    auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     msg->bool_values = {{true}};
     msg->byte_values = {{0xff}};
     msg->char_values = {{'\255'}};
@@ -163,7 +163,7 @@ get_messages_dynamic_array_primitives()
     messages.push_back(msg);
   }
   {
-    auto msg = std::make_shared<test_communication::DynamicArrayPrimitives>();
+    auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     msg->bool_values = {{false, true}};
     msg->byte_values = {{0, 0xff}};
     msg->char_values = {{'\0', '\255'}};
@@ -186,25 +186,25 @@ get_messages_dynamic_array_primitives()
   return messages;
 }
 
-std::vector<test_communication::Nested::Ptr>
+std::vector<test_communication::msg::Nested::Ptr>
 get_messages_nested()
 {
-  std::vector<test_communication::Nested::Ptr> messages;
+  std::vector<test_communication::msg::Nested::Ptr> messages;
   auto primitive_msgs = get_messages_primitives();
   for (auto primitive_msg : primitive_msgs) {
-    auto msg = std::make_shared<test_communication::Nested>();
+    auto msg = std::make_shared<test_communication::msg::Nested>();
     msg->primitive_values = *primitive_msg;
     messages.push_back(msg);
   }
   return messages;
 }
 
-std::vector<test_communication::Builtins::Ptr>
+std::vector<test_communication::msg::Builtins::Ptr>
 get_messages_builtins()
 {
-  std::vector<test_communication::Builtins::Ptr> messages;
+  std::vector<test_communication::msg::Builtins::Ptr> messages;
   {
-    auto msg = std::make_shared<test_communication::Builtins>();
+    auto msg = std::make_shared<test_communication::msg::Builtins>();
     msg->duration_value.sec = -1234567890;
     msg->duration_value.nanosec = 123456789;
     msg->time_value.sec = -1234567890;
