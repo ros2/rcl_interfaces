@@ -110,7 +110,12 @@ get_messages_static_array_primitives()
     msg->uint8_values = {0, 255, 0};
     msg->int16_values = {0, 32767, -32768};
     msg->uint16_values = {0, 65535, 0};
-    msg->int32_values = {0, 2147483647, -2147483648};
+    // The narrowing static cast is required to avoid build errors on Windows.
+    msg->int32_values = {
+      static_cast<int32_t>(0),
+      static_cast<int32_t>(2147483647),
+      static_cast<int32_t>(-2147483648)
+    };
     msg->uint32_values = {0, 4294967295, 0};
     msg->int64_values[0] = 0;
     msg->int64_values[1] = 9223372036854775807;
@@ -173,7 +178,12 @@ get_messages_dynamic_array_primitives()
     msg->uint8_values = {{0, 255}};
     msg->int16_values = {{0, 32767, -32768}};
     msg->uint16_values = {{0, 65535}};
-    msg->int32_values = {{0, 2147483647, -2147483648}};
+    // The narrowing static cast is required to avoid build errors on Windows.
+    msg->int32_values = {{
+      static_cast<int32_t>(0),
+      static_cast<int32_t>(2147483647),
+      static_cast<int32_t>(-2147483648)
+    }};
     msg->uint32_values = {{0, 4294967295}};
     msg->int64_values.resize(3);
     msg->int64_values[0] = 0;
