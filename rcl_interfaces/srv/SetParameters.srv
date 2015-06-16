@@ -3,5 +3,4 @@ rcl_interfaces/Parameter[] parameters
 
 ---
 
-#true if all set successfully false otherwise
 SetParametersResult[] results

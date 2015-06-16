@@ -3,7 +3,7 @@
 # (if gotten) or is uninitialized.
 # Values are enumerated in ParameterType.msg
 
-uint8 parameter_type
+uint8 type
 
 # "Variant" style storage of the parameter value.
 bool bool_value

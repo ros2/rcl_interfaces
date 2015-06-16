@@ -14,7 +14,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ListParametersResult.msg"
   "msg/ParameterDescriptor.msg"
-  "msg/ParameterEventDescriptions.msg"
+  "msg/ParameterEventDescriptors.msg"
   "msg/ParameterEvent.msg"
   "msg/Parameter.msg"
   "msg/ParameterType.msg"
