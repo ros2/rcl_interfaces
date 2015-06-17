@@ -24,16 +24,16 @@
 
 std::vector<
   std::pair<
-    test_communication::srv::Empty::Request::Ptr,
-    test_communication::srv::Empty::Response::Ptr
+    test_communication::srv::Empty::Request::SharedPtr,
+    test_communication::srv::Empty::Response::SharedPtr
   >
 >
 get_services_empty()
 {
   std::vector<
     std::pair<
-      test_communication::srv::Empty::Request::Ptr,
-      test_communication::srv::Empty::Response::Ptr
+      test_communication::srv::Empty::Request::SharedPtr,
+      test_communication::srv::Empty::Response::SharedPtr
     >
   > services;
   auto request = std::make_shared<
@@ -46,16 +46,16 @@ get_services_empty()
 
 std::vector<
   std::pair<
-    test_communication::srv::Primitives::Request::Ptr,
-    test_communication::srv::Primitives::Response::Ptr
+    test_communication::srv::Primitives::Request::SharedPtr,
+    test_communication::srv::Primitives::Response::SharedPtr
   >
 >
 get_services_primitives()
 {
   std::vector<
     std::pair<
-      test_communication::srv::Primitives::Request::Ptr,
-      test_communication::srv::Primitives::Response::Ptr
+      test_communication::srv::Primitives::Request::SharedPtr,
+      test_communication::srv::Primitives::Response::SharedPtr
     >
   > services;
   {
