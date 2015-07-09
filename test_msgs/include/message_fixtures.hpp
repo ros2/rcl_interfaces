@@ -15,6 +15,7 @@
 #ifndef __test_communication__message_fixtures__hpp__
 #define __test_communication__message_fixtures__hpp__
 
+#include <cassert>
 #include <vector>
 
 #include <test_communication/msg/builtins.hpp>
@@ -23,6 +24,7 @@
 #include <test_communication/msg/empty.hpp>
 #include <test_communication/msg/nested.hpp>
 #include <test_communication/msg/primitives.hpp>
+#include <test_communication/msg/static_array_nested.hpp>
 #include <test_communication/msg/static_array_primitives.hpp>
 
 
@@ -218,6 +220,24 @@ get_messages_dynamic_array_nested()
     auto primitive_msgs = get_messages_primitives();
     for (auto primitive_msg : primitive_msgs) {
       msg->primitive_values.push_back(*primitive_msg);
+    }
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_communication::msg::StaticArrayNested::SharedPtr>
+get_messages_static_array_nested()
+{
+  std::vector<test_communication::msg::StaticArrayNested::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_communication::msg::StaticArrayNested>();
+    auto primitive_msgs = get_messages_primitives();
+    assert(primitive_msgs.size() == msg->primitive_values.size());
+    size_t i = 0;
+    for (auto primitive_msg : primitive_msgs) {
+      msg->primitive_values[i] = *primitive_msg;
+      ++i;
     }
     messages.push_back(msg);
   }
