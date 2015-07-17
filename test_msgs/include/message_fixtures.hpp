@@ -96,6 +96,28 @@ get_messages_primitives()
     msg->string_value = "min value";
     messages.push_back(msg);
   }
+  {
+    auto msg = std::make_shared<test_communication::msg::Primitives>();
+    msg->bool_value = true;
+    msg->byte_value = 1;
+    msg->char_value = '\1';
+    msg->float32_value = 1.0f;
+    msg->float64_value = 1;
+    msg->int8_value = 1;
+    msg->uint8_value = 1;
+    msg->int16_value = 1;
+    msg->uint16_value = 1;
+    msg->int32_value = 1;
+    msg->uint32_value = 1;
+    msg->int64_value = 1;
+    msg->uint64_value = 1;
+    // check strings longer then 255 characters
+    msg->string_value = "";
+    for (size_t i = 0; i < 256; ++i) {
+      msg->string_value += std::to_string(i % 10);
+    }
+    messages.push_back(msg);
+  }
   return messages;
 }
 
@@ -202,6 +224,42 @@ get_messages_dynamic_array_primitives()
     msg->int64_values[2] = (std::numeric_limits<int64_t>::min)();
     msg->uint64_values = {{0, (std::numeric_limits<uint64_t>::max)()}};
     msg->string_values = {{"", "max value", "optional min value"}};
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
+    // check sequences with more then 100 elements
+    const size_t size = 101;
+    msg->bool_values.resize(size);
+    msg->byte_values.resize(size);
+    msg->char_values.resize(size);
+    msg->float32_values.resize(size);
+    msg->float64_values.resize(size);
+    msg->int8_values.resize(size);
+    msg->uint8_values.resize(size);
+    msg->int16_values.resize(size);
+    msg->uint16_values.resize(size);
+    msg->int32_values.resize(size);
+    msg->uint32_values.resize(size);
+    msg->int64_values.resize(size);
+    msg->uint64_values.resize(size);
+    msg->string_values.resize(size);
+    for (size_t i = 0; i < size; ++i) {
+      msg->bool_values[i] = (i % 2 != 0) ? true : false;
+      msg->byte_values[i] = static_cast<uint8_t>(i);
+      msg->char_values[i] = static_cast<char>(i);
+      msg->float32_values[i] = 1.1f * i;
+      msg->float64_values[i] = 1.1 * i;
+      msg->int8_values[i] = static_cast<int8_t>(i);
+      msg->uint8_values[i] = static_cast<uint8_t>(i);
+      msg->int16_values[i] = static_cast<int16_t>(i);
+      msg->uint16_values[i] = static_cast<uint16_t>(i);
+      msg->int32_values[i] = static_cast<int32_t>(i);
+      msg->uint32_values[i] = static_cast<uint32_t>(i);
+      msg->int64_values[i] = i;
+      msg->uint64_values[i] = i;
+      msg->string_values[i] = std::to_string(i);
+    }
     messages.push_back(msg);
   }
   return messages;
