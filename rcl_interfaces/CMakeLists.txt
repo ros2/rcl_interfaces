@@ -12,6 +12,7 @@ find_package(rosidl_default_generators REQUIRED)
 # ament_export_dependencies(rcl_interfaces)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/IntraProcessMessage.msg"
   "msg/ListParametersResult.msg"
   "msg/ParameterDescriptor.msg"
   "msg/ParameterEventDescriptors.msg"
