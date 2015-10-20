@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef __test_communication__service_fixtures__hpp__
-#define __test_communication__service_fixtures__hpp__
+#ifndef SERVICE_FIXTURES_HPP_
+#define SERVICE_FIXTURES_HPP_
 
 #include <utility>
 #include <vector>
 
-#include <test_communication/srv/empty.hpp>
-#include <test_communication/srv/primitives.hpp>
+#include "test_communication/srv/empty.hpp"
+#include "test_communication/srv/primitives.hpp"
 
 
 std::vector<
@@ -127,4 +127,4 @@ get_services_primitives()
   return services;
 }
 
-#endif  // __test_communication__service_fixtures__hpp__
+#endif  // SERVICE_FIXTURES_HPP_

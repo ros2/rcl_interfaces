@@ -12,21 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef __test_communication__message_fixtures__hpp__
-#define __test_communication__message_fixtures__hpp__
+#ifndef MESSAGE_FIXTURES_HPP_
+#define MESSAGE_FIXTURES_HPP_
 
 #include <cassert>
 #include <limits>
 #include <vector>
 
-#include <test_communication/msg/builtins.hpp>
-#include <test_communication/msg/dynamic_array_nested.hpp>
-#include <test_communication/msg/dynamic_array_primitives.hpp>
-#include <test_communication/msg/empty.hpp>
-#include <test_communication/msg/nested.hpp>
-#include <test_communication/msg/primitives.hpp>
-#include <test_communication/msg/static_array_nested.hpp>
-#include <test_communication/msg/static_array_primitives.hpp>
+#include "test_communication/msg/builtins.hpp"
+#include "test_communication/msg/dynamic_array_nested.hpp"
+#include "test_communication/msg/dynamic_array_primitives.hpp"
+#include "test_communication/msg/empty.hpp"
+#include "test_communication/msg/nested.hpp"
+#include "test_communication/msg/primitives.hpp"
+#include "test_communication/msg/static_array_nested.hpp"
+#include "test_communication/msg/static_array_primitives.hpp"
 
 
 std::vector<test_communication::msg::Empty::SharedPtr>
@@ -326,4 +326,4 @@ get_messages_builtins()
   return messages;
 }
 
-#endif  // __test_communication__message_fixtures__hpp__
+#endif  // MESSAGE_FIXTURES_HPP_
