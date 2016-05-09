@@ -176,6 +176,7 @@ get_messages_dynamic_array_primitives()
     msg->int64_values = {{}};
     msg->uint64_values = {{}};
     msg->string_values = {{}};
+    msg->check = 0;
     messages.push_back(msg);
   }
   {
@@ -194,6 +195,7 @@ get_messages_dynamic_array_primitives()
     msg->int64_values = {(std::numeric_limits<int64_t>::max)()};
     msg->uint64_values = {(std::numeric_limits<uint64_t>::max)()};
     msg->string_values = {{"max value"}};
+    msg->check = 1;
     messages.push_back(msg);
   }
   {
@@ -224,6 +226,7 @@ get_messages_dynamic_array_primitives()
     msg->int64_values[2] = (std::numeric_limits<int64_t>::min)();
     msg->uint64_values = {{0, (std::numeric_limits<uint64_t>::max)()}};
     msg->string_values = {{"", "max value", "optional min value"}};
+    msg->check = 2;
     messages.push_back(msg);
   }
   {
@@ -260,6 +263,13 @@ get_messages_dynamic_array_primitives()
       msg->uint64_values[i] = i;
       msg->string_values[i] = std::to_string(i);
     }
+    msg->check = 3;
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
+    // check default sequences
+    msg->check = 4;
     messages.push_back(msg);
   }
   return messages;
