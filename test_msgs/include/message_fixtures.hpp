@@ -45,8 +45,8 @@ get_messages_primitives()
   {
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
-    msg->byte_value = 0;
-    msg->char_value = '\0';
+//    msg->byte_value = 0;
+//    msg->char_value = '\0';
     msg->float32_value = 0.0f;
     msg->float64_value = 0;
     msg->int8_value = 0;
@@ -99,8 +99,8 @@ get_messages_primitives()
   {
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = true;
-    msg->byte_value = 1;
-    msg->char_value = '\1';
+//    msg->byte_value = 1;
+//    msg->char_value = '\1';
     msg->float32_value = 1.0f;
     msg->float64_value = 1;
     msg->int8_value = 1;
@@ -234,8 +234,8 @@ get_messages_dynamic_array_primitives()
     // check sequences with more then 100 elements
     const size_t size = 101;
     msg->bool_values.resize(size);
-    msg->byte_values.resize(size);
-    msg->char_values.resize(size);
+//    msg->byte_values.resize(size);
+//    msg->char_values.resize(size);
     msg->float32_values.resize(size);
     msg->float64_values.resize(size);
     msg->int8_values.resize(size);

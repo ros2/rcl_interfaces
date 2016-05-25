@@ -1,6 +1,6 @@
 bool[] bool_values
-byte[] byte_values
-char[] char_values
+#byte[] byte_values
+#char[] char_values
 float32[] float32_values
 float64[] float64_values
 int8[] int8_values

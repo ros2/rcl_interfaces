@@ -1,6 +1,6 @@
 bool[3] bool_values
-byte[3] byte_values
-char[3] char_values
+#byte[3] byte_values
+#char[3] char_values
 float32[3] float32_values
 float64[3] float64_values
 int8[3] int8_values
