@@ -1,6 +1,6 @@
 bool bool_value
-#byte byte_value
-#char char_value
+byte byte_value
+char char_value
 float32 float32_value
 float64 float64_value
 int8 int8_value
