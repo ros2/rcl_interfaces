@@ -19,6 +19,8 @@
 #include <limits>
 #include <vector>
 
+#include "test_communication/msg/bounded_array_nested.hpp"
+#include "test_communication/msg/bounded_array_primitives.hpp"
 #include "test_communication/msg/builtins.hpp"
 #include "test_communication/msg/dynamic_array_nested.hpp"
 #include "test_communication/msg/dynamic_array_primitives.hpp"
@@ -275,6 +277,49 @@ get_messages_dynamic_array_primitives()
   return messages;
 }
 
+std::vector<test_communication::msg::BoundedArrayPrimitives::SharedPtr>
+get_messages_bounded_array_primitives()
+{
+  std::vector<test_communication::msg::BoundedArrayPrimitives::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_communication::msg::BoundedArrayPrimitives>();
+    msg->bool_values = {{false, true, false}};
+    msg->byte_values = {{0, 1, 0xff}};
+    msg->char_values = {{'\0', '\1', '\255'}};
+    msg->float32_values = {{0.0f, 1.125f, -2.125f}};
+    msg->float64_values = {{0, 1.125, -2.125}};
+    // *INDENT-OFF* (prevent uncrustify from making unnecessary indents here)
+    msg->int8_values = {{
+      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
+    msg->uint8_values = {{0, 1, (std::numeric_limits<uint8_t>::max)()}};
+    msg->int16_values = {{
+      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
+    msg->uint16_values = {{0, 1, (std::numeric_limits<uint16_t>::max)()}};
+    // The narrowing static cast is required to avoid build errors on Windows.
+    msg->int32_values = {{
+      static_cast<int32_t>(0),
+      (std::numeric_limits<int32_t>::max)(),
+      (std::numeric_limits<int32_t>::min)()
+    }};
+    // *INDENT-ON*
+    msg->uint32_values = {{0, 1, (std::numeric_limits<uint32_t>::max)()}};
+    msg->int64_values[0] = 0;
+    msg->int64_values[1] = (std::numeric_limits<int64_t>::max)();
+    msg->int64_values[2] = (std::numeric_limits<int64_t>::min)();
+    msg->uint64_values = {{0, 1, (std::numeric_limits<uint64_t>::max)()}};
+    msg->string_values = {{"", "max value", "optional min value"}};
+    msg->check = 2;
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_communication::msg::BoundedArrayPrimitives>();
+    // check default sequences
+    msg->check = 4;
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
 std::vector<test_communication::msg::Nested::SharedPtr>
 get_messages_nested()
 {
@@ -297,6 +342,23 @@ get_messages_dynamic_array_nested()
     auto primitive_msgs = get_messages_primitives();
     for (auto primitive_msg : primitive_msgs) {
       msg->primitive_values.push_back(*primitive_msg);
+    }
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_communication::msg::BoundedArrayNested::SharedPtr>
+get_messages_bounded_array_nested()
+{
+  std::vector<test_communication::msg::BoundedArrayNested::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_communication::msg::BoundedArrayNested>();
+    auto primitive_msgs = get_messages_primitives();
+    size_t i = 0;
+    for (auto primitive_msg : primitive_msgs) {
+      msg->primitive_values[i] = *primitive_msg;
+      ++i;
     }
     messages.push_back(msg);
   }
