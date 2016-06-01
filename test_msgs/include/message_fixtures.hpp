@@ -65,8 +65,8 @@ get_messages_primitives()
     msg->bool_value = true;
     msg->byte_value = 255;
     msg->char_value = '\255';
-    msg->float32_value = 1.11f;
-    msg->float64_value = 1.11;
+    msg->float32_value = 1.125f;
+    msg->float64_value = 1.125;
     msg->int8_value = (std::numeric_limits<int8_t>::max)();
     msg->uint8_value = (std::numeric_limits<uint8_t>::max)();
     msg->int16_value = (std::numeric_limits<int16_t>::max)();
@@ -83,8 +83,8 @@ get_messages_primitives()
     msg->bool_value = false;
     msg->byte_value = 0;
     msg->char_value = 0x0;
-    msg->float32_value = -2.22f;
-    msg->float64_value = -2.22;
+    msg->float32_value = -2.125f;
+    msg->float64_value = -2.125;
     msg->int8_value = (std::numeric_limits<int8_t>::min)();
     msg->uint8_value = 0;
     msg->int16_value = (std::numeric_limits<int16_t>::min)();
@@ -130,8 +130,8 @@ get_messages_static_array_primitives()
     msg->bool_values = {{false, true, false}};
     msg->byte_values = {{0, 0xff, 0}};
     msg->char_values = {{'\0', '\255', '\0'}};
-    msg->float32_values = {{0.0f, 1.11f, -2.22f}};
-    msg->float64_values = {{0, 1.11, -2.22}};
+    msg->float32_values = {{0.0f, 1.125f, -2.125f}};
+    msg->float64_values = {{0, 1.125, -2.125}};
     // *INDENT-OFF* (prevent uncrustify from making unnecessary indents here)
     msg->int8_values = {{
       0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
@@ -184,8 +184,8 @@ get_messages_dynamic_array_primitives()
     msg->bool_values = {true};
     msg->byte_values = {0xff};
     msg->char_values = {'\255'};
-    msg->float32_values = {1.11f};
-    msg->float64_values = {1.11};
+    msg->float32_values = {1.125f};
+    msg->float64_values = {1.125};
     msg->int8_values = {(std::numeric_limits<int8_t>::max)()};
     msg->uint8_values = {(std::numeric_limits<uint8_t>::max)()};
     msg->int16_values = {(std::numeric_limits<int16_t>::max)()};
@@ -203,8 +203,8 @@ get_messages_dynamic_array_primitives()
     msg->bool_values = {{false, true}};
     msg->byte_values = {{0, 0xff}};
     msg->char_values = {{'\0', '\255'}};
-    msg->float32_values = {{0.0f, 1.11f, -2.22f}};
-    msg->float64_values = {{0, 1.11, -2.22}};
+    msg->float32_values = {{0.0f, 1.125f, -2.125f}};
+    msg->float64_values = {{0, 1.125, -2.125}};
     // *INDENT-OFF* (prevent uncrustify from making unnecessary indents here)
     msg->int8_values = {{
       0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
@@ -251,8 +251,8 @@ get_messages_dynamic_array_primitives()
       msg->bool_values[i] = (i % 2 != 0) ? true : false;
       msg->byte_values[i] = static_cast<uint8_t>(i);
       msg->char_values[i] = static_cast<char>(i);
-      msg->float32_values[i] = 1.1f * i;
-      msg->float64_values[i] = 1.1 * i;
+      msg->float32_values[i] = 1.125f * i;
+      msg->float64_values[i] = 1.125 * i;
       msg->int8_values[i] = static_cast<int8_t>(i);
       msg->uint8_values[i] = static_cast<uint8_t>(i);
       msg->int16_values[i] = static_cast<int16_t>(i);
