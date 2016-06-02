@@ -44,8 +44,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = False
     msg.byte_value = bytes([0])
-#    msg.char_value = chr(48)  # '0'  # chr(128)
-    msg.char_value = bytes([0])  # bytes([48])  # chr(48)  # '\x01'
+    msg.char_value = '\x00'
     msg.float32_value = float(0.0)
     msg.float64_value = float(0.0)
     msg.int8_value = 0
@@ -62,8 +61,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = True
     msg.byte_value = bytes([255])
-#    msg.char_value = chr(1)
-    msg.char_value = bytes([255])  # '\n'  # chr(100)  # chr(128)
+    msg.char_value = '\x7f'
     msg.float32_value = 1.125
     msg.float64_value = 1.125
     msg.int8_value = 127
@@ -80,8 +78,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = False
     msg.byte_value = bytes([0])
-    msg.char_value = bytes([0])  # chr(52)  # chr(1)
-#    msg.char_value = chr(0)  # '2'  # chr(128)
+    msg.char_value = '\x00'
     msg.float32_value = -2.125
     msg.float64_value = -2.125
     msg.int8_value = -128
@@ -98,8 +95,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = True
     msg.byte_value = bytes([1])
-#    msg.char_value = chr(48)  # '0'  # chr(128)
-    msg.char_value = bytes([1])  # chr(50)
+    msg.char_value = '\x01'
     msg.float32_value = float(1.125)
     msg.float64_value = float(1.125)
     msg.int8_value = int(1)
@@ -143,8 +139,7 @@ def get_msg_static_array_primitives():
     msgs = []
     msg = StaticArrayPrimitives()
     msg.bool_values = [False, True, False]
-#    msg.char_values = [chr(0), chr(127), chr(0)]
-    msg.char_values = [bytes([0]), bytes([255]), bytes([0])]  # [chr(48), chr(127), chr(48)]
+    msg.char_values = ['\0', '\x00', '\x00']
     msg.byte_values = [bytes([0]), bytes([255]), bytes([0])]
     msg.float32_values = [0.0, 1.125, -2.125]
     msg.float64_values = [0.0, 1.125, -2.125]
@@ -191,14 +186,13 @@ def get_msg_dynamic_array_primitives():
     msg.int64_values = []
     msg.uint64_values = []
     msg.string_values = []
-    msg.check = 4
+    msg.check = 0
     msgs.append(msg)
 
     msg = DynamicArrayPrimitives()
     msg.bool_values = [True]
     msg.byte_values = [bytes([255])]
-#    msg.char_values = [chr(255)]
-    msg.char_values = [bytes([127])]
+    msg.char_values = [chr(48)]
     msg.float32_values = [1.125]
     msg.float64_values = [1.125]
     msg.int8_values = [127]
@@ -216,8 +210,7 @@ def get_msg_dynamic_array_primitives():
     msg = DynamicArrayPrimitives()
     msg.bool_values = [False, True]
     msg.byte_values = [bytes([0]), bytes([255])]
-#    msg.char_values = [chr(0), chr(255)]
-    msg.char_values = [bytes([1]), bytes([127])]
+    msg.char_values = [chr(49), chr(50)]
     msg.float32_values = [0.0, 1.125, -2.125]
     msg.float64_values = [0.0, 1.125, -2.125]
     msg.int8_values = [0, 127, -128]
@@ -236,8 +229,7 @@ def get_msg_dynamic_array_primitives():
     msg = DynamicArrayPrimitives()
     msg.bool_values = [i % 2 != 0 for i in range(size)]
     msg.byte_values = [bytes([i]) for i in range(size)]
-#    msg.char_values = [chr(i) for i in range(size)]
-    msg.char_values = [bytes([i]) for i in range(size)]
+    msg.char_values = [chr(i) for i in range(size)]
     msg.float32_values = [float(1.125 * i) for i in range(size)]
     msg.float64_values = [1.125 * i for i in range(size)]
     msg.int8_values = [i for i in range(size)]
@@ -253,7 +245,7 @@ def get_msg_dynamic_array_primitives():
     msgs.append(msg)
 
     msg = DynamicArrayPrimitives()
-    msg.check = 0
+    msg.check = 4
     msgs.append(msg)
 
     return msgs

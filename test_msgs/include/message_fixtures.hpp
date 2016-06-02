@@ -46,9 +46,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
-//    msg->char_value = '0';
-//    msg->char_value = '\0';
-    msg->char_value = 0;  // 48;  // -127;  // '\0';
+    msg->char_value = '\0';
     msg->float32_value = 0.0f;
     msg->float64_value = 0;
     msg->int8_value = 0;
@@ -66,7 +64,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 255;
-    msg->char_value = '\255';
+    msg->char_value = '\x7f';
     msg->float32_value = 1.125f;
     msg->float64_value = 1.125;
     msg->int8_value = (std::numeric_limits<int8_t>::max)();
@@ -84,7 +82,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
-    msg->char_value = 0x0;
+    msg->char_value = '\x00';
     msg->float32_value = -2.125f;
     msg->float64_value = -2.125;
     msg->int8_value = (std::numeric_limits<int8_t>::min)();
@@ -102,8 +100,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 1;
-    msg->char_value = 1;  // '0';
-//    msg->char_value = 50;  // '\1';
+    msg->char_value = 1;
     msg->float32_value = 1.125f;
     msg->float64_value = 1.125;
     msg->int8_value = 1;
@@ -132,7 +129,7 @@ get_messages_static_array_primitives()
     auto msg = std::make_shared<test_communication::msg::StaticArrayPrimitives>();
     msg->bool_values = {{false, true, false}};
     msg->byte_values = {{0, 0xff, 0}};
-    msg->char_values = {{'\0', '\255', '\0'}};
+    msg->char_values = {{'\x00', 0, '\0'}};
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     // *INDENT-OFF* (prevent uncrustify from making unnecessary indents here)
@@ -186,7 +183,7 @@ get_messages_dynamic_array_primitives()
     auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     msg->bool_values = {true};
     msg->byte_values = {0xff};
-    msg->char_values = {'\255'};
+    msg->char_values = {48};
     msg->float32_values = {1.125f};
     msg->float64_values = {1.125};
     msg->int8_values = {(std::numeric_limits<int8_t>::max)()};
@@ -205,7 +202,7 @@ get_messages_dynamic_array_primitives()
     auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     msg->bool_values = {{false, true}};
     msg->byte_values = {{0, 0xff}};
-    msg->char_values = {{'\0', '\255'}};
+    msg->char_values = {{49, 50}};
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     // *INDENT-OFF* (prevent uncrustify from making unnecessary indents here)
