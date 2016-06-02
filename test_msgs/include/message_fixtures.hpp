@@ -162,20 +162,20 @@ get_messages_dynamic_array_primitives()
   std::vector<test_communication::msg::DynamicArrayPrimitives::SharedPtr> messages;
   {
     auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
-    msg->bool_values = {{}};
-    msg->byte_values = {{}};
-    msg->char_values = {{}};
-    msg->float32_values = {{}};
-    msg->float64_values = {{}};
-    msg->int8_values = {{}};
-    msg->uint8_values = {{}};
-    msg->int16_values = {{}};
-    msg->uint16_values = {{}};
-    msg->int32_values = {{}};
-    msg->uint32_values = {{}};
-    msg->int64_values = {{}};
-    msg->uint64_values = {{}};
-    msg->string_values = {{}};
+    msg->bool_values = {};
+    msg->byte_values = {};
+    msg->char_values = {};
+    msg->float32_values = {};
+    msg->float64_values = {};
+    msg->int8_values = {};
+    msg->uint8_values = {};
+    msg->int16_values = {};
+    msg->uint16_values = {};
+    msg->int32_values = {};
+    msg->uint32_values = {};
+    msg->int64_values = {};
+    msg->uint64_values = {};
+    msg->string_values = {};
     msg->check = 0;
     messages.push_back(msg);
   }
