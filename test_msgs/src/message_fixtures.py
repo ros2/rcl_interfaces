@@ -260,23 +260,23 @@ def get_msg_dynamic_array_nested():
 
 
 def get_test_msg(message_name):
-    if 'builtins' == message_name:
+    if 'Builtins' == message_name:
         msg = get_msg_builtins()
-    elif 'empty' == message_name:
+    elif 'Empty' == message_name:
         msg = get_msg_empty()
-    elif 'primitives' == message_name:
+    elif 'Primitives' == message_name:
         msg = get_msg_primitives()
-    elif 'nested' == message_name:
+    elif 'Nested' == message_name:
         msg = get_msg_nested()
-    elif 'fieldswithsametype' == message_name:
+    elif 'FieldsWithSameYype' == message_name:
         msg = get_msg_fields_with_same_type()
-    elif 'staticarraynested' == message_name:
+    elif 'StaticArrayNested' == message_name:
         msg = get_msg_static_array_nested()
-    elif 'staticarrayprimitives' == message_name:
+    elif 'StaticArrayPrimitives' == message_name:
         msg = get_msg_static_array_primitives()
-    elif 'dynamicarrayprimitives' == message_name:
+    elif 'DynamicArrayPrimitives' == message_name:
         msg = get_msg_dynamic_array_primitives()
-    elif 'dynamicarraynested' == message_name:
+    elif 'DynamicArrayNested' == message_name:
         msg = get_msg_dynamic_array_nested()
     else:
         raise NotImplementedError
