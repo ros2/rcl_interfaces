@@ -46,7 +46,9 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
-    msg->char_value = '\0';
+//    msg->char_value = '0';
+//    msg->char_value = '\0';
+    msg->char_value = 0;  // 48;  // -127;  // '\0';
     msg->float32_value = 0.0f;
     msg->float64_value = 0;
     msg->int8_value = 0;
@@ -100,9 +102,10 @@ get_messages_primitives()
     auto msg = std::make_shared<test_communication::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 1;
-    msg->char_value = '\1';
-    msg->float32_value = 1.0f;
-    msg->float64_value = 1;
+    msg->char_value = 1;  // '0';
+//    msg->char_value = 50;  // '\1';
+    msg->float32_value = 1.125f;
+    msg->float64_value = 1.125;
     msg->int8_value = 1;
     msg->uint8_value = 1;
     msg->int16_value = 1;
