@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from test_communication.msg import BoundedArrayNested
+from test_communication.msg import BoundedArrayPrimitives
 from test_communication.msg import Builtins
 from test_communication.msg import DynamicArrayNested
 from test_communication.msg import DynamicArrayPrimitives
@@ -259,6 +261,77 @@ def get_msg_dynamic_array_nested():
     return [msg]
 
 
+def get_msg_bounded_array_primitives():
+    msgs = []
+    msg = BoundedArrayPrimitives()
+    msg.bool_values = []
+    msg.char_values = []
+    msg.byte_values = []
+    msg.float32_values = []
+    msg.float64_values = []
+    msg.int8_values = []
+    msg.uint8_values = []
+    msg.int16_values = []
+    msg.uint16_values = []
+    msg.int32_values = []
+    msg.uint32_values = []
+    msg.int64_values = []
+    msg.uint64_values = []
+    msg.string_values = []
+    msg.check = 0
+    msgs.append(msg)
+
+    msg = BoundedArrayPrimitives()
+    msg.bool_values = [True]
+    msg.byte_values = [bytes([255])]
+    msg.char_values = [chr(0x7f)]
+    msg.float32_values = [1.125]
+    msg.float64_values = [1.125]
+    msg.int8_values = [127]
+    msg.uint8_values = [255]
+    msg.int16_values = [32767]
+    msg.uint16_values = [65535]
+    msg.int32_values = [2147483647]
+    msg.uint32_values = [4294967295]
+    msg.int64_values = [9223372036854775807]
+    msg.uint64_values = [18446744073709551615]
+    msg.string_values = ['max value']
+    msg.check = 1
+    msgs.append(msg)
+
+    msg = BoundedArrayPrimitives()
+    msg.bool_values = [False, True]
+    msg.byte_values = [bytes([0]), bytes([255])]
+    msg.char_values = [chr(0), chr(127)]
+    msg.float32_values = [0.0, 1.125, -2.125]
+    msg.float64_values = [0.0, 1.125, -2.125]
+    msg.int8_values = [0, 127, -128]
+    msg.uint8_values = [0, 255]
+    msg.int16_values = [0, 32767, -32768]
+    msg.uint16_values = [0, 65535]
+    msg.int32_values = [0, 2147483647, -2147483648]
+    msg.uint32_values = [0, 4294967295]
+    msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
+    msg.uint64_values = [0, 18446744073709551615]
+    msg.string_values = ['', 'max value', 'optional min value']
+    msg.check = 2
+    msgs.append(msg)
+
+    msg = BoundedArrayPrimitives()
+    msg.check = 4
+    msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_bounded_array_nested():
+    msg = BoundedArrayNested()
+    for primitive_msg in get_msg_primitives():
+        msg.primitive_values.append(primitive_msg)
+
+    return [msg]
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -278,6 +351,10 @@ def get_test_msg(message_name):
         msg = get_msg_dynamic_array_primitives()
     elif 'DynamicArrayNested' == message_name:
         msg = get_msg_dynamic_array_nested()
+    elif 'BoundedArrayPrimitives' == message_name:
+        msg = get_msg_bounded_array_primitives()
+    elif 'BoundedArrayNested' == message_name:
+        msg = get_msg_bounded_array_nested()
     else:
         raise NotImplementedError
     return msg

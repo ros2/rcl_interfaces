@@ -303,6 +303,7 @@ get_messages_bounded_array_primitives()
     }};
     // *INDENT-ON*
     msg->uint32_values = {{0, 1, (std::numeric_limits<uint32_t>::max)()}};
+    msg->int64_values.resize(3);
     msg->int64_values[0] = 0;
     msg->int64_values[1] = (std::numeric_limits<int64_t>::max)();
     msg->int64_values[2] = (std::numeric_limits<int64_t>::min)();
@@ -355,6 +356,7 @@ get_messages_bounded_array_nested()
   {
     auto msg = std::make_shared<test_communication::msg::BoundedArrayNested>();
     auto primitive_msgs = get_messages_primitives();
+    msg->primitive_values.resize(primitive_msgs.size());
     size_t i = 0;
     for (auto primitive_msg : primitive_msgs) {
       msg->primitive_values[i] = *primitive_msg;
