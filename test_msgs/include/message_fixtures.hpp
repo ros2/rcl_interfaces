@@ -17,6 +17,7 @@
 
 #include <cassert>
 #include <limits>
+#include <memory>
 #include <vector>
 
 #include "test_communication/msg/bounded_array_nested.hpp"

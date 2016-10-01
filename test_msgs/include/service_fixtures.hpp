@@ -15,6 +15,7 @@
 #ifndef SERVICE_FIXTURES_HPP_
 #define SERVICE_FIXTURES_HPP_
 
+#include <memory>
 #include <utility>
 #include <vector>
 
