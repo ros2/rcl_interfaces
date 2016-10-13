@@ -110,7 +110,7 @@ def get_msg_primitives():
     msg.uint64_value = 1
     msg.string_value = ''
     # check strings longer then 255 characters
-    for i in range(256):
+    for i in range(20000):
         msg.string_value += str(i % 10)
     msgs.append(msg)
 

@@ -116,7 +116,7 @@ get_messages_primitives()
     msg->uint64_value = 1;
     // check strings longer then 255 characters
     msg->string_value = "";
-    for (size_t i = 0; i < 256; ++i) {
+    for (size_t i = 0; i < 20000; ++i) {
       msg->string_value += std::to_string(i % 10);
     }
     messages.push_back(msg);
