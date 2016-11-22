@@ -97,7 +97,7 @@ get_services_primitives()
     request->bool_value = true;
     request->byte_value = 1;
     request->char_value = 0x1;
-    request->float32_value = 1.11f;
+    request->float32_value = 1.125f;
     request->float64_value = 1.11;
     request->int8_value = 1;
     request->uint8_value = 2;
@@ -112,7 +112,7 @@ get_services_primitives()
     reply->bool_value = true;
     reply->byte_value = 11;
     reply->char_value = 0x11;
-    reply->float32_value = 11.11f;
+    reply->float32_value = 11.125f;
     reply->float64_value = 11.11;
     reply->int8_value = 11;
     reply->uint8_value = 22;
