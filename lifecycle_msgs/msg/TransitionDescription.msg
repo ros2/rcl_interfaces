@@ -1,0 +1,4 @@
+Transition transition
+State start_state
+State transition_state
+State goal_state
