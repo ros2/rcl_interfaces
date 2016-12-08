@@ -71,7 +71,10 @@ def get_msg_primitives():
     req.uint32_value = 6
     req.int64_value = 7
     req.uint64_value = 8
-    req.string_value = 'request'
+    # check strings longer then 256 characters
+    req.string_value = ''
+    for i in range(20000):
+        req.string_value += str(i % 10)
     resp = Primitives.Response()
     resp.bool_value = True
     resp.byte_value = bytes([11])
@@ -86,7 +89,10 @@ def get_msg_primitives():
     resp.uint32_value = 66
     resp.int64_value = 77
     resp.uint64_value = 88
-    resp.string_value = 'reply'
+    # check strings longer then 256 characters
+    resp.string_value = ''
+    for i in range(20000):
+        resp.string_value += str(i % 10)
     srvs.append([req, resp])
     return srvs
 
