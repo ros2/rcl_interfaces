@@ -1,2 +1,0 @@
-string node_name
-TransitionMap transition_map

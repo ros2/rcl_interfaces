@@ -18,6 +18,8 @@ set(msg_files
 set(srv_files
   "srv/ChangeState.srv"
   "srv/GetState.srv"
+  "srv/GetAvailableStates.srv"
+  "srv/GetAvailableTransitions.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
