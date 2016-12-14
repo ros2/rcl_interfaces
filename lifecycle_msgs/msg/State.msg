@@ -1,16 +1,12 @@
 # Primary state definitions
 # as depicted in
-# design.ros2.org
+# http://design.ros2.org/articles/node_lifecycle.html
 
 uint8 PRIMARY_STATE_UNKNOWN = 0
 uint8 PRIMARY_STATE_UNCONFIGURED = 1
 uint8 PRIMARY_STATE_INACTIVE = 2
 uint8 PRIMARY_STATE_ACTIVE = 3
 uint8 PRIMARY_STATE_FINALIZED = 4
-
-# Transition state definitions
-# as depicted in
-# design.ros2.org
 
 uint8 TRANSITION_STATE_CONFIGURING = 10
 uint8 TRANSITION_STATE_CLEANINGUP = 11
