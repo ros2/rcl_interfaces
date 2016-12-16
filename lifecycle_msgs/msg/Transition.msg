@@ -3,9 +3,8 @@
 # http://design.ros2.org/articles/node_lifecycle.html
 
 # Externally available transitions.
-# When a node is in a primary states,
-# these transitions can be invoked from
-# a user code.
+# When a node is in one of these primary states,
+# these transitions can be invoked.
 uint8 TRANSITION_CREATE = 0
 uint8 TRANSITION_CONFIGURE = 1
 uint8 TRANSITION_CLEANUP = 2

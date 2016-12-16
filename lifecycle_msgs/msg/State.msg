@@ -12,7 +12,7 @@ uint8 PRIMARY_STATE_ACTIVE = 3
 uint8 PRIMARY_STATE_FINALIZED = 4
 
 # Temporary intermediate states
-# When a transition is request, the
+# When a transition is requested, the
 # node changes its state into one
 # of these states.
 uint8 TRANSITION_STATE_CONFIGURING = 10
