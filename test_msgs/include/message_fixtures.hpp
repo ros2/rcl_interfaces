@@ -25,6 +25,7 @@
 #include "test_communication/msg/builtins.hpp"
 #include "test_communication/msg/dynamic_array_nested.hpp"
 #include "test_communication/msg/dynamic_array_primitives.hpp"
+#include "test_communication/msg/dynamic_array_primitives_nested.hpp"
 #include "test_communication/msg/empty.hpp"
 #include "test_communication/msg/nested.hpp"
 #include "test_communication/msg/primitives.hpp"
@@ -275,6 +276,22 @@ get_messages_dynamic_array_primitives()
     msg->check = 4;
     messages.push_back(msg);
   }
+  return messages;
+}
+
+std::vector<test_communication::msg::DynamicArrayPrimitivesNested::SharedPtr>
+get_messages_dynamic_array_primitives_nested()
+{
+  std::vector<test_communication::msg::DynamicArrayPrimitivesNested::SharedPtr> messages;
+
+  std::vector<test_communication::msg::DynamicArrayPrimitives::SharedPtr> primitive_msgs =
+    get_messages_dynamic_array_primitives();
+
+  auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitivesNested>();
+  for (size_t i = 0; i < primitive_msgs.size(); ++i) {
+    msg->msgs.push_back(*primitive_msgs[i]);
+  }
+  messages.push_back(msg);
   return messages;
 }
 
