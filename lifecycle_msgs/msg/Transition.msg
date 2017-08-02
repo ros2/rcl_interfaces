@@ -49,10 +49,10 @@ uint8 TRANSITION_ON_ERROR_ERROR = 62
 # as a return value for each callback.
 # Depending on which return value,
 # the transition will be executed correctly
-# or failback/error callbacks will be triggered.
-uint8 TRANSITION_CALLBACK_SUCCESS = 99
+# or fallback/error callbacks will be triggered.
+uint8 TRANSITION_CALLBACK_SUCCESS = 97
 uint8 TRANSITION_CALLBACK_FAILURE = 98
-uint8 TRANSITION_CALLBACK_ERROR = 97
+uint8 TRANSITION_CALLBACK_ERROR = 99
 
 uint8 id
 string label
