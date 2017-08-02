@@ -45,7 +45,7 @@ uint8 TRANSITION_ON_ERROR_SUCCESS = 60
 uint8 TRANSITION_ON_ERROR_FAILURE = 61
 uint8 TRANSITION_ON_ERROR_ERROR = 62
 
-# Three return values which ought to be set
+# These return values ought to be set
 # as a return value for each callback.
 # Depending on which return value,
 # the transition will be executed correctly
