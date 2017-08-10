@@ -236,7 +236,7 @@ get_messages_dynamic_array_primitives()
   {
     auto msg = std::make_shared<test_communication::msg::DynamicArrayPrimitives>();
     // check sequences with more then 100 elements
-    const size_t size = 101;
+    const size_t size = 1000;
     msg->bool_values.resize(size);
     msg->byte_values.resize(size);
     msg->char_values.resize(size);
@@ -254,7 +254,8 @@ get_messages_dynamic_array_primitives()
     for (size_t i = 0; i < size; ++i) {
       msg->bool_values[i] = (i % 2 != 0) ? true : false;
       msg->byte_values[i] = static_cast<uint8_t>(i);
-      msg->char_values[i] = static_cast<char>(i);
+      // TODO(mikaelarguedas) only ascii chars supported across languages
+      msg->char_values[i] = static_cast<char>(i % (1 << 7));
       msg->float32_values[i] = 1.125f * i;
       msg->float64_values[i] = 1.125 * i;
       msg->int8_values[i] = static_cast<int8_t>(i);

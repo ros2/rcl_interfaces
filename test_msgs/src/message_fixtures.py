@@ -26,6 +26,13 @@ from test_communication.msg import StaticArrayNested
 from test_communication.msg import StaticArrayPrimitives
 
 
+def int_from_uint(value, nbits):
+    value = value % (1 << nbits)
+    if value >= (1 << (nbits - 1)):
+        value = value - (1 << nbits)
+    return value
+
+
 def get_msg_builtins():
     msg = Builtins()
     msg.duration_value.sec = -1234567890
@@ -229,21 +236,23 @@ def get_msg_dynamic_array_primitives():
     msg.check = 2
     msgs.append(msg)
 
-    size = 101
+    size = 1000
+
     msg = DynamicArrayPrimitives()
     msg.bool_values = [i % 2 != 0 for i in range(size)]
-    msg.byte_values = [bytes([i]) for i in range(size)]
-    msg.char_values = [chr(i) for i in range(size)]
+    msg.byte_values = [bytes([i % (1 << 8)]) for i in range(size)]
+    # TODO(mikaelarguedas) only ascii chars supported across languages
+    msg.char_values = [chr(i % (1 << 7)) for i in range(size)]
     msg.float32_values = [float(1.125 * i) for i in range(size)]
     msg.float64_values = [1.125 * i for i in range(size)]
-    msg.int8_values = [i for i in range(size)]
-    msg.uint8_values = [i for i in range(size)]
-    msg.int16_values = [i for i in range(size)]
-    msg.uint16_values = [i for i in range(size)]
-    msg.int32_values = [i for i in range(size)]
-    msg.uint32_values = [i for i in range(size)]
-    msg.int64_values = [i for i in range(size)]
-    msg.uint64_values = [i for i in range(size)]
+    msg.int8_values = [int_from_uint(i, 8) for i in range(size)]
+    msg.uint8_values = [i % (1 << 8) for i in range(size)]
+    msg.int16_values = [int_from_uint(i, 16) for i in range(size)]
+    msg.uint16_values = [i % (1 << 16) for i in range(size)]
+    msg.int32_values = [int_from_uint(i, 32) for i in range(size)]
+    msg.uint32_values = [i % (1 << 32) for i in range(size)]
+    msg.int64_values = [int_from_uint(i, 64) for i in range(size)]
+    msg.uint64_values = [i % (1 << 64) for i in range(size)]
     msg.string_values = [str(i) for i in range(size)]
     msg.check = 3
     msgs.append(msg)
