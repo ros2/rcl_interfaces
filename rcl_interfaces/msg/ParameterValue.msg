@@ -10,4 +10,4 @@ bool bool_value False
 int64 integer_value 0
 float64 double_value 0.0
 string string_value ""
-byte[] bytes_value []
+byte[] bytes_value
