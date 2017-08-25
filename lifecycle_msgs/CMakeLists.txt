@@ -14,6 +14,9 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(rosidl_runtime_cpp REQUIRED)
+
+include_directories(${rosidl_runtime_cpp_INCLUDE_DIRS})
 
 set(msg_files
   "msg/State.msg"
@@ -39,6 +42,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_export_dependencies(rosidl_default_runtime)
+ament_export_dependencies(rosidl_default_runtime rosidl_runtime_cpp)
 
 ament_package()
