@@ -31,8 +31,16 @@ set(msg_files
 )
 
 set(srv_files
+  "srv/BoundedArrayNested.srv"
+  "srv/BoundedArrayPrimitives.srv"
+  "srv/DynamicArrayNested.srv"
+  "srv/DynamicArrayPrimitives.srv"
+  "srv/DynamicArrayPrimitivesNested.srv"
   "srv/Empty.srv"
+  "srv/Nested.srv"
   "srv/Primitives.srv"
+  "srv/StaticArrayNested.srv"
+  "srv/StaticArrayPrimitives.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
