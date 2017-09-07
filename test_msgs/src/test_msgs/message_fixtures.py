@@ -12,18 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from test_communication.msg import BoundedArrayNested
-from test_communication.msg import BoundedArrayPrimitives
-from test_communication.msg import Builtins
-from test_communication.msg import DynamicArrayNested
-from test_communication.msg import DynamicArrayPrimitives
-from test_communication.msg import DynamicArrayPrimitivesNested
-from test_communication.msg import Empty
-from test_communication.msg import FieldsWithSameType
-from test_communication.msg import Nested
-from test_communication.msg import Primitives
-from test_communication.msg import StaticArrayNested
-from test_communication.msg import StaticArrayPrimitives
+from test_msgs.msg import BoundedArrayNested
+from test_msgs.msg import BoundedArrayPrimitives
+from test_msgs.msg import Builtins
+from test_msgs.msg import DynamicArrayNested
+from test_msgs.msg import DynamicArrayPrimitives
+from test_msgs.msg import DynamicArrayPrimitivesNested
+from test_msgs.msg import Empty
+from test_msgs.msg import Nested
+from test_msgs.msg import Primitives
+from test_msgs.msg import StaticArrayNested
+from test_msgs.msg import StaticArrayPrimitives
 
 
 def int_from_uint(value, nbits):
@@ -123,14 +122,6 @@ def get_msg_primitives():
     msgs.append(msg)
 
     return msgs
-
-
-def get_msg_fields_with_same_type():
-    msg = FieldsWithSameType()
-    msg.primitive_values1 = get_msg_primitives()[0]
-    msg.primitive_values2 = get_msg_primitives()[0]
-
-    return [msg]
 
 
 def get_msg_nested():
@@ -269,7 +260,7 @@ def get_msg_dynamic_array_primitives_nested():
 
     msg = DynamicArrayPrimitivesNested()
     for primitives_msg in primitives_msgs:
-        msg.msgs.append(primitives_msg)
+        msg.dynamic_array_primitive_values.append(primitives_msg)
 
     return [msg]
 
@@ -327,8 +318,6 @@ def get_test_msg(message_name):
         msg = get_msg_primitives()
     elif 'Nested' == message_name:
         msg = get_msg_nested()
-    elif 'FieldsWithSameYype' == message_name:
-        msg = get_msg_fields_with_same_type()
     elif 'StaticArrayNested' == message_name:
         msg = get_msg_static_array_nested()
     elif 'StaticArrayPrimitives' == message_name:

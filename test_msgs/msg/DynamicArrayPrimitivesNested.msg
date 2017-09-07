@@ -1,1 +1,1 @@
-DynamicArrayPrimitives[] msgs
+DynamicArrayPrimitives[] dynamic_array_primitive_values
