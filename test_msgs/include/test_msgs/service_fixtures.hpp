@@ -164,7 +164,7 @@ get_services_static_array_primitives()
     auto request = std::make_shared<test_msgs::srv::StaticArrayPrimitives::Request>();
     request->bool_values = {{false, true, false}};
     request->byte_values = {{0, 0xff, 0}};
-    request->char_values = {{'\0', '\255', '\0'}};
+    request->char_values = {{'\0', '\x7f', '\0'}};
     request->float32_values = {{0.0f, 11.125f, -22.125f}};
     request->float64_values = {{0, 11.125, -22.125}};
     // *INDENT-OFF* (prevent uncrustify from making unecessary indents here)
@@ -191,29 +191,33 @@ get_services_static_array_primitives()
     response->bool_values = {{true, false, true}};
     response->byte_values = {{1, 0x0, 1}};
     response->char_values = {{'\x7f', '\0', '\x7f'}};
-    response->float32_values = {{
-      std::numeric_limits<float>::min(), std::numeric_limits<float>::max(), 0.0f}};
-    response->float64_values =  {{
-      std::numeric_limits<double>::min(), std::numeric_limits<double>::max(), 0.0}};
+    response->float32_values = {{0.0f, -11.125f, 22.125f}};
+      //std::numeric_limits<float>::min(), std::numeric_limits<float>::max(), 0.0f}};
+    response->float64_values =  {{0.0, -11.125, 22.125}};
+      // std::numeric_limits<double>::min(), std::numeric_limits<double>::max(), 0.0}};
     // *INDENT-OFF* (prevent uncrustify from making unecessary indents here)
     response->int8_values = {{
-      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
-    response->uint8_values = {{0, (std::numeric_limits<uint8_t>::max)(), 0}};
+      (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)(), 0}};
+    response->uint8_values = {{
+      (std::numeric_limits<uint8_t>::max)(), 0, (std::numeric_limits<uint8_t>::max)()}};
     response->int16_values = {{
-      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
-    response->uint16_values = {{0, (std::numeric_limits<uint16_t>::max)(), 0}};
+      (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)(), 0}};
+    response->uint16_values = {{
+      (std::numeric_limits<uint16_t>::max)(), 0, (std::numeric_limits<uint16_t>::max)()}};
     response->int32_values = {{
-      static_cast<int32_t>(0),
       (std::numeric_limits<int32_t>::max)(),
-      (std::numeric_limits<int32_t>::min)()
+      (std::numeric_limits<int32_t>::min)(),
+      static_cast<int32_t>(0)
     }};
+    response->uint32_values = {{
+      (std::numeric_limits<uint32_t>::max)(), (std::numeric_limits<uint32_t>::min)(), 0}};
     // *INDENT-ON*
-    response->uint32_values = {{(std::numeric_limits<uint32_t>::min)(), (std::numeric_limits<uint32_t>::max)(), 0}};
-    response->int64_values[0] = 0;
-    response->int64_values[1] = (std::numeric_limits<int64_t>::max)();
-    response->int64_values[2] = (std::numeric_limits<int64_t>::min)();
-    response->uint64_values = {{0, (std::numeric_limits<uint64_t>::max)(), 0}};
-    response->string_values = {{"", "max value", "min value"}};
+    response->int64_values[0] = (std::numeric_limits<int64_t>::max)();
+    response->int64_values[1] = (std::numeric_limits<int64_t>::min)();
+    response->int64_values[2] = 0;
+    response->uint64_values = {{
+      (std::numeric_limits<uint64_t>::max)(), 0, (std::numeric_limits<uint64_t>::max)()}};
+    response->string_values = {{"max value", "min value", ""}};
 
     service_pairs.emplace_back(request, response);
   }
