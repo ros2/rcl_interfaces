@@ -210,7 +210,7 @@ get_services_static_array_primitives()
       static_cast<int32_t>(0)
     }};
     response->uint32_values = {{
-      (std::numeric_limits<uint32_t>::max)(), (std::numeric_limits<uint32_t>::min)(), 0}};
+      (std::numeric_limits<uint32_t>::max)(), 0, (std::numeric_limits<uint32_t>::max)()}};
     // *INDENT-ON*
     response->int64_values[0] = (std::numeric_limits<int64_t>::max)();
     response->int64_values[1] = (std::numeric_limits<int64_t>::min)();
@@ -330,7 +330,7 @@ get_services_bounded_array_primitives()
     response->int64_values[2] = (std::numeric_limits<int64_t>::max)();
     response->uint64_values = {{(std::numeric_limits<uint64_t>::max)(), 0, 1}};
     response->string_values = {{"optional min value", "", "max value"}};
-    response->check = 2;
+    response->check = 3;
     service_pairs.emplace_back(request, response);
   }
   return service_pairs;
