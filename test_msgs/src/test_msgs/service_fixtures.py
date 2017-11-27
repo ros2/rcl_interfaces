@@ -269,8 +269,8 @@ def get_srv_dynamic_array_primitives():
 
     srvs.append([req, resp])
 
-    req = BoundedArrayPrimitives.Request()
-    resp = BoundedArrayPrimitives.Response()
+    req = DynamicArrayPrimitives.Request()
+    resp = DynamicArrayPrimitives.Response()
 
     req.bool_values = [False, True]
     req.byte_values = [bytes([0]), bytes([0xff])]
@@ -388,8 +388,8 @@ def get_test_srv(service_name):
         srv = get_srv_static_array_nested()
     elif 'StaticArrayPrimitives' == service_name:
         srv = get_srv_static_array_primitives()
-    # elif 'DynamicArrayPrimitives' == message_name:
-    #     msg = get_msg_dynamic_array_primitives()
+    elif 'DynamicArrayPrimitives' == service_name:
+        srv = get_srv_dynamic_array_primitives()
     elif 'DynamicArrayNested' == service_name:
         srv = get_srv_dynamic_array_nested()
     elif 'DynamicArrayPrimitivesNested' == service_name:
