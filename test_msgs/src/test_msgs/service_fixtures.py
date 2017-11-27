@@ -16,16 +16,18 @@ from test_msgs.srv import Empty
 from test_msgs.srv import Primitives
 
 
-def get_msg_empty():
+def get_srv_empty():
     req = Empty.Request()
     resp = Empty.Response()
 
     return [[req, resp]]
 
 
-def get_msg_primitives():
+def get_srv_primitives():
     srvs = []
+
     req = Primitives.Request()
+    resp = Primitives.Response()
     req.bool_value = False
     req.byte_value = bytes([0])
     req.char_value = '\x00'
@@ -62,7 +64,7 @@ def get_msg_primitives():
     req.byte_value = bytes([1])
     req.char_value = '\x01'
     req.float32_value = float(1.125)
-    req.float64_value = float(1.11)
+    req.float64_value = float(1.125)
     req.int8_value = 1
     req.uint8_value = 2
     req.int16_value = 3
@@ -80,7 +82,7 @@ def get_msg_primitives():
     resp.byte_value = bytes([11])
     resp.char_value = '\x11'
     resp.float32_value = float(11.125)
-    resp.float64_value = float(11.11)
+    resp.float64_value = float(11.125)
     resp.int8_value = 11
     resp.uint8_value = 22
     resp.int16_value = 33
@@ -99,9 +101,9 @@ def get_msg_primitives():
 
 def get_test_srv(service_name):
     if 'Empty' == service_name:
-        srv = get_msg_empty()
+        srv = get_srv_empty()
     elif 'Primitives' == service_name:
-        srv = get_msg_primitives()
+        srv = get_srv_primitives()
     else:
         raise NotImplementedError('%s service is not part of the test suite', service_name)
     return srv
