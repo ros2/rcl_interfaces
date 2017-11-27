@@ -352,20 +352,20 @@ get_services_dynamic_array_primitives()
   > service_pairs;
   {
     auto request = std::make_shared<test_msgs::srv::DynamicArrayPrimitives::Request>();
-    request->bool_values = {{}};
-    request->byte_values = {{}};
-    request->char_values = {{}};
-    request->float32_values = {{}};
-    request->float64_values = {{}};
-    request->int8_values = {{}};
-    request->uint8_values = {{}};
-    request->int16_values = {{}};
-    request->uint16_values = {{}};
-    request->int32_values = {{}};
-    request->uint32_values = {{}};
-    request->int64_values = {{}};
-    request->uint64_values = {{}};
-    request->string_values = {{}};
+    request->bool_values = {};
+    request->byte_values = {};
+    request->char_values = {};
+    request->float32_values = {};
+    request->float64_values = {};
+    request->int8_values = {};
+    request->uint8_values = {};
+    request->int16_values = {};
+    request->uint16_values = {};
+    request->int32_values = {};
+    request->uint32_values = {};
+    request->int64_values = {};
+    request->uint64_values = {};
+    request->string_values = {};
 
     auto response = std::make_shared<test_msgs::srv::DynamicArrayPrimitives::Response>();
     response->bool_values = {true};
@@ -381,7 +381,7 @@ get_services_dynamic_array_primitives()
     response->uint32_values = {(std::numeric_limits<uint32_t>::max)()};
     response->int64_values = {(std::numeric_limits<int64_t>::max)()};
     response->uint64_values = {(std::numeric_limits<uint64_t>::max)()};
-    response->string_values = {{"max value"}};
+    response->string_values = {"max value"};
     service_pairs.emplace_back(request, response);
   }
   {

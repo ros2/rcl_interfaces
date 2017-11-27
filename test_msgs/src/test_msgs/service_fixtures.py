@@ -287,7 +287,7 @@ def get_srv_dynamic_array_primitives():
     req.uint64_values = [0, 2**64 - 1]
     req.string_values = ['', 'max value', 'optional min value']
 
-    size = 10000
+    size = 1000
     resp.bool_values = [i % 2 != 0 for i in range(size)]
     resp.byte_values = [bytes([i % (1 << 8)]) for i in range(size)]
     # TODO(mikaelarguedas) only ascii chars supported across languages
@@ -360,6 +360,7 @@ def get_srv_static_array_nested():
     for primitive_msg in primitives_msgs:
         req.primitive_values[i] = primitive_msg
         resp.primitive_values[i] = primitive_msg
+        i += 1
     srvs.append([req, resp])
     return srvs
 
