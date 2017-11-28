@@ -26,6 +26,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Parameter.msg"
   "msg/ParameterType.msg"
   "msg/ParameterValue.msg"
+  "msg/RclHeader.msg"
   "msg/SetParametersResult.msg"
   "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
@@ -33,6 +34,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ListParameters.srv"
   "srv/SetParametersAtomically.srv"
   "srv/SetParameters.srv"
+  DEPENDENCIES builtin_interfaces
+  ADD_LINTER_TESTS
 )
 
 # this must happen before the invocation of ament_package()
