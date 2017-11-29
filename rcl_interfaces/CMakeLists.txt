@@ -15,9 +15,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-# ament_export_dependencies(rcl_interfaces)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
+set(msg_files
   "msg/IntraProcessMessage.msg"
   "msg/ListParametersResult.msg"
   "msg/ParameterDescriptor.msg"
@@ -28,12 +26,19 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ParameterValue.msg"
   "msg/RclHeader.msg"
   "msg/SetParametersResult.msg"
+)
+
+set(srv_files
   "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
   "srv/GetParameterTypes.srv"
   "srv/ListParameters.srv"
   "srv/SetParametersAtomically.srv"
   "srv/SetParameters.srv"
+)
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  ${srv_files}
   DEPENDENCIES builtin_interfaces
   ADD_LINTER_TESTS
 )
