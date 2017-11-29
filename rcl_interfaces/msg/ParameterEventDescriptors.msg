@@ -3,6 +3,8 @@
 # A specific parameter name can only be in one of the three sets.
 
 RclHeader header
+# Name of the node that requested the parameter change
+string node_req
 ParameterDescriptor[] new_parameters
 ParameterDescriptor[] changed_parameters
 ParameterDescriptor[] deleted_parameters
