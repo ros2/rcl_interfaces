@@ -4,7 +4,7 @@
 
 RclHeader rcl_header
 # Name of the node that requested the parameter change
-string node_req
+string request_origin
 ParameterDescriptor[] new_parameters
 ParameterDescriptor[] changed_parameters
 ParameterDescriptor[] deleted_parameters
