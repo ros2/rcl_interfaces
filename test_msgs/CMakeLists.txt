@@ -42,8 +42,10 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ADD_LINTER_TESTS
 )
 
-install(DIRECTORY src/test_msgs
-  DESTINATION "${PYTHON_INSTALL_DIR}/")
+if(DEFINED PYTHON_INSTALL_DIR)
+  install(DIRECTORY src/test_msgs
+    DESTINATION "${PYTHON_INSTALL_DIR}/")
+endif()
 
 install(DIRECTORY include/
   DESTINATION include)
