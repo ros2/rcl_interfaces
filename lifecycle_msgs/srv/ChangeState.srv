@@ -1,4 +1,3 @@
-string node_name
 Transition transition
 ---
 bool success
