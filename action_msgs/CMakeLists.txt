@@ -15,9 +15,9 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
+  "msg/GoalInfo.msg"
   "msg/GoalStatus.msg"
   "msg/GoalStatusArray.msg"
-  "msg/UUID.msg"
 )
 set(srv_files
   "srv/CancelGoal.srv"

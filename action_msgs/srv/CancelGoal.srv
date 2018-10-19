@@ -7,10 +7,9 @@
 #   given ID regardless of the time it was accepted.
 # - If the goal ID is not zero and timestamp is not zero, cancel the goal with
 #   the given ID and all goals accepted at or before the timestamp.
-#
-# Goal ID
-# TODO(jacobperron): Use a ported version of https://github.com/ros-geographic-info/unique_identifier/blob/master/uuid_msgs
-UUID goal_id
-builtin_interfaces/Time stamp
+
+# Goal info containing an ID and timestamp
+GoalInfo goal_info
 ---
-UUID[] goals_canceling
+# Goals that accepted the cancel request
+GoalInfo[] goals_canceling
