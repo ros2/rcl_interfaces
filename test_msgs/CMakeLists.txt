@@ -34,9 +34,16 @@ set(srv_files
   "srv/Primitives.srv"
 )
 
+# TODO(sloretz) actual action files instead of messages and services
+set(action_files
+  "action/DynamicArrayPrimitivesNested.msg"
+  "action/Primitives.srv"
+)
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
+  ${action_files}
   DEPENDENCIES builtin_interfaces
   ADD_LINTER_TESTS
 )
