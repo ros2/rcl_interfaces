@@ -38,6 +38,8 @@ set(srv_files
 set(action_files
   "action/DynamicArrayPrimitivesNested.msg"
   "action/Primitives.srv"
+  "action/Something.msg"
+  "action/SomethingElse.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
