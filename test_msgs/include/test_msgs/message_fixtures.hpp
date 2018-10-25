@@ -26,6 +26,7 @@
 #include "test_msgs/msg/dynamic_array_nested.hpp"
 #include "test_msgs/msg/dynamic_array_primitives.hpp"
 #include "test_msgs/msg/dynamic_array_primitives_nested.hpp"
+#include "test_msgs/msg/dynamic_array_static_array_primitives_nested.hpp"
 #include "test_msgs/msg/empty.hpp"
 #include "test_msgs/msg/nested.hpp"
 #include "test_msgs/msg/primitives.hpp"
@@ -287,6 +288,22 @@ get_messages_dynamic_array_primitives_nested()
   auto msg = std::make_shared<test_msgs::msg::DynamicArrayPrimitivesNested>();
   for (size_t i = 0; i < primitive_msgs.size(); ++i) {
     msg->dynamic_array_primitive_values.push_back(*primitive_msgs[i]);
+  }
+  messages.push_back(msg);
+  return messages;
+}
+
+std::vector<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested::SharedPtr>
+get_messages_dynamic_array_static_array_primitives_nested()
+{
+  std::vector<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested::SharedPtr> messages;
+
+  auto msg = std::make_shared<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested>();
+  std::vector<test_msgs::msg::StaticArrayPrimitives::SharedPtr> primitive_msgs =
+    get_messages_static_array_primitives();
+  for (size_t i = 0; i < primitive_msgs.size(); ++i)
+  {
+    msg->dynamic_array_static_array_primitive_values.push_back(*primitive_msgs[i]);
   }
   messages.push_back(msg);
   return messages;
