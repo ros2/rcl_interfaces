@@ -4,6 +4,6 @@ uint8[16] uuid
 #goal definition
 int32 order
 ---
-# service respose fields are the same for all actions
+# service response fields are the same for all actions
 bool accepted
 action_msgs/GoalInfo goal
