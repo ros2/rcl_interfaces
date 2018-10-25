@@ -21,6 +21,7 @@ set(msg_files
   "msg/DynamicArrayNested.msg"
   "msg/DynamicArrayPrimitives.msg"
   "msg/DynamicArrayPrimitivesNested.msg"
+  "msg/DynamicArrayStaticArrayPrimitivesNested.msg"
   "msg/Empty.msg"
   "msg/Nested.msg"
   "msg/Primitives.msg"
