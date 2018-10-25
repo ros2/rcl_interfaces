@@ -1,4 +1,4 @@
-# service respose fields are the same for all actions
+# service result request fields are the same for all actions
 action_msgs/GoalInfo goal
 ---
 # All fields in response are user generated
