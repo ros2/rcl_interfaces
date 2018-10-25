@@ -12,6 +12,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
+find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
@@ -34,19 +35,23 @@ set(srv_files
   "srv/Primitives.srv"
 )
 
-# TODO(sloretz) actual action files instead of messages and services
 set(action_files
   "action/DynamicArrayPrimitivesNested.msg"
   "action/Primitives.srv"
   "action/Something.msg"
   "action/SomethingElse.srv"
+  # TODO(sloretz) actual action files instead of messages and services
+  # "action/Fibonacci.action"
+  "action/FibonacciGoalRequest.srv"
+  "action/FibonacciGoalResult.srv"
+  "action/FibonacciFeedback.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
   ${action_files}
-  DEPENDENCIES builtin_interfaces
+  DEPENDENCIES builtin_interfaces action_msgs
   ADD_LINTER_TESTS
 )
 
