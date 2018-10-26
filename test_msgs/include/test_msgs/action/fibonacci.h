@@ -57,7 +57,7 @@ extern "C"
   ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciGoalResponse)
 
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__FEEDBACK_SYMBOL_NAME \
-  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciGoalResponse)
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciFeedback)
 
 // TODO(sloretz) not sure these are needed since it's always the same symbol
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__STATUS_SYMBOL_NAME \
