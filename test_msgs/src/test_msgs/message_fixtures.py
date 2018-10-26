@@ -18,6 +18,7 @@ from test_msgs.msg import Builtins
 from test_msgs.msg import DynamicArrayNested
 from test_msgs.msg import DynamicArrayPrimitives
 from test_msgs.msg import DynamicArrayPrimitivesNested
+from test_msgs.msg import DynamicArrayStaticArrayPrimitivesNested
 from test_msgs.msg import Empty
 from test_msgs.msg import Nested
 from test_msgs.msg import Primitives
@@ -273,6 +274,16 @@ def get_msg_dynamic_array_nested():
     return [msg]
 
 
+def get_msg_dynamic_array_static_array_primitives_nested():
+    primitives_msgs = get_msg_static_array_primitives()
+
+    msg = DynamicArrayStaticArrayPrimitivesNested()
+    for primitives_msg in primitives_msgs:
+        msg.dynamic_array_static_array_primitive_values.append(primitives_msg)
+
+    return [msg]
+
+
 def get_msg_bounded_array_primitives():
     msgs = []
 
@@ -328,6 +339,8 @@ def get_test_msg(message_name):
         msg = get_msg_dynamic_array_nested()
     elif 'DynamicArrayPrimitivesNested' == message_name:
         msg = get_msg_dynamic_array_primitives_nested()
+    elif 'DynamicArrayStaticArrayPrimitivesNested' == message_name:
+        msg = get_msg_dynamic_array_static_array_primitives_nested()
     elif 'BoundedArrayPrimitives' == message_name:
         msg = get_msg_bounded_array_primitives()
     elif 'BoundedArrayNested' == message_name:

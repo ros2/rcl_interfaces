@@ -26,6 +26,7 @@
 #include "test_msgs/msg/dynamic_array_nested.hpp"
 #include "test_msgs/msg/dynamic_array_primitives.hpp"
 #include "test_msgs/msg/dynamic_array_primitives_nested.hpp"
+#include "test_msgs/msg/dynamic_array_static_array_primitives_nested.hpp"
 #include "test_msgs/msg/empty.hpp"
 #include "test_msgs/msg/nested.hpp"
 #include "test_msgs/msg/primitives.hpp"
@@ -137,16 +138,16 @@ get_messages_static_array_primitives()
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{
-      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
+        0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
     msg->uint8_values = {{0, (std::numeric_limits<uint8_t>::max)(), 0}};
     msg->int16_values = {{
-      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
+        0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
     msg->uint16_values = {{0, (std::numeric_limits<uint16_t>::max)(), 0}};
     msg->int32_values = {{
-      static_cast<int32_t>(0),
-      (std::numeric_limits<int32_t>::max)(),
-      (std::numeric_limits<int32_t>::min)()
-    }};
+        static_cast<int32_t>(0),
+        (std::numeric_limits<int32_t>::max)(),
+        (std::numeric_limits<int32_t>::min)()
+      }};
     msg->uint32_values = {{0, (std::numeric_limits<uint32_t>::max)(), 0}};
     msg->int64_values[0] = 0;
     msg->int64_values[1] = (std::numeric_limits<int64_t>::max)();
@@ -208,17 +209,17 @@ get_messages_dynamic_array_primitives()
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{
-      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
+        0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
     msg->uint8_values = {{0, (std::numeric_limits<uint8_t>::max)()}};
     msg->int16_values = {{
-      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
+        0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
     msg->uint16_values = {{0, (std::numeric_limits<uint16_t>::max)()}};
     // The narrowing static cast is required to avoid build errors on Windows.
     msg->int32_values = {{
-      static_cast<int32_t>(0),
-      (std::numeric_limits<int32_t>::max)(),
-      (std::numeric_limits<int32_t>::min)()
-    }};
+        static_cast<int32_t>(0),
+        (std::numeric_limits<int32_t>::max)(),
+        (std::numeric_limits<int32_t>::min)()
+      }};
     msg->uint32_values = {{0, (std::numeric_limits<uint32_t>::max)()}};
     msg->int64_values.resize(3);
     msg->int64_values[0] = 0;
@@ -292,6 +293,21 @@ get_messages_dynamic_array_primitives_nested()
   return messages;
 }
 
+std::vector<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested::SharedPtr>
+get_messages_dynamic_array_static_array_primitives_nested()
+{
+  std::vector<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested::SharedPtr> messages;
+
+  auto msg = std::make_shared<test_msgs::msg::DynamicArrayStaticArrayPrimitivesNested>();
+  std::vector<test_msgs::msg::StaticArrayPrimitives::SharedPtr> primitive_msgs =
+    get_messages_static_array_primitives();
+  for (size_t i = 0; i < primitive_msgs.size(); ++i) {
+    msg->dynamic_array_static_array_primitive_values.push_back(*primitive_msgs[i]);
+  }
+  messages.push_back(msg);
+  return messages;
+}
+
 std::vector<test_msgs::msg::BoundedArrayPrimitives::SharedPtr>
 get_messages_bounded_array_primitives()
 {
@@ -304,17 +320,17 @@ get_messages_bounded_array_primitives()
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{
-      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
+        0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
     msg->uint8_values = {{0, 1, (std::numeric_limits<uint8_t>::max)()}};
     msg->int16_values = {{
-      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
+        0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
     msg->uint16_values = {{0, 1, (std::numeric_limits<uint16_t>::max)()}};
     // The narrowing static cast is required to avoid build errors on Windows.
     msg->int32_values = {{
-      static_cast<int32_t>(0),
-      (std::numeric_limits<int32_t>::max)(),
-      (std::numeric_limits<int32_t>::min)()
-    }};
+        static_cast<int32_t>(0),
+        (std::numeric_limits<int32_t>::max)(),
+        (std::numeric_limits<int32_t>::min)()
+      }};
     msg->uint32_values = {{0, 1, (std::numeric_limits<uint32_t>::max)()}};
     msg->int64_values.resize(3);
     msg->int64_values[0] = 0;
