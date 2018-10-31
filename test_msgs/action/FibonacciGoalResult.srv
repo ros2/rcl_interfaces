@@ -1,8 +1,0 @@
-# service result request fields are the same for all actions
-action_msgs/GoalInfo goal
----
-# Fields added to all goal result service responses
-action_msgs/GoalInfo goal
-# remaining fields in response are user generated
-#result definition
-int32[] sequence

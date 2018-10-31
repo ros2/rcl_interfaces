@@ -1,9 +1,0 @@
-# Fields always added to goal requests
-action_msgs/GoalInfo goal
-# Fields added by user code
-#goal definition
-int32 order
----
-# service response fields are the same for all actions
-bool accepted
-action_msgs/GoalInfo goal

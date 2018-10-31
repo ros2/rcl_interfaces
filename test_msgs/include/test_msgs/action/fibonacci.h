@@ -23,10 +23,12 @@ extern "C"
 #include "rosidl_typesupport_interface/macros.h"
 #include <action_msgs/msg/goal_info.h>
 #include <action_msgs/msg/goal_status_array.h>
-#include <action_msgs/msg/cancel_goal.h>
-#include <test_msgs/action/fibonacci_goal_request.h>
-#include <test_msgs/action/fibonacci_goal_result.h>
-#include <test_msgs/action/fibonacci_feedback.h>
+#include <action_msgs/srv/cancel_goal.h>
+#include "rosidl_generator_c/message_type_support_struct.h"
+#include "rosidl_generator_c/service_type_support_struct.h"
+#include <test_msgs/action/fibonacci__goal.h>
+#include <test_msgs/action/fibonacci__result.h>
+#include <test_msgs/action/fibonacci__feedback.h>
 
 
 // TODO(sloretz) define these macros in rosidl_typesupport_interface,
@@ -51,13 +53,13 @@ extern "C"
 
 
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__GOAL_REQUEST_SYMBOL_NAME \
-  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciGoalRequest)
+  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Goal)
 
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__GOAL_RESPONSE_SYMBOL_NAME \
-  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciGoalResponse)
+  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Result)
 
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__FEEDBACK_SYMBOL_NAME \
-  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, FibonacciFeedback)
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Feedback)
 
 // TODO(sloretz) not sure these are needed since it's always the same symbol
 #define ROSIDL_TYPESUPPORT_INTERFACE__TEST_MSGS__ACTION__FIBONACCI__STATUS_SYMBOL_NAME \

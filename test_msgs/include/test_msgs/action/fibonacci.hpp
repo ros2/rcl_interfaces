@@ -17,10 +17,12 @@
 
 #include <action_msgs/msg/goal_info.hpp>
 #include <action_msgs/msg/goal_status_array.hpp>
-#include <action_msgs/msg/cancel_goal.hpp>
-#include <test_msgs/action/fibonacci_goal_request.hpp>
-#include <test_msgs/action/fibonacci_goal_result.hpp>
-#include <test_msgs/action/fibonacci_feedback.hpp>
+#include <action_msgs/srv/cancel_goal.hpp>
+#include "rosidl_generator_c/message_type_support_struct.h"
+#include "rosidl_generator_c/service_type_support_struct.h"
+#include <test_msgs/action/fibonacci__goal.hpp>
+#include <test_msgs/action/fibonacci__result.hpp>
+#include <test_msgs/action/fibonacci__feedback.hpp>
 
 // TODO(sloretz) define these in rosidl_typesupport_cpp
 namespace rosidl_typesupport_cpp
@@ -30,7 +32,7 @@ namespace rosidl_typesupport_cpp
   get_action_goal_request_typesupport_handle_function(
     const rosidl_service_type_support_t * handle, const char * identifier)
   {
-    return get_service_typesupport_handle_function<typename ACTION::GoalRequestService>(
+    return get_service_typesupport_handle_function<ACTION::GoalRequestService>(
         handle, identifier);
   }
 
@@ -39,7 +41,7 @@ namespace rosidl_typesupport_cpp
   get_action_goal_result_typesupport_handle_function(
     const rosidl_service_type_support_t * handle, const char * identifier)
   {
-    return get_service_typesupport_handle_function<typename ACTION::GoalResponseService>(
+    return get_service_typesupport_handle_function<ACTION::GoalResponseService>(
         handle, identifier);
   }
 
@@ -48,7 +50,7 @@ namespace rosidl_typesupport_cpp
   get_action_cancel_goal_typesupport_handle_function(
     const rosidl_service_type_support_t * handle, const char * identifier)
   {
-    return get_service_typesupport_handle_function<typename ACTION::CancelGoalService>(
+    return get_service_typesupport_handle_function<ACTION::CancelGoalService>(
         handle, identifier);
   }
 
@@ -57,7 +59,7 @@ namespace rosidl_typesupport_cpp
   get_action_feedback_typesupport_handle_function(
     const rosidl_message_type_support_t * handle, const char * identifier)
   {
-    return get_message_typesupport_handle_function<typename ACTION::Feedback>(
+    return get_message_typesupport_handle_function<ACTION::Feedback>(
         handle, identifier);
   }
 
@@ -66,7 +68,7 @@ namespace rosidl_typesupport_cpp
   get_action_status_typesupport_handle_function(
     const rosidl_message_type_support_t * handle, const char * identifier)
   {
-    return get_message_typesupport_handle_function<typename ACTION::GoalStatusMessage>(
+    return get_message_typesupport_handle_function<ACTION::GoalStatusMessage>(
         handle, identifier);
   }
 }
@@ -81,13 +83,13 @@ struct Fibonacci
   // Typedefs handy for rcl and rclcpp
   using CancelGoalService = action_msgs::srv::CancelGoal;
   using GoalStatusMessage = action_msgs::msg::GoalStatusArray;
-  using GoalRequestService = test_msgs::action::FibonacciGoalRequest;
-  using GoalResultService = test_msgs::action::FibonacciGoalResult;
+  using GoalRequestService = test_msgs::action::Fibonacci_Goal;
+  using GoalResultService = test_msgs::action::Fibonacci_Result;
 
   // Typedefs handy for user
   using Goal = GoalRequestService::Request;
   using Result = GoalResultService::Response;
-  using Feedback = test_msgs::action::FibonacciFeedback;
+  using Feedback = test_msgs::action::Fibonacci_Feedback;
 };
 }
 }

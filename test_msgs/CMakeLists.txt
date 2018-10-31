@@ -36,15 +36,7 @@ set(srv_files
 )
 
 set(action_files
-  "action/DynamicArrayPrimitivesNested.msg"
-  "action/Primitives.srv"
-  "action/Something.msg"
-  "action/SomethingElse.srv"
   "action/Fibonacci.action"
-  # TODO(sloretz) actual action files instead of messages and services
-  "action/FibonacciGoalRequest.srv"
-  "action/FibonacciGoalResult.srv"
-  "action/FibonacciFeedback.msg"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
