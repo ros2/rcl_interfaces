@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.5)
 
 project(test_msgs)
 
+# Default to C11
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 11)
+endif()
+
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
@@ -47,10 +52,35 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ADD_LINTER_TESTS
 )
 
+add_library(test_msgs_hardcoded_typesupport
+  src/fibonacci__typesupport.c
+)
+add_dependencies(test_msgs_hardcoded_typesupport
+  ${PROJECT_NAME}
+)
+target_include_directories(test_msgs_hardcoded_typesupport
+  PUBLIC
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_c
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_c
+  include
+)
+ament_target_dependencies(test_msgs_hardcoded_typesupport
+  "rcl_generator_c"
+  "rcl_typesupport_c"
+  "action_msgs"
+)
+ament_export_libraries(test_msgs_hardcoded_typesupport)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+install(
+  TARGETS test_msgs_hardcoded_typesupport
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
 
 if(DEFINED PYTHON_INSTALL_DIR)
   install(DIRECTORY src/test_msgs
