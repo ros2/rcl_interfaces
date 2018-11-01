@@ -54,6 +54,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
 add_library(test_msgs_hardcoded_typesupport
   src/fibonacci__typesupport.c
+  src/fibonacci__typesupport.cpp
 )
 add_dependencies(test_msgs_hardcoded_typesupport
   ${PROJECT_NAME}
@@ -62,6 +63,8 @@ target_include_directories(test_msgs_hardcoded_typesupport
   PUBLIC
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_c
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_c
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_cpp
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
   include
 )
 ament_target_dependencies(test_msgs_hardcoded_typesupport
