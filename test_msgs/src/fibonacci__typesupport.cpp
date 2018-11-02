@@ -4,9 +4,9 @@
 #include <action_msgs/msg/goal_status_array.hpp>
 #include <action_msgs/srv/cancel_goal.hpp>
 #include "rosidl_generator_c/action_type_support_struct.h"
-#include "rosidl_generator_cpp/action_type_support_decl.hpp"
-#include "rosidl_generator_cpp/message_type_support_decl.hpp"
-#include "rosidl_generator_cpp/service_type_support_decl.hpp"
+#include "rosidl_typesupport_cpp/message_type_support.hpp"
+#include "rosidl_typesupport_cpp/service_type_support.hpp"
+#include "rosidl_typesupport_cpp/action_type_support.hpp"
 #include <test_msgs/action/fibonacci__feedback.hpp>
 #include <test_msgs/action/fibonacci__goal.hpp>
 #include <test_msgs/action/fibonacci__result.hpp>
@@ -25,7 +25,7 @@ static rosidl_action_type_support_t Fibonacci_action_type_support_handle = {
 }
 }
 
-namespace rosidl_generator_cpp
+namespace rosidl_typesupport_cpp
 {
 
 template<>

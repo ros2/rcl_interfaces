@@ -52,13 +52,15 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ADD_LINTER_TESTS
 )
 
-add_library(test_msgs_hardcoded_typesupport
+add_library(test_msgs_hardcoded_typesupport SHARED
   src/fibonacci__typesupport.c
   src/fibonacci__typesupport.cpp
 )
 add_dependencies(test_msgs_hardcoded_typesupport
   ${PROJECT_NAME}
 )
+target_link_libraries(test_msgs_hardcoded_typesupport
+  ${_AMENT_EXPORT_LIBRARIES})
 target_include_directories(test_msgs_hardcoded_typesupport
   PUBLIC
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_c
@@ -68,8 +70,9 @@ target_include_directories(test_msgs_hardcoded_typesupport
   include
 )
 ament_target_dependencies(test_msgs_hardcoded_typesupport
-  "rcl_generator_c"
-  "rcl_typesupport_c"
+  "rosidl_generator_c"
+  "rosidl_typesupport_c"
+  "rosidl_generator_cpp"
   "action_msgs"
 )
 ament_export_libraries(test_msgs_hardcoded_typesupport)
