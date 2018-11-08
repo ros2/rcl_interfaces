@@ -27,14 +27,25 @@
 static rosidl_action_type_support_t _test_msgs__action__Fibonacci__typesupport_c;
 
 const rosidl_action_type_support_t *
-ROSIDL_TYPESUPPORT_INTERFACE__ACTION_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci)()
+ROSIDL_TYPESUPPORT_INTERFACE__ACTION_SYMBOL_NAME(
+  rosidl_typesupport_c, test_msgs, action, Fibonacci)()
 {
   // Thread-safe by always writing the same values to the static struct
-  _test_msgs__action__Fibonacci__typesupport_c.goal_service_type_support = ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Goal)();
-  _test_msgs__action__Fibonacci__typesupport_c.result_service_type_support = ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Result)();
-  _test_msgs__action__Fibonacci__typesupport_c.cancel_service_type_support = ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_c, action_msgs, srv, CancelGoal)();
-  _test_msgs__action__Fibonacci__typesupport_c.feedback_message_type_support = ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, test_msgs, action, Fibonacci_Feedback)();
-  _test_msgs__action__Fibonacci__typesupport_c.status_message_type_support = ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, action_msgs, msg, GoalStatusArray)();
+  _test_msgs__action__Fibonacci__typesupport_c.goal_service_type_support =
+    ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(
+    rosidl_typesupport_c, test_msgs, action, Fibonacci_Goal)();
+  _test_msgs__action__Fibonacci__typesupport_c.result_service_type_support =
+    ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(
+    rosidl_typesupport_c, test_msgs, action, Fibonacci_Result)();
+  _test_msgs__action__Fibonacci__typesupport_c.cancel_service_type_support =
+    ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(
+    rosidl_typesupport_c, action_msgs, srv, CancelGoal)();
+  _test_msgs__action__Fibonacci__typesupport_c.feedback_message_type_support =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+    rosidl_typesupport_c, test_msgs, action, Fibonacci_Feedback)();
+  _test_msgs__action__Fibonacci__typesupport_c.status_message_type_support =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+    rosidl_typesupport_c, action_msgs, msg, GoalStatusArray)();
 
   return &_test_msgs__action__Fibonacci__typesupport_c;
 }

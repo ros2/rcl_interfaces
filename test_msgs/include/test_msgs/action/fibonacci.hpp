@@ -18,10 +18,10 @@
 #include <action_msgs/msg/goal_info.hpp>
 #include <action_msgs/msg/goal_status_array.hpp>
 #include <action_msgs/srv/cancel_goal.hpp>
-#include "rosidl_generator_c/action_type_support_struct.h"
 #include <test_msgs/action/fibonacci__goal.hpp>
 #include <test_msgs/action/fibonacci__result.hpp>
 #include <test_msgs/action/fibonacci__feedback.hpp>
 #include <test_msgs/action/fibonacci__struct.hpp>
+#include "rosidl_generator_c/action_type_support_struct.h"
 
 #endif  // TEST_MSGS__ACTION__FIBONACCI_HPP_
