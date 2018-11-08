@@ -21,4 +21,4 @@ extern "C"
 }
 #endif
 
-#define TEST_MSGS__ACTION__FIBONACCI_H_
+#endif  // TEST_MSGS__ACTION__FIBONACCI_H_
