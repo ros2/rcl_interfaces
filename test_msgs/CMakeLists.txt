@@ -52,48 +52,33 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ADD_LINTER_TESTS
 )
 
-# Separate C library to get windows DLL import/export setting right
-add_library(test_msgs_hardcoded_typesupport_c SHARED
-  src/fibonacci__typesupport.c)
-add_dependencies(test_msgs_hardcoded_typesupport_c
-  ${PROJECT_NAME}
-)
-target_link_libraries(test_msgs_hardcoded_typesupport_c
-  ${_AMENT_EXPORT_LIBRARIES})
-target_include_directories(test_msgs_hardcoded_typesupport_c PUBLIC
-  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_c
-  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_c
-  include)
-target_compile_definitions(test_msgs_hardcoded_typesupport_c
-  PRIVATE "ROSIDL_GENERATOR_C_BUILDING_DLL")
-
-
 add_library(test_msgs_hardcoded_typesupport SHARED
   src/fibonacci__typesupport.cpp
-)
+  src/fibonacci__typesupport.c)
 add_dependencies(test_msgs_hardcoded_typesupport
   ${PROJECT_NAME}
 )
 target_link_libraries(test_msgs_hardcoded_typesupport
-  test_msgs_hardcoded_typesupport_c
   ${_AMENT_EXPORT_LIBRARIES})
 target_include_directories(test_msgs_hardcoded_typesupport PUBLIC
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_c
+  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_c
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_cpp
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
   include
 )
+# Separate visibility macro because this is a separate library from one created
+# by rosidl_generator_c for messages and services
+target_compile_definitions(test_msgs_hardcoded_typesupport
+  PRIVATE "ROSIDL_GENERATOR_C_BUILDING_DLL_test_msgs_ACTION")
 
-ament_target_dependencies(test_msgs_hardcoded_typesupport_c
+ament_target_dependencies(test_msgs_hardcoded_typesupport
   "rosidl_generator_c"
   "rosidl_typesupport_c"
-  "action_msgs"
-)
-ament_target_dependencies(test_msgs_hardcoded_typesupport
   "rosidl_generator_cpp"
   "action_msgs"
 )
 
-ament_export_libraries(test_msgs_hardcoded_typesupport_c)
 ament_export_libraries(test_msgs_hardcoded_typesupport)
 
 if(BUILD_TESTING)
@@ -102,7 +87,7 @@ if(BUILD_TESTING)
 endif()
 
 install(
-  TARGETS test_msgs_hardcoded_typesupport test_msgs_hardcoded_typesupport_c
+  TARGETS test_msgs_hardcoded_typesupport
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)

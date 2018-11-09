@@ -24,7 +24,7 @@
 #include "rosidl_typesupport_cpp/message_type_support.hpp"
 #include "rosidl_typesupport_cpp/service_type_support.hpp"
 #include "rosidl_typesupport_cpp/action_type_support.hpp"
-#include "test_msgs/msg/rosidl_generator_c__visibility_control.h"
+#include "test_msgs/action/rosidl_generator_c__visibility_control.h"
 
 namespace test_msgs
 {
@@ -42,7 +42,7 @@ namespace rosidl_typesupport_cpp
 {
 
 template<>
-ROSIDL_GENERATOR_C_PUBLIC_test_msgs
+ROSIDL_GENERATOR_C_PUBLIC_test_msgs_ACTION
 const rosidl_action_type_support_t *
 get_action_type_support_handle<::test_msgs::action::Fibonacci>()
 {
