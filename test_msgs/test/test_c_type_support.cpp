@@ -12,16 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef TEST_MSGS__ACTION__FIBONACCI_HPP_
-#define TEST_MSGS__ACTION__FIBONACCI_HPP_
+#include <gtest/gtest.h>
 
-#include <action_msgs/msg/goal_info.hpp>
-#include <action_msgs/msg/goal_status_array.hpp>
-#include <action_msgs/srv/cancel_goal.hpp>
-#include <test_msgs/action/fibonacci__goal.hpp>
-#include <test_msgs/action/fibonacci__result.hpp>
-#include <test_msgs/action/fibonacci__feedback.hpp>
-#include <test_msgs/action/fibonacci__struct.hpp>
-#include "rosidl_generator_c/action_type_support_struct.h"
+#include "test_msgs/action/fibonacci.h"
 
-#endif  // TEST_MSGS__ACTION__FIBONACCI_HPP_
+
+TEST(ActionCTypeSupport, can_get_type_support)
+{
+  const rosidl_action_type_support_t * ts = ROSIDL_GET_ACTION_TYPE_SUPPORT(test_msgs, Fibonacci);
+  ASSERT_NE(nullptr, ts);
+}

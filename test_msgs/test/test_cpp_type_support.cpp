@@ -12,26 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// TODO(sloretz) generated code should not contain a copyright notice
+#include <gtest/gtest.h>
 
-#ifndef TEST_MSGS__ACTION__FIBONACCI_H_
-#define TEST_MSGS__ACTION__FIBONACCI_H_
+#include <rosidl_typesupport_cpp/action_type_support.hpp>
+#include "test_msgs/action/fibonacci.hpp"
 
-#ifdef __cplusplus
-extern "C"
+
+TEST(ActionCppTypeSupport, can_get_type_support)
 {
-#endif
-
-#include <action_msgs/msg/goal_info.h>
-#include <action_msgs/msg/goal_status_array.h>
-#include <action_msgs/srv/cancel_goal.h>
-#include <test_msgs/action/fibonacci__feedback.h>
-#include <test_msgs/action/fibonacci__goal.h>
-#include <test_msgs/action/fibonacci__result.h>
-#include "test_msgs/action/fibonacci__type_support.h"
-
-#ifdef __cplusplus
+  const rosidl_action_type_support_t * ts =
+    rosidl_typesupport_cpp::get_action_type_support_handle<test_msgs::action::Fibonacci>();
+  ASSERT_NE(nullptr, ts);
 }
-#endif
-
-#endif  // TEST_MSGS__ACTION__FIBONACCI_H_
