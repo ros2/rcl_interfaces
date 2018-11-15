@@ -11,8 +11,8 @@ byte FATAL=50 #fatal/critical level
 ## Fields
 ##
 Header header
-byte level
-string name # name of the node
+uint8 level
+string name # the name representing the logger this message came from
 string msg # message
 string file # file the message came from
 string function # function the message came from
