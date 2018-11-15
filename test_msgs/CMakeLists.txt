@@ -21,9 +21,11 @@ find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 set(msg_files
+  "msg/BoundedArrayBoundedArrayPrimitivesNested.msg"
   "msg/BoundedArrayNested.msg"
   "msg/BoundedArrayPrimitives.msg"
   "msg/Builtins.msg"
+  "msg/DynamicArrayDynamicArrayPrimitivesNested.msg"
   "msg/DynamicArrayNested.msg"
   "msg/DynamicArrayPrimitives.msg"
   "msg/DynamicArrayPrimitivesNested.msg"
