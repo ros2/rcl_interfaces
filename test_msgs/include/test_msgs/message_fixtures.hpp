@@ -22,6 +22,7 @@
 
 #include "test_msgs/msg/bounded_array_nested.hpp"
 #include "test_msgs/msg/bounded_array_primitives.hpp"
+#include "test_msgs/msg/bounded_array_primitives_nested.hpp"
 #include "test_msgs/msg/builtins.hpp"
 #include "test_msgs/msg/dynamic_array_nested.hpp"
 #include "test_msgs/msg/dynamic_array_primitives.hpp"
@@ -32,6 +33,7 @@
 #include "test_msgs/msg/primitives.hpp"
 #include "test_msgs/msg/static_array_nested.hpp"
 #include "test_msgs/msg/static_array_primitives.hpp"
+#include "test_msgs/msg/static_array_primitives_nested.hpp"
 
 
 std::vector<test_msgs::msg::Empty::SharedPtr>
@@ -156,6 +158,24 @@ get_messages_static_array_primitives()
     msg->string_values = {{"", "max value", "min value"}};
     messages.push_back(msg);
   }
+  return messages;
+}
+
+std::vector<test_msgs::msg::StaticArrayPrimitivesNested::SharedPtr>
+get_messages_static_array_primitives_nested()
+{
+  std::vector<test_msgs::msg::StaticArrayPrimitivesNested::SharedPtr> messages;
+
+  auto msg = std::make_shared<test_msgs::msg::StaticArrayPrimitivesNested>();
+  auto primitive_msgs = get_messages_static_array_primitives();
+
+  for (size_t i = 0; i < msg->static_array_primitive_values.size(); ++i) {
+    // primitives msgs above is actually only one message,
+    // so therefore we copy the same message all the way.
+    msg->static_array_primitive_values[i] = *primitive_msgs[0];
+  }
+  messages.push_back(msg);
+
   return messages;
 }
 
@@ -347,6 +367,21 @@ get_messages_bounded_array_primitives()
     msg->check = 4;
     messages.push_back(msg);
   }
+  return messages;
+}
+
+std::vector<test_msgs::msg::BoundedArrayPrimitivesNested::SharedPtr>
+get_messages_bounded_array_primitives_nested()
+{
+  std::vector<test_msgs::msg::BoundedArrayPrimitivesNested::SharedPtr> messages;
+
+  auto msg = std::make_shared<test_msgs::msg::BoundedArrayPrimitivesNested>();
+  std::vector<test_msgs::msg::BoundedArrayPrimitives::SharedPtr> bounded_array_primitives_msgs
+    = get_messages_bounded_array_primitives();
+  for (size_t i = 0; i < bounded_array_primitives_msgs.size(); ++i) {
+    msg->bounded_array_primitive_values.push_back(*bounded_array_primitives_msgs[i]);
+  }
+  messages.push_back(msg);
   return messages;
 }
 
