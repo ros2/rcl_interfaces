@@ -376,8 +376,8 @@ get_messages_bounded_array_primitives_nested()
   std::vector<test_msgs::msg::BoundedArrayPrimitivesNested::SharedPtr> messages;
 
   auto msg = std::make_shared<test_msgs::msg::BoundedArrayPrimitivesNested>();
-  std::vector<test_msgs::msg::BoundedArrayPrimitives::SharedPtr> bounded_array_primitives_msgs
-    = get_messages_bounded_array_primitives();
+  std::vector<test_msgs::msg::BoundedArrayPrimitives::SharedPtr> bounded_array_primitives_msgs =
+    get_messages_bounded_array_primitives();
   for (size_t i = 0; i < bounded_array_primitives_msgs.size(); ++i) {
     msg->bounded_array_primitive_values.push_back(*bounded_array_primitives_msgs[i]);
   }
