@@ -10,6 +10,7 @@ byte FATAL=50 #fatal/critical level
 ##
 ## Fields
 ##
+builtin_interfaces/Time stamp
 uint8 level
 string name # the name representing the logger this message came from
 string msg # message
