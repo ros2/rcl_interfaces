@@ -14,6 +14,7 @@
 
 from test_msgs.msg import BoundedArrayNested
 from test_msgs.msg import BoundedArrayPrimitives
+from test_msgs.msg import BoundedArrayPrimitivesNested
 from test_msgs.msg import Builtins
 from test_msgs.msg import DynamicArrayNested
 from test_msgs.msg import DynamicArrayPrimitives
@@ -24,6 +25,7 @@ from test_msgs.msg import Nested
 from test_msgs.msg import Primitives
 from test_msgs.msg import StaticArrayNested
 from test_msgs.msg import StaticArrayPrimitives
+from test_msgs.msg import StaticArrayPrimitivesNested
 
 
 def int_from_uint(value, nbits):
@@ -168,6 +170,16 @@ def get_msg_static_array_nested():
     for primitive_msg in primitive_msgs:
         msg.primitive_values[i] = primitive_msg
         i += 1
+
+    return [msg]
+
+
+def get_msg_static_array_primitives_nested():
+    msg = StaticArrayPrimitivesNested()
+    primitive_msgs = get_msg_static_array_primitives()
+
+    for i in range(len(msg.static_array_primitive_values)):
+        msg.static_array_primitive_values[i] = primitive_msgs[0]
 
     return [msg]
 
@@ -320,6 +332,14 @@ def get_msg_bounded_array_nested():
     return [msg]
 
 
+def get_msg_bounded_array_primitives_nested():
+    msg = BoundedArrayPrimitivesNested()
+    for primitive_msg in get_msg_bounded_array_primitives():
+        msg.bounded_array_primitive_values.append(primitive_msg)
+
+    return [msg]
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -333,6 +353,8 @@ def get_test_msg(message_name):
         msg = get_msg_static_array_nested()
     elif 'StaticArrayPrimitives' == message_name:
         msg = get_msg_static_array_primitives()
+    elif 'StaticArrayPrimitivesNested' == message_name:
+        msg = get_msg_static_array_primitives_nested()
     elif 'DynamicArrayPrimitives' == message_name:
         msg = get_msg_dynamic_array_primitives()
     elif 'DynamicArrayNested' == message_name:
@@ -345,6 +367,8 @@ def get_test_msg(message_name):
         msg = get_msg_bounded_array_primitives()
     elif 'BoundedArrayNested' == message_name:
         msg = get_msg_bounded_array_nested()
+    elif 'BoundedArrayPrimitivesNested' == message_name:
+        msg = get_msg_bounded_array_primitives_nested()
     else:
         raise NotImplementedError
     return msg
