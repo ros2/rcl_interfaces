@@ -19,6 +19,7 @@ find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(unique_identifier_msgs REQUIRED)
 
 set(msg_files
   "msg/BoundedArrayPrimitivesNested.msg"
@@ -50,7 +51,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
   ${action_files}
-  DEPENDENCIES builtin_interfaces action_msgs
+  DEPENDENCIES builtin_interfaces action_msgs unique_identifier_msgs
   ADD_LINTER_TESTS
 )
 
