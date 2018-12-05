@@ -76,7 +76,7 @@ endif()
 
 if(DEFINED PYTHON_INSTALL_DIR)
   install(DIRECTORY src/test_msgs
-    DESTINATION "${PYTHON_INSTALL_DIR}/")
+    DESTINATION "${PYTHON_INSTALL_DIR}")
 endif()
 
 install(DIRECTORY include/
