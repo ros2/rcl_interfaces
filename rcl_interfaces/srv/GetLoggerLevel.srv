@@ -1,0 +1,6 @@
+# A service for getting the LoggerLevel for a named logger
+# logger_level values are enumerated in Log.msg
+
+string name
+---
+uint8 logger_level
