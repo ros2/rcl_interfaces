@@ -1,0 +1,26 @@
+# Name of the package which contains the composable node.
+string package_name
+# Name of the node used when registering it with pluginlib.
+string node_plugin_name
+
+# Name the node should have (overrides node name in the source code).
+string node_name
+# Namespace of the node.
+string node_namespace
+
+# Remappings for topics, services, etc.
+# If you consider a remapping to be `<from>:=<to>`, then the keys are
+# the "from's" and the values are the "to's", stored as an associative array.
+# The length of the remapping_keys and remapping_values needs to be equal.
+string[] remapping_keys
+string[] remapping_values
+
+# Initial parameter values for the node.
+# The length of the parameter_names and parameter_values needs to be equal.
+string[] parameter_names
+string[] parameter_values
+---
+# True if successful, False otherwise.
+bool success
+# If success is False, this reason string may contain additional details.
+string failure_reason

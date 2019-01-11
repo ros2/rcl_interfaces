@@ -31,6 +31,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/GetParameters.srv"
   "srv/GetParameterTypes.srv"
   "srv/ListParameters.srv"
+  "srv/LoadComposableNode.srv"
   "srv/SetParametersAtomically.srv"
   "srv/SetParameters.srv"
   DEPENDENCIES builtin_interfaces
