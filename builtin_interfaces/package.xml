@@ -3,7 +3,7 @@
 <package format="3">
   <name>builtin_interfaces</name>
   <version>0.6.2</version>
-  <description>A package containing builtin message and service definitions.</description>
+  <description>A package containing message and service definitions for types defined in the OMG IDL Platform Specific Model.</description>
   <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
   <license>Apache License 2.0</license>
 
