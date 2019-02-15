@@ -56,7 +56,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = False
     msg.byte_value = bytes([0])
-    msg.char_value = '\x00'
+    msg.char_value = 0
     msg.float32_value = float(0.0)
     msg.float64_value = float(0.0)
     msg.int8_value = 0
@@ -73,7 +73,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = True
     msg.byte_value = bytes([255])
-    msg.char_value = '\x7f'
+    msg.char_value = 255
     msg.float32_value = 1.125
     msg.float64_value = 1.125
     msg.int8_value = 127
@@ -90,7 +90,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = False
     msg.byte_value = bytes([0])
-    msg.char_value = '\x00'
+    msg.char_value = 0
     msg.float32_value = -2.125
     msg.float64_value = -2.125
     msg.int8_value = -128
@@ -107,7 +107,7 @@ def get_msg_primitives():
     msg = Primitives()
     msg.bool_value = True
     msg.byte_value = bytes([1])
-    msg.char_value = '\x01'
+    msg.char_value = 1
     msg.float32_value = float(1.0)
     msg.float64_value = float(1.0)
     msg.int8_value = 1
