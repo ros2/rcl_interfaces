@@ -53,7 +53,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_msgs::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
-    msg->char_value = '\0';
+    msg->char_value = 0;
     msg->float32_value = 0.0f;
     msg->float64_value = 0;
     msg->int8_value = 0;
@@ -71,7 +71,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_msgs::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 255;
-    msg->char_value = '\x7f';
+    msg->char_value = 255;
     msg->float32_value = 1.125f;
     msg->float64_value = 1.125;
     msg->int8_value = (std::numeric_limits<int8_t>::max)();
@@ -89,7 +89,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_msgs::msg::Primitives>();
     msg->bool_value = false;
     msg->byte_value = 0;
-    msg->char_value = 0x0;
+    msg->char_value = 0;
     msg->float32_value = -2.125f;
     msg->float64_value = -2.125;
     msg->int8_value = (std::numeric_limits<int8_t>::min)();
@@ -107,7 +107,7 @@ get_messages_primitives()
     auto msg = std::make_shared<test_msgs::msg::Primitives>();
     msg->bool_value = true;
     msg->byte_value = 1;
-    msg->char_value = '\1';
+    msg->char_value = 1;
     msg->float32_value = 1.0f;
     msg->float64_value = 1;
     msg->int8_value = 1;
@@ -136,7 +136,7 @@ get_messages_static_array_primitives()
     auto msg = std::make_shared<test_msgs::msg::StaticArrayPrimitives>();
     msg->bool_values = {{false, true, false}};
     msg->byte_values = {{0, 0xff, 0}};
-    msg->char_values = {{'\0', '\x7f', '\0'}};
+    msg->char_values = {{0, 255, 0}};
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{
@@ -206,7 +206,7 @@ get_messages_dynamic_array_primitives()
     auto msg = std::make_shared<test_msgs::msg::DynamicArrayPrimitives>();
     msg->bool_values = {true};
     msg->byte_values = {0xff};
-    msg->char_values = {'\x7f'};
+    msg->char_values = {255};
     msg->float32_values = {1.125f};
     msg->float64_values = {1.125};
     msg->int8_values = {(std::numeric_limits<int8_t>::max)()};
@@ -225,7 +225,7 @@ get_messages_dynamic_array_primitives()
     auto msg = std::make_shared<test_msgs::msg::DynamicArrayPrimitives>();
     msg->bool_values = {{false, true}};
     msg->byte_values = {{0, 0xff}};
-    msg->char_values = {{'\0', '\x7f'}};
+    msg->char_values = {{0, 255}};
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{
@@ -271,8 +271,7 @@ get_messages_dynamic_array_primitives()
     for (size_t i = 0; i < size; ++i) {
       msg->bool_values[i] = (i % 2 != 0) ? true : false;
       msg->byte_values[i] = static_cast<uint8_t>(i);
-      // TODO(mikaelarguedas) only ascii chars supported across languages
-      msg->char_values[i] = static_cast<char>(i % (1 << 7));
+      msg->char_values[i] = static_cast<char>(i % (1 << 8));
       msg->float32_values[i] = 1.125f * i;
       msg->float64_values[i] = 1.125 * i;
       msg->int8_values[i] = static_cast<int8_t>(i);
@@ -336,7 +335,7 @@ get_messages_bounded_array_primitives()
     auto msg = std::make_shared<test_msgs::msg::BoundedArrayPrimitives>();
     msg->bool_values = {{false, true, false}};
     msg->byte_values = {{0, 1, 0xff}};
-    msg->char_values = {{'\0', '\1', '\x7f'}};
+    msg->char_values = {{0, 1, 255}};
     msg->float32_values = {{0.0f, 1.125f, -2.125f}};
     msg->float64_values = {{0, 1.125, -2.125}};
     msg->int8_values = {{

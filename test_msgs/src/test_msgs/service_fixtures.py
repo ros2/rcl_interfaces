@@ -28,7 +28,7 @@ def get_msg_primitives():
     req = Primitives.Request()
     req.bool_value = False
     req.byte_value = bytes([0])
-    req.char_value = '\x00'
+    req.char_value = 0
     req.float32_value = float(0.0)
     req.float64_value = float(0.0)
     req.int8_value = 0
@@ -43,7 +43,7 @@ def get_msg_primitives():
     resp = Primitives.Response()
     resp.bool_value = False
     resp.byte_value = bytes([0])
-    resp.char_value = '\x00'
+    resp.char_value = 0
     resp.float32_value = float(0.0)
     resp.float64_value = float(0.0)
     resp.int8_value = 0
@@ -60,7 +60,7 @@ def get_msg_primitives():
     req = Primitives.Request()
     req.bool_value = True
     req.byte_value = bytes([1])
-    req.char_value = '\x01'
+    req.char_value = 1
     req.float32_value = float(1.125)
     req.float64_value = float(1.11)
     req.int8_value = 1
@@ -78,7 +78,7 @@ def get_msg_primitives():
     resp = Primitives.Response()
     resp.bool_value = True
     resp.byte_value = bytes([11])
-    resp.char_value = '\x11'
+    resp.char_value = 11
     resp.float32_value = float(11.125)
     resp.float64_value = float(11.11)
     resp.int8_value = 11
