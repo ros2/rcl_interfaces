@@ -45,6 +45,7 @@ set(srv_files
 
 set(action_files
   "action/Fibonacci.action"
+  "action/NestedMessage.action"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
