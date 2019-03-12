@@ -63,7 +63,7 @@ get_services_primitives()
     auto request = std::make_shared<test_msgs::srv::Primitives::Request>();
     request->bool_value = false;
     request->byte_value = 0;
-    request->char_value = '\0';
+    request->char_value = 0;
     request->float32_value = 0.0f;
     request->float64_value = 0.0;
     request->int8_value = 0;
@@ -78,7 +78,7 @@ get_services_primitives()
     auto reply = std::make_shared<test_msgs::srv::Primitives::Response>();
     reply->bool_value = false;
     reply->byte_value = 0;
-    reply->char_value = '\0';
+    reply->char_value = 0;
     reply->float32_value = 0.0f;
     reply->float64_value = 0.0;
     reply->int8_value = 0;
@@ -96,7 +96,7 @@ get_services_primitives()
     auto request = std::make_shared<test_msgs::srv::Primitives::Request>();
     request->bool_value = true;
     request->byte_value = 1;
-    request->char_value = 0x1;
+    request->char_value = 1;
     request->float32_value = 1.125f;
     request->float64_value = 1.11;
     request->int8_value = 1;
@@ -115,7 +115,7 @@ get_services_primitives()
     auto reply = std::make_shared<test_msgs::srv::Primitives::Response>();
     reply->bool_value = true;
     reply->byte_value = 11;
-    reply->char_value = 0x11;
+    reply->char_value = 11;
     reply->float32_value = 11.125f;
     reply->float64_value = 11.11;
     reply->int8_value = 11;
