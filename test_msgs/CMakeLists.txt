@@ -36,6 +36,10 @@ set(msg_files
   "msg/StaticArrayNested.msg"
   "msg/StaticArrayPrimitives.msg"
   "msg/StaticArrayPrimitivesNested.msg"
+  "msg/Int32.msg"
+  "msg/LargeInt32StaticArray.msg"
+  "msg/SmallInt32StaticArray.msg"
+  "msg/UnboundedInt32Array.msg"
 )
 
 set(srv_files
