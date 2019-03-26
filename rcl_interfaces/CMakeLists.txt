@@ -36,6 +36,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES builtin_interfaces
 )
 
+install(FILES mapping_rules.yaml DESTINATION share/${PROJECT_NAME})
+
 # this must happen before the invocation of ament_package()
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
