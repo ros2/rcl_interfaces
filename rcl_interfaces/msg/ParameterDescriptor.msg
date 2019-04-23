@@ -19,10 +19,12 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# docs...
+# If this bounded sequence contains a floating_point_range constraint it must
+# be enforced
 FloatingPointRange[<=1] floating_point_range
 
-# docs...
+# If this bounded sequence contains a integer_range constraint it must
+# be enforced
 IntegerRange[<=1] integer_range
 
 # more constraints to follow in the future...
