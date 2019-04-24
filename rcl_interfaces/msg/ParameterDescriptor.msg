@@ -20,11 +20,13 @@ string additional_constraints
 bool read_only false
 
 # If this bounded sequence contains a floating_point_range constraint it must
-# be enforced
+# be enforced. FloatingPointRange consist of a from_value a to_value and a step.
+# FloatingPointRange and IntegerRange are mutually exclusive
 FloatingPointRange[<=1] floating_point_range
 
 # If this bounded sequence contains a integer_range constraint it must
-# be enforced
+# be enforced. IntegerRange consist of a from_value a to_value and a step.
+# FloatingPointRange and IntegerRange are mutually exclusive
 IntegerRange[<=1] integer_range
 
 # more constraints to follow in the future...
