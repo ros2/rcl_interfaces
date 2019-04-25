@@ -30,5 +30,3 @@ FloatingPointRange[<=1] floating_point_range
 # IntegerRange consists of a from_value, a to_value, and a step.
 # FloatingPointRange and IntegerRange are mutually exclusive.
 IntegerRange[<=1] integer_range
-
-# more constraints to follow in the future...
