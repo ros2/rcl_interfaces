@@ -1,9 +1,9 @@
 # Represents bounds and a step value for a floating point typed parameter.
 
-# Start value for valid values range, inclusive.
+# Start value for valid values, inclusive.
 double from_value
 
-# End value for valid values range, inclusive.
+# End value for valid values, inclusive.
 double to_value
 
 # Size of valid steps between the from and to bound.
