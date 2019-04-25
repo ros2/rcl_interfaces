@@ -19,10 +19,16 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# docs...
+
+# If any of the following sequences are not empty, then the constraint inside of
+# them apply to this parameter.
+
+# FloatingPointRange consists of a from_value, a to_value, and a step.
+# FloatingPointRange and IntegerRange are mutually exclusive.
 FloatingPointRange[<=1] floating_point_range
 
-# docs...
+# IntegerRange consists of a from_value, a to_value, and a step.
+# FloatingPointRange and IntegerRange are mutually exclusive.
 IntegerRange[<=1] integer_range
 
 # more constraints to follow in the future...
