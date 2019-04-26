@@ -17,6 +17,8 @@ find_package(builtin_interfaces REQUIRED)
 # ament_export_dependencies(rcl_interfaces)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/FloatingPointRange.msg"
+  "msg/IntegerRange.msg"
   "msg/IntraProcessMessage.msg"
   "msg/ListParametersResult.msg"
   "msg/Log.msg"
@@ -27,8 +29,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ParameterType.msg"
   "msg/ParameterValue.msg"
   "msg/SetParametersResult.msg"
-  "msg/FloatingPointRange.msg"
-  "msg/IntegerRange.msg"
   "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
   "srv/GetParameterTypes.srv"
