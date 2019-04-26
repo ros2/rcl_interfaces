@@ -1,10 +1,10 @@
 # Represents bounds and a step value for a floating point typed parameter.
 
 # Start value for valid values, inclusive.
-double from_value
+float64 from_value
 
 # End value for valid values, inclusive.
-double to_value
+float64 to_value
 
 # Size of valid steps between the from and to bound.
 # Step is considered to be a magnitude, therefore negative values are treated the
@@ -21,4 +21,4 @@ double to_value
 # not a multiple of the step, then the "to" bound will always be a valid value,
 # e.g. if the range is defined as {from_value: 2.0, to_value: 5.0, step: 2.0} then
 # the valid values will be 2.0, 4.0, and 5.0.
-double step
+float64 step
