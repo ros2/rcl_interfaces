@@ -20,12 +20,14 @@ int8 RESPONSE_OK=0
 # No goals have transitioned to the CANCELING state.
 # The goals_canceling list is empty.
 int8 RESPONSE_REJECTED=1
-# Indicates the requested goal ID is invalid.
-# This could be because a goal with the ID is not cancelable (e.g. terminated)
-# or there is no goal that matches the ID.
+# Indicates the requested goal ID does not exist.
 # No goals have transitioned to the CANCELING state.
 # The goals_canceling list is empty.
-int8 RESPONSE_INVALID_GOAL_ID=2
+int8 RESPONSE_UNKNOWN_GOAL_ID=2
+# Indicates the goal is not cancelable because it is already in a terminal state.
+# No goals have transitioned to the CANCELING state.
+# The goals_canceling list is empty.
+int8 RESPONSE_GOAL_TERMINATED=3
 
 # Reponse code
 int8 response
