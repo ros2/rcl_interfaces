@@ -14,7 +14,7 @@ GoalInfo goal_info
 # Response codes
 # Indicates the request was accepted.
 # One or more goals have transitioned to the CANCELING state.
-# The goals_canceling list is empty.
+# The goals_canceling list is not empty.
 int8 RESPONSE_OK=0
 # Indicates the request was rejected.
 # No goals have transitioned to the CANCELING state.
