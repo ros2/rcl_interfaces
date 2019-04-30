@@ -156,8 +156,8 @@ get_messages_strings()
   }
   {
     auto msg = std::make_shared<test_msgs::msg::Strings>();
-    msg->string_value = " ";
-    msg->bounded_string_value = " ";
+    msg->string_value = "";
+    msg->bounded_string_value = "";
     for (size_t i = 0; i < 20000; ++i) {
       msg->string_value += std::to_string(i % 10);
     }
