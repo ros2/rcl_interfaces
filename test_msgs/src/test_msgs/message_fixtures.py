@@ -139,6 +139,8 @@ def get_msg_strings():
         msg.bounded_string_value += str(i % 10)
     msgs.append(msg)
 
+    return msgs
+
 
 def get_msg_nested():
     msgs = []
@@ -172,7 +174,7 @@ def get_msg_arrays():
     msg.uint64_values = [0, 18446744073709551615, 0]
     msg.string_values = ['', 'max value', 'min value']
     for i in range(len(msg.basic_types_values)):
-        msg.basic_types_values = basic_types_msgs[i]
+        msg.basic_types_values[i] = basic_types_msgs[i]
     msgs.append(msg)
 
     return msgs
@@ -255,7 +257,7 @@ def get_msg_unbounded_sequences():
     msg.int64_values = [int_from_uint(i, 64) for i in range(size)]
     msg.uint64_values = [i % (1 << 64) for i in range(size)]
     msg.string_values = [str(i) for i in range(size)]
-    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs) for i in range(size)]
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(size)]
     msg.alignment_check = 3
     msgs.append(msg)
 
@@ -284,7 +286,7 @@ def get_msg_bounded_sequences():
     msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
     msg.uint64_values = [0, 1, 18446744073709551615]
     msg.string_values = ['', 'max value', 'optional min value']
-    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs) for i in range(3)]
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(3)]
     msg.alignment_check = 2
     msgs.append(msg)
 

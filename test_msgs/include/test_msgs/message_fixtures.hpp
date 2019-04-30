@@ -45,7 +45,7 @@ get_messages_empty()
 std::vector<test_msgs::msg::BasicTypes::SharedPtr>
 get_messages_basic_types()
 {
-  std::vector<test_msgs::msg::BasicTypess::SharedPtr> messages;
+  std::vector<test_msgs::msg::BasicTypes::SharedPtr> messages;
   {
     auto msg = std::make_shared<test_msgs::msg::BasicTypes>();
     msg->bool_value = false;
@@ -226,7 +226,7 @@ get_messages_unbounded_sequences()
     msg->int64_values = {(std::numeric_limits<int64_t>::max)()};
     msg->uint64_values = {(std::numeric_limits<uint64_t>::max)()};
     msg->string_values = {{"max value"}};
-    msg->basic_types_values = {{basic_types_msgs[0]}};
+    msg->basic_types_values = {{*basic_types_msgs[0]}};
     msg->alignment_check = 1;
     messages.push_back(msg);
   }
@@ -314,6 +314,7 @@ get_messages_unbounded_sequences()
 std::vector<test_msgs::msg::BoundedSequences::SharedPtr>
 get_messages_bounded_sequences()
 {
+  auto basic_types_msgs = get_messages_basic_types();
   auto msg = std::make_shared<test_msgs::msg::UnboundedSequences>();
   std::vector<test_msgs::msg::BoundedSequences::SharedPtr> messages;
   {
@@ -363,7 +364,7 @@ get_messages_multi_nested()
 {
   auto arrays_msgs = get_messages_arrays();
   auto bounded_sequences_msgs = get_messages_bounded_sequences();
-  auto unbounded_sequences_msgs = get_message_unbounded_sequences();
+  auto unbounded_sequences_msgs = get_messages_unbounded_sequences();
   const std::size_t num_arrays = arrays_msgs.size();
   const std::size_t num_bounded_sequences = bounded_sequences_msgs.size();
   const std::size_t num_unbounded_sequences = unbounded_sequences_msgs.size();
@@ -371,46 +372,46 @@ get_messages_multi_nested()
   {
     auto msg = std::make_shared<test_msgs::msg::MultiNested>();
     for (std::size_t i = 0u; i < msg->array_of_arrays.size(); ++i) {
-      msg->array_of_arrays[i] = arrays_msgs[i % num_arrays];
+      msg->array_of_arrays[i] = *arrays_msgs[i % num_arrays];
     }
     for (std::size_t i = 0u; i < msg->array_of_bounded_sequences.size(); ++i) {
-      msg->array_of_bounded_sequences[i] = bounded_sequences_msgs[i % num_bounded_sequences];
+      msg->array_of_bounded_sequences[i] = *bounded_sequences_msgs[i % num_bounded_sequences];
     }
     for (std::size_t i = 0u; i < msg->array_of_unbounded_sequences.size(); ++i) {
-      msg->array_of_unbounded_sequences[i] = unbounded_sequences_msgs[i % num_unbounded_sequences];
+      msg->array_of_unbounded_sequences[i] = *unbounded_sequences_msgs[i % num_unbounded_sequences];
     }
     const std::size_t sequence_size = 3u;
     msg->bounded_sequence_of_arrays.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
-      msg->bounded_sequence_of_arrays[i] = arrays_msgs[i % num_arrays];
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
+      msg->bounded_sequence_of_arrays[i] = *arrays_msgs[i % num_arrays];
     }
     msg->bounded_sequence_of_bounded_sequences.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
       msg->bounded_sequence_of_bounded_sequences[i] =
-        bounded_sequences_msgs[i % num_bounded_sequences];
+        *bounded_sequences_msgs[i % num_bounded_sequences];
     }
     msg->bounded_sequence_of_unbounded_sequences.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
       msg->bounded_sequence_of_unbounded_sequences[i] =
-        unbounded_sequences_msgs[i % num_unbounded_sequences];
+        *unbounded_sequences_msgs[i % num_unbounded_sequences];
     }
     msg->unbounded_sequence_of_arrays.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
-      msg->unbounded_sequence_of_arrays[i] = arrays_msgs[i % num_arrays];
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
+      msg->unbounded_sequence_of_arrays[i] = *arrays_msgs[i % num_arrays];
     }
     msg->unbounded_sequence_of_bounded_sequences.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
       msg->unbounded_sequence_of_bounded_sequences[i] =
-        bounded_sequences_msgs[i % num_bounded_sequences];
+        *bounded_sequences_msgs[i % num_bounded_sequences];
     }
     msg->unbounded_sequence_of_unbounded_sequences.resize(sequence_size);
-    for (stds::size_t i = 0u; i < sequence_size; ++i) {
+    for (std::size_t i = 0u; i < sequence_size; ++i) {
       msg->unbounded_sequence_of_unbounded_sequences[i] =
-        unbounded_sequences_msgs[i % num_unbounded_sequences];
+        *unbounded_sequences_msgs[i % num_unbounded_sequences];
     }
     messages.push_back(msg);
   }
-  return message;
+  return messages;
 }
 
 std::vector<test_msgs::msg::Nested::SharedPtr>
