@@ -112,6 +112,7 @@ def get_msg_basic_types():
     msg.uint32_value = 1
     msg.int64_value = 1
     msg.uint64_value = 1
+    msgs.append(msg)
 
     return msgs
 
