@@ -24,9 +24,8 @@
 #include "test_msgs/msg/basic_types.hpp"
 #include "test_msgs/msg/bounded_sequences.hpp"
 #include "test_msgs/msg/builtins.hpp"
-// TODO(jacobperron): Add test fixtures for these (and tests)
-// #include "test_msgs/msg/constants.hpp"
-// #include "test_msgs/msg/defaults.hpp"
+#include "test_msgs/msg/constants.hpp"
+#include "test_msgs/msg/defaults.hpp"
 #include "test_msgs/msg/empty.hpp"
 #include "test_msgs/msg/multi_nested.hpp"
 #include "test_msgs/msg/nested.hpp"
@@ -112,6 +111,28 @@ get_messages_basic_types()
     msg->uint32_value = 1;
     msg->int64_value = 1;
     msg->uint64_value = 1;
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_msgs::msg::Constants::SharedPtr>
+get_messages_constants()
+{
+  std::vector<test_msgs::msg::Constants::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_msgs::msg::Constants>();
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_msgs::msg::Defaults::SharedPtr>
+get_messages_defaults()
+{
+  std::vector<test_msgs::msg::Defaults::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_msgs::msg::Defaults>();
     messages.push_back(msg);
   }
   return messages;

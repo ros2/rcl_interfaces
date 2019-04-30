@@ -16,9 +16,8 @@ from test_msgs.msg import Arrays
 from test_msgs.msg import BasicTypes
 from test_msgs.msg import BoundedSequences
 from test_msgs.msg import Builtins
-# TODO(jacobperron): Add test fixtures these (and tests)
-# from test_msgs.msg import Constants
-# from test_msgs.msg import Defaults
+from test_msgs.msg import Constants
+from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
@@ -115,6 +114,16 @@ def get_msg_basic_types():
     msg.uint64_value = 1
 
     return msgs
+
+
+def get_msg_constants():
+    msg = Constants()
+    return [msg]
+
+
+def get_msg_defaults():
+    msg = Defaults()
+    return [msg]
 
 
 def get_msg_strings():
@@ -333,6 +342,10 @@ def get_test_msg(message_name):
         msg = get_msg_empty()
     elif 'BasicTypes' == message_name:
         msg = get_msg_basic_types()
+    elif 'Constants' == message_name:
+        msg = get_msg_constants()
+    elif 'Defaults' == message_name:
+        msg = get_msg_defaults()
     elif 'Strings' == message_name:
         msg = get_msg_strings()
     elif 'Nested' == message_name:
