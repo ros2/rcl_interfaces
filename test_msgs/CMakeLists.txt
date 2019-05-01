@@ -19,39 +19,15 @@ find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(test_interface_files REQUIRED)
 find_package(unique_identifier_msgs REQUIRED)
 
-set(msg_files
-  "msg/BoundedArrayPrimitivesNested.msg"
-  "msg/BoundedArrayNested.msg"
-  "msg/BoundedArrayPrimitives.msg"
-  "msg/Builtins.msg"
-  "msg/DynamicArrayNested.msg"
-  "msg/DynamicArrayPrimitives.msg"
-  "msg/DynamicArrayPrimitivesNested.msg"
-  "msg/DynamicArrayStaticArrayPrimitivesNested.msg"
-  "msg/Empty.msg"
-  "msg/Nested.msg"
-  "msg/Primitives.msg"
-  "msg/StaticArrayNested.msg"
-  "msg/StaticArrayPrimitives.msg"
-  "msg/StaticArrayPrimitivesNested.msg"
-)
-
-set(srv_files
-  "srv/Empty.srv"
-  "srv/Primitives.srv"
-)
-
-set(action_files
-  "action/Fibonacci.action"
-  "action/NestedMessage.action"
-)
-
 rosidl_generate_interfaces(${PROJECT_NAME}
-  ${msg_files}
-  ${srv_files}
-  ${action_files}
+  ${test_interface_files_MSG_FILES}
+  ${test_interface_files_SRV_FILES}
+  ${test_interface_files_ACTION_FILES}
+  "msg/Builtins.msg"
+  "action/NestedMessage.action"
   DEPENDENCIES builtin_interfaces action_msgs unique_identifier_msgs
   ADD_LINTER_TESTS
 )

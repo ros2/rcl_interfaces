@@ -12,20 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from test_msgs.msg import BoundedArrayNested
-from test_msgs.msg import BoundedArrayPrimitives
-from test_msgs.msg import BoundedArrayPrimitivesNested
+from test_msgs.msg import Arrays
+from test_msgs.msg import BasicTypes
+from test_msgs.msg import BoundedSequences
 from test_msgs.msg import Builtins
-from test_msgs.msg import DynamicArrayNested
-from test_msgs.msg import DynamicArrayPrimitives
-from test_msgs.msg import DynamicArrayPrimitivesNested
-from test_msgs.msg import DynamicArrayStaticArrayPrimitivesNested
+from test_msgs.msg import Constants
+from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
+from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
-from test_msgs.msg import Primitives
-from test_msgs.msg import StaticArrayNested
-from test_msgs.msg import StaticArrayPrimitives
-from test_msgs.msg import StaticArrayPrimitivesNested
+from test_msgs.msg import Strings
+from test_msgs.msg import UnboundedSequences
 
 
 def int_from_uint(value, nbits):
@@ -51,9 +48,9 @@ def get_msg_empty():
     return [msg]
 
 
-def get_msg_primitives():
+def get_msg_basic_types():
     msgs = []
-    msg = Primitives()
+    msg = BasicTypes()
     msg.bool_value = False
     msg.byte_value = bytes([0])
     msg.char_value = 0
@@ -67,10 +64,9 @@ def get_msg_primitives():
     msg.uint32_value = 0
     msg.int64_value = 0
     msg.uint64_value = 0
-    msg.string_value = ''
     msgs.append(msg)
 
-    msg = Primitives()
+    msg = BasicTypes()
     msg.bool_value = True
     msg.byte_value = bytes([255])
     msg.char_value = 255
@@ -84,10 +80,9 @@ def get_msg_primitives():
     msg.uint32_value = 4294967295
     msg.int64_value = 9223372036854775807
     msg.uint64_value = 18446744073709551615
-    msg.string_value = 'max value'
     msgs.append(msg)
 
-    msg = Primitives()
+    msg = BasicTypes()
     msg.bool_value = False
     msg.byte_value = bytes([0])
     msg.char_value = 0
@@ -101,10 +96,9 @@ def get_msg_primitives():
     msg.uint32_value = 0
     msg.int64_value = -9223372036854775808
     msg.uint64_value = 0
-    msg.string_value = 'min value'
     msgs.append(msg)
 
-    msg = Primitives()
+    msg = BasicTypes()
     msg.bool_value = True
     msg.byte_value = bytes([1])
     msg.char_value = 1
@@ -118,10 +112,41 @@ def get_msg_primitives():
     msg.uint32_value = 1
     msg.int64_value = 1
     msg.uint64_value = 1
+    msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_constants():
+    msg = Constants()
+    return [msg]
+
+
+def get_msg_defaults():
+    msg = Defaults()
+    return [msg]
+
+
+def get_msg_strings():
+    msgs = []
+    msg = Strings()
+    msg.string_value = ''
+    msg.bounded_string_value = ''
+    msgs.append(msg)
+
+    msg = Strings()
+    msg.string_value = 'Hello world!'
+    msg.bounded_string_value = 'Hello world!'
+    msgs.append(msg)
+
+    msg = Strings()
     msg.string_value = ''
     # check strings longer then 255 characters
     for i in range(20000):
         msg.string_value += str(i % 10)
+    msg.bounded_string_value = ''
+    for i in range(22):
+        msg.bounded_string_value += str(i % 10)
     msgs.append(msg)
 
     return msgs
@@ -131,18 +156,19 @@ def get_msg_nested():
     msgs = []
     msg = Nested()
 
-    primitive_msgs = get_msg_primitives()
-    for primitive_msg in primitive_msgs:
+    basic_types_msgs = get_msg_basic_types()
+    for basic_types_msg in basic_types_msgs:
         msg = Nested()
-        msg.primitive_values = primitive_msg
+        msg.basic_types_value = basic_types_msg
         msgs.append(msg)
 
     return msgs
 
 
-def get_msg_static_array_primitives():
+def get_msg_arrays():
+    basic_types_msgs = get_msg_basic_types()
     msgs = []
-    msg = StaticArrayPrimitives()
+    msg = Arrays()
     msg.bool_values = [False, True, False]
     msg.char_values = [0, 255, 0]
     msg.byte_values = [bytes([0]), bytes([255]), bytes([0])]
@@ -157,36 +183,17 @@ def get_msg_static_array_primitives():
     msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
     msg.uint64_values = [0, 18446744073709551615, 0]
     msg.string_values = ['', 'max value', 'min value']
+    for i in range(len(msg.basic_types_values)):
+        msg.basic_types_values[i] = basic_types_msgs[i]
     msgs.append(msg)
 
     return msgs
 
 
-def get_msg_static_array_nested():
-    msg = StaticArrayNested()
-    primitive_msgs = get_msg_primitives()
-    assert len(primitive_msgs) == len(msg.primitive_values)
-    i = 0
-    for primitive_msg in primitive_msgs:
-        msg.primitive_values[i] = primitive_msg
-        i += 1
-
-    return [msg]
-
-
-def get_msg_static_array_primitives_nested():
-    msg = StaticArrayPrimitivesNested()
-    primitive_msgs = get_msg_static_array_primitives()
-
-    for i in range(len(msg.static_array_primitive_values)):
-        msg.static_array_primitive_values[i] = primitive_msgs[0]
-
-    return [msg]
-
-
-def get_msg_dynamic_array_primitives():
+def get_msg_unbounded_sequences():
+    basic_types_msgs = get_msg_basic_types()
     msgs = []
-    msg = DynamicArrayPrimitives()
+    msg = UnboundedSequences()
     msg.bool_values = []
     msg.char_values = []
     msg.byte_values = []
@@ -201,10 +208,11 @@ def get_msg_dynamic_array_primitives():
     msg.int64_values = []
     msg.uint64_values = []
     msg.string_values = []
-    msg.check = 0
+    msg.basic_types_values = []
+    msg.alignment_check = 0
     msgs.append(msg)
 
-    msg = DynamicArrayPrimitives()
+    msg = UnboundedSequences()
     msg.bool_values = [True]
     msg.byte_values = [bytes([255])]
     msg.char_values = [255]
@@ -219,10 +227,11 @@ def get_msg_dynamic_array_primitives():
     msg.int64_values = [9223372036854775807]
     msg.uint64_values = [18446744073709551615]
     msg.string_values = ['max value']
-    msg.check = 1
+    msg.basic_types_values = [basic_types_msgs[0]]
+    msg.alignment_check = 1
     msgs.append(msg)
 
-    msg = DynamicArrayPrimitives()
+    msg = UnboundedSequences()
     msg.bool_values = [False, True]
     msg.byte_values = [bytes([0]), bytes([255])]
     msg.char_values = [0, 255]
@@ -237,12 +246,13 @@ def get_msg_dynamic_array_primitives():
     msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
     msg.uint64_values = [0, 18446744073709551615]
     msg.string_values = ['', 'max value', 'optional min value']
-    msg.check = 2
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(3)]
+    msg.alignment_check = 2
     msgs.append(msg)
 
     size = 1000
 
-    msg = DynamicArrayPrimitives()
+    msg = UnboundedSequences()
     msg.bool_values = [i % 2 != 0 for i in range(size)]
     msg.byte_values = [bytes([i % (1 << 8)]) for i in range(size)]
     msg.char_values = [i % (1 << 8) for i in range(size)]
@@ -257,48 +267,21 @@ def get_msg_dynamic_array_primitives():
     msg.int64_values = [int_from_uint(i, 64) for i in range(size)]
     msg.uint64_values = [i % (1 << 64) for i in range(size)]
     msg.string_values = [str(i) for i in range(size)]
-    msg.check = 3
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(size)]
+    msg.alignment_check = 3
     msgs.append(msg)
 
-    msg = DynamicArrayPrimitives()
-    msg.check = 4
+    msg = UnboundedSequences()
+    msg.alignment_check = 4
     msgs.append(msg)
 
     return msgs
 
 
-def get_msg_dynamic_array_primitives_nested():
-    primitives_msgs = get_msg_dynamic_array_primitives()
-
-    msg = DynamicArrayPrimitivesNested()
-    for primitives_msg in primitives_msgs:
-        msg.dynamic_array_primitive_values.append(primitives_msg)
-
-    return [msg]
-
-
-def get_msg_dynamic_array_nested():
-    msg = DynamicArrayNested()
-    for primitive_msg in get_msg_primitives():
-        msg.primitive_values.append(primitive_msg)
-
-    return [msg]
-
-
-def get_msg_dynamic_array_static_array_primitives_nested():
-    primitives_msgs = get_msg_static_array_primitives()
-
-    msg = DynamicArrayStaticArrayPrimitivesNested()
-    for primitives_msg in primitives_msgs:
-        msg.dynamic_array_static_array_primitive_values.append(primitives_msg)
-
-    return [msg]
-
-
-def get_msg_bounded_array_primitives():
+def get_msg_bounded_sequences():
+    basic_types_msgs = get_msg_basic_types()
     msgs = []
-
-    msg = BoundedArrayPrimitives()
+    msg = BoundedSequences()
     msg.bool_values = [False, True, False]
     msg.byte_values = [bytes([0]), bytes([1]), bytes([255])]
     msg.char_values = [0, 1, 255]
@@ -313,29 +296,43 @@ def get_msg_bounded_array_primitives():
     msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
     msg.uint64_values = [0, 1, 18446744073709551615]
     msg.string_values = ['', 'max value', 'optional min value']
-    msg.check = 2
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(3)]
+    msg.alignment_check = 2
     msgs.append(msg)
 
-    msg = BoundedArrayPrimitives()
-    msg.check = 4
+    msg = BoundedSequences()
+    msg.alignment_check = 4
     msgs.append(msg)
 
     return msgs
 
 
-def get_msg_bounded_array_nested():
-    msg = BoundedArrayNested()
-    for primitive_msg in get_msg_primitives():
-        msg.primitive_values.append(primitive_msg)
-
-    return [msg]
-
-
-def get_msg_bounded_array_primitives_nested():
-    msg = BoundedArrayPrimitivesNested()
-    for primitive_msg in get_msg_bounded_array_primitives():
-        msg.bounded_array_primitive_values.append(primitive_msg)
-
+def get_msg_multi_nested():
+    arrays_msgs = get_msg_arrays()
+    bounded_sequences_msgs = get_msg_bounded_sequences()
+    unbounded_sequences_msgs = get_msg_unbounded_sequences()
+    msg = MultiNested()
+    msg.array_of_arrays = [arrays_msgs[i % len(arrays_msgs)] for i in range(3)]
+    msg.array_of_bounded_sequences = [
+        bounded_sequences_msgs[i % len(bounded_sequences_msgs)]
+        for i in range(3)]
+    msg.array_of_unbounded_sequences = [
+        unbounded_sequences_msgs[i % len(unbounded_sequences_msgs)]
+        for i in range(3)]
+    msg.bounded_sequence_of_arrays = [arrays_msgs[i % len(arrays_msgs)] for i in range(3)]
+    msg.bounded_sequence_of_bounded_sequences = [
+        bounded_sequences_msgs[i % len(bounded_sequences_msgs)]
+        for i in range(3)]
+    msg.bounded_sequence_of_unbounded_sequences = [
+        unbounded_sequences_msgs[i % len(unbounded_sequences_msgs)]
+        for i in range(3)]
+    msg.unbounded_sequence_of_arrays = [arrays_msgs[i % len(arrays_msgs)] for i in range(3)]
+    msg.unbounded_sequence_of_bounded_sequences = [
+        bounded_sequences_msgs[i % len(bounded_sequences_msgs)]
+        for i in range(3)]
+    msg.unbounded_sequence_of_unbounded_sequences = [
+        unbounded_sequences_msgs[i % len(unbounded_sequences_msgs)]
+        for i in range(3)]
     return [msg]
 
 
@@ -344,30 +341,24 @@ def get_test_msg(message_name):
         msg = get_msg_builtins()
     elif 'Empty' == message_name:
         msg = get_msg_empty()
-    elif 'Primitives' == message_name:
-        msg = get_msg_primitives()
+    elif 'BasicTypes' == message_name:
+        msg = get_msg_basic_types()
+    elif 'Constants' == message_name:
+        msg = get_msg_constants()
+    elif 'Defaults' == message_name:
+        msg = get_msg_defaults()
+    elif 'Strings' == message_name:
+        msg = get_msg_strings()
     elif 'Nested' == message_name:
         msg = get_msg_nested()
-    elif 'StaticArrayNested' == message_name:
-        msg = get_msg_static_array_nested()
-    elif 'StaticArrayPrimitives' == message_name:
-        msg = get_msg_static_array_primitives()
-    elif 'StaticArrayPrimitivesNested' == message_name:
-        msg = get_msg_static_array_primitives_nested()
-    elif 'DynamicArrayPrimitives' == message_name:
-        msg = get_msg_dynamic_array_primitives()
-    elif 'DynamicArrayNested' == message_name:
-        msg = get_msg_dynamic_array_nested()
-    elif 'DynamicArrayPrimitivesNested' == message_name:
-        msg = get_msg_dynamic_array_primitives_nested()
-    elif 'DynamicArrayStaticArrayPrimitivesNested' == message_name:
-        msg = get_msg_dynamic_array_static_array_primitives_nested()
-    elif 'BoundedArrayPrimitives' == message_name:
-        msg = get_msg_bounded_array_primitives()
-    elif 'BoundedArrayNested' == message_name:
-        msg = get_msg_bounded_array_nested()
-    elif 'BoundedArrayPrimitivesNested' == message_name:
-        msg = get_msg_bounded_array_primitives_nested()
+    elif 'Arrays' == message_name:
+        msg = get_msg_arrays()
+    elif 'BoundedSequences' == message_name:
+        msg = get_msg_bounded_sequences()
+    elif 'UnboundedSequences' == message_name:
+        msg = get_msg_unbounded_sequences()
+    elif 'MultiNested' == message_name:
+        msg = get_msg_multi_nested()
     else:
         raise NotImplementedError
     return msg

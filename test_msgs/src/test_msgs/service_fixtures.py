@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from test_msgs.srv import BasicTypes
 from test_msgs.srv import Empty
-from test_msgs.srv import Primitives
 
 
 def get_msg_empty():
@@ -23,9 +23,9 @@ def get_msg_empty():
     return [[req, resp]]
 
 
-def get_msg_primitives():
+def get_msg_basic_types():
     srvs = []
-    req = Primitives.Request()
+    req = BasicTypes.Request()
     req.bool_value = False
     req.byte_value = bytes([0])
     req.char_value = 0
@@ -40,7 +40,7 @@ def get_msg_primitives():
     req.int64_value = 0
     req.uint64_value = 0
     req.string_value = 'request'
-    resp = Primitives.Response()
+    resp = BasicTypes.Response()
     resp.bool_value = False
     resp.byte_value = bytes([0])
     resp.char_value = 0
@@ -57,7 +57,7 @@ def get_msg_primitives():
     resp.string_value = 'reply'
     srvs.append([req, resp])
 
-    req = Primitives.Request()
+    req = BasicTypes.Request()
     req.bool_value = True
     req.byte_value = bytes([1])
     req.char_value = 1
@@ -75,7 +75,7 @@ def get_msg_primitives():
     req.string_value = ''
     for i in range(20000):
         req.string_value += str(i % 10)
-    resp = Primitives.Response()
+    resp = BasicTypes.Response()
     resp.bool_value = True
     resp.byte_value = bytes([11])
     resp.char_value = 11
@@ -100,8 +100,8 @@ def get_msg_primitives():
 def get_test_srv(service_name):
     if 'Empty' == service_name:
         srv = get_msg_empty()
-    elif 'Primitives' == service_name:
-        srv = get_msg_primitives()
+    elif 'BasicTypes' == service_name:
+        srv = get_msg_basic_types()
     else:
         raise NotImplementedError('%s service is not part of the test suite', service_name)
     return srv
