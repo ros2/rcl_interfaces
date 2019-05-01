@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from test_msgs.srv import Empty
 from test_msgs.srv import BasicTypes
+from test_msgs.srv import Empty
 
 
 def get_msg_empty():
