@@ -31,6 +31,7 @@
 #include "test_msgs/msg/nested.hpp"
 #include "test_msgs/msg/strings.hpp"
 #include "test_msgs/msg/unbounded_sequences.hpp"
+#include "test_msgs/msg/w_strings.hpp"
 
 std::vector<test_msgs::msg::Empty::SharedPtr>
 get_messages_empty()
@@ -458,6 +459,44 @@ get_messages_builtins()
     msg->duration_value.nanosec = 123456789;
     msg->time_value.sec = -1234567890;
     msg->time_value.nanosec = 987654321;
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_msgs::msg::WStrings::SharedPtr>
+get_messages_wstrings()
+{
+  std::vector<test_msgs::msg::WStrings::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_msgs::msg::WStrings>();
+    msg->wstring_value = u"";
+    msg->array_of_wstrings[0] = u"1";
+    msg->array_of_wstrings[1] = u"two";
+    msg->array_of_wstrings[2] = u"三";  // "One" in Japanese
+    msg->bounded_sequence_of_wstrings.resize(2);
+    msg->bounded_sequence_of_wstrings[0] = u"one";
+    msg->bounded_sequence_of_wstrings[1] = u"二";  // "Two" in Japanese
+    msg->unbounded_sequence_of_wstrings.resize(4);
+    msg->unbounded_sequence_of_wstrings[0] = u".";
+    msg->unbounded_sequence_of_wstrings[1] = u"..";
+    msg->unbounded_sequence_of_wstrings[2] = u"...";
+    msg->unbounded_sequence_of_wstrings[3] = u"四";  // "Four" in Japanese
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::WStrings>();
+    msg->wstring_value = u"ascii";
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::WStrings>();
+    msg->wstring_value = u"Hell\u00F6 W\u00F6rld!";  // using umlaut
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::WStrings>();
+    msg->wstring_value = u"ハローワールド";  // "Hello world" in Japanese
     messages.push_back(msg);
   }
   return messages;
