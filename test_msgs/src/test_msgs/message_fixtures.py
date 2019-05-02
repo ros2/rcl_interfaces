@@ -23,6 +23,7 @@ from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
 from test_msgs.msg import Strings
 from test_msgs.msg import UnboundedSequences
+from test_msgs.msg import WStrings
 
 
 def int_from_uint(value, nbits):
@@ -336,6 +337,31 @@ def get_msg_multi_nested():
     return [msg]
 
 
+def get_msg_wstrings():
+    msgs = []
+
+    msg = WStrings()
+    msg.wstring_value = ''
+    msg.array_of_wstrings = ['1', 'two', '三']
+    msg.bounded_sequence_of_wstrings = ['one', '二']
+    msg.unbounded_sequence_of_wstrings = ['.', '..', '...', '四']
+    msgs.append(msg)
+
+    msg = WStrings()
+    msg.wstring_value = 'ascii'
+    msgs.append(msg)
+
+    msg = WStrings()
+    msg.wstring_value = 'Hellö Wörld!'
+    msgs.append(msg)
+
+    msg = WStrings()
+    msg.wstring_value = 'ハローワールド'  # Hello world in Japanese
+    msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -359,6 +385,8 @@ def get_test_msg(message_name):
         msg = get_msg_unbounded_sequences()
     elif 'MultiNested' == message_name:
         msg = get_msg_multi_nested()
+    elif 'WStrings' == message_name:
+        msg = get_msg_wstrings()
     else:
         raise NotImplementedError
     return msg
