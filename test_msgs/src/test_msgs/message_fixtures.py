@@ -141,6 +141,11 @@ def get_msg_strings():
     msgs.append(msg)
 
     msg = Strings()
+    msg.string_value = 'Hellö Wörld!'
+    msg.bounded_string_value = 'Hellö Wörld!'
+    msgs.append(msg)
+
+    msg = Strings()
     msg.string_value = ''
     # check strings longer then 255 characters
     for i in range(20000):

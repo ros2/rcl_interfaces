@@ -159,6 +159,12 @@ get_messages_strings()
   }
   {
     auto msg = std::make_shared<test_msgs::msg::Strings>();
+    msg->string_value = u8"Hell\u00F6 W\u00F6rld!";  // using umlaut
+    msg->bounded_string_value = u8"Hell\u00F6 W\u00F6rld!";  // using umlaut
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::Strings>();
     msg->string_value = "";
     msg->bounded_string_value = "";
     for (size_t i = 0; i < 20000; ++i) {
