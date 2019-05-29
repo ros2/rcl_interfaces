@@ -17,10 +17,8 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
-find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(test_interface_files REQUIRED)
-find_package(unique_identifier_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${test_interface_files_MSG_FILES}
@@ -28,7 +26,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${test_interface_files_ACTION_FILES}
   "msg/Builtins.msg"
   "action/NestedMessage.action"
-  DEPENDENCIES builtin_interfaces action_msgs unique_identifier_msgs
+  DEPENDENCIES builtin_interfaces
   ADD_LINTER_TESTS
 )
 
