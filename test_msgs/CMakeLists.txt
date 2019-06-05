@@ -24,6 +24,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${test_interface_files_MSG_FILES}
   ${test_interface_files_SRV_FILES}
   ${test_interface_files_ACTION_FILES}
+  ${test_interface_files_IDL_FILES}
   "msg/Builtins.msg"
   "action/NestedMessage.action"
   DEPENDENCIES builtin_interfaces
