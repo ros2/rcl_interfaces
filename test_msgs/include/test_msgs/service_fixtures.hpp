@@ -19,8 +19,10 @@
 #include <utility>
 #include <vector>
 
-#include "test_msgs/srv/empty.hpp"
+#include "test_msgs/message_fixtures.hpp"
+#include "test_msgs/srv/arrays.hpp"
 #include "test_msgs/srv/basic_types.hpp"
+#include "test_msgs/srv/empty.hpp"
 
 
 std::vector<
@@ -131,6 +133,81 @@ get_services_basic_types()
     for (size_t i = 0; i < 20000; ++i) {
       reply->string_value += std::to_string(i % 10);
     }
+    services.emplace_back(request, reply);
+  }
+  return services;
+}
+
+std::vector<
+  std::pair<
+    test_msgs::srv::Arrays::Request::SharedPtr,
+    test_msgs::srv::Arrays::Response::SharedPtr
+  >
+>
+get_services_arrays()
+{
+  std::vector<
+    std::pair<
+      test_msgs::srv::Arrays::Request::SharedPtr,
+      test_msgs::srv::Arrays::Response::SharedPtr
+    >
+  > services;
+  {
+    auto basic_types_msgs = get_messages_basic_types();
+    auto request = std::make_shared<test_msgs::srv::Arrays::Request>();
+    request->bool_values = {{false, true, false}};
+    request->byte_values = {{0, 0xff, 0}};
+    request->char_values = {{0, 255, 0}};
+    request->float32_values = {{0.0f, 1.125f, -2.125f}};
+    request->float64_values = {{0, 1.125, -2.125}};
+    request->int8_values = {{
+      0, (std::numeric_limits<int8_t>::max)(), (std::numeric_limits<int8_t>::min)()}};
+    request->uint8_values = {{0, (std::numeric_limits<uint8_t>::max)(), 0}};
+    request->int16_values = {{
+      0, (std::numeric_limits<int16_t>::max)(), (std::numeric_limits<int16_t>::min)()}};
+    request->uint16_values = {{0, (std::numeric_limits<uint16_t>::max)(), 0}};
+    request->int32_values = {{
+      static_cast<int32_t>(0),
+      (std::numeric_limits<int32_t>::max)(),
+      (std::numeric_limits<int32_t>::min)()
+    }};
+    request->uint32_values = {{0, (std::numeric_limits<uint32_t>::max)(), 0}};
+    request->int64_values[0] = 0;
+    request->int64_values[1] = (std::numeric_limits<int64_t>::max)();
+    request->int64_values[2] = (std::numeric_limits<int64_t>::min)();
+    request->uint64_values = {{0, (std::numeric_limits<uint64_t>::max)(), 0}};
+    request->string_values = {{"", "max value", "min value"}};
+    request->basic_types_values[0] = *basic_types_msgs[0];
+    request->basic_types_values[1] = *basic_types_msgs[1];
+    request->basic_types_values[2] = *basic_types_msgs[2];
+
+    auto reply = std::make_shared<test_msgs::srv::Arrays::Response>();
+    reply->bool_values = {{true, false, false}};
+    reply->byte_values = {{0xff, 0, 0}};
+    reply->char_values = {{255, 0, 0}};
+    reply->float32_values = {{1.125f, 0.0f, -2.125f}};
+    reply->float64_values = {{1.125, 0, -2.125}};
+    reply->int8_values = {{
+      (std::numeric_limits<int8_t>::max)(), 0, (std::numeric_limits<int8_t>::min)()}};
+    reply->uint8_values = {{(std::numeric_limits<uint8_t>::max)(), 0, 0}};
+    reply->int16_values = {{
+      (std::numeric_limits<int16_t>::max)(), 0, (std::numeric_limits<int16_t>::min)()}};
+    reply->uint16_values = {{(std::numeric_limits<uint16_t>::max)(), 0, 0}};
+    reply->int32_values = {{
+      (std::numeric_limits<int32_t>::max)(),
+      static_cast<int32_t>(0),
+      (std::numeric_limits<int32_t>::min)()
+    }};
+    reply->uint32_values = {{(std::numeric_limits<uint32_t>::max)(), 0, 0}};
+    reply->int64_values[0] = (std::numeric_limits<int64_t>::max)();
+    reply->int64_values[1] = 0;
+    reply->int64_values[2] = (std::numeric_limits<int64_t>::min)();
+    reply->uint64_values = {{(std::numeric_limits<uint64_t>::max)(), 0, 0}};
+    reply->string_values = {{"max value", "", "min value"}};
+    reply->basic_types_values[0] = *basic_types_msgs[1];
+    reply->basic_types_values[1] = *basic_types_msgs[0];
+    reply->basic_types_values[2] = *basic_types_msgs[2];
+
     services.emplace_back(request, reply);
   }
   return services;
