@@ -14,7 +14,6 @@
 
 # TODO(jacobperron): Rename functions to match C++ equlivalents
 from test_msgs.message_fixtures import get_msg_basic_types as get_messages_basic_types
-from test_msgs.msg import BasicTypes as BasicTypesMsg
 from test_msgs.srv import Arrays
 from test_msgs.srv import BasicTypes
 from test_msgs.srv import Empty
