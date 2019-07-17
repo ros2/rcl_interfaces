@@ -15,6 +15,7 @@
 #ifndef TEST_MSGS__SERVICE_FIXTURES_HPP_
 #define TEST_MSGS__SERVICE_FIXTURES_HPP_
 
+#include <limits>
 #include <memory>
 #include <utility>
 #include <vector>
