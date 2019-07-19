@@ -101,7 +101,6 @@ def get_msg_basic_types():
 
 
 def get_msg_arrays():
-    basic_types_msgs = get_messages_basic_types()
     srvs = []
     req = Arrays.Request()
     req.bool_values = [False, True, False]
@@ -118,6 +117,7 @@ def get_msg_arrays():
     req.int64_values = [0, 9223372036854775807, -9223372036854775808]
     req.uint64_values = [0, 18446744073709551615, 0]
     req.string_values = ['', 'max value', 'min value']
+    basic_types_msgs = get_messages_basic_types()
     req.basic_types_values[0] = basic_types_msgs[0]
     req.basic_types_values[1] = basic_types_msgs[1]
     req.basic_types_values[2] = basic_types_msgs[2]
