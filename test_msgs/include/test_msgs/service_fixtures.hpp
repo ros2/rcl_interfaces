@@ -154,7 +154,6 @@ get_services_arrays()
     >
   > services;
   {
-    auto basic_types_msgs = get_messages_basic_types();
     auto request = std::make_shared<test_msgs::srv::Arrays::Request>();
     request->bool_values = {{false, true, false}};
     request->byte_values = {{0, 0xff, 0}};
@@ -178,6 +177,7 @@ get_services_arrays()
     request->int64_values[2] = (std::numeric_limits<int64_t>::min)();
     request->uint64_values = {{0, (std::numeric_limits<uint64_t>::max)(), 0}};
     request->string_values = {{"", "max value", "min value"}};
+    auto basic_types_msgs = get_messages_basic_types();
     request->basic_types_values[0] = *basic_types_msgs[0];
     request->basic_types_values[1] = *basic_types_msgs[1];
     request->basic_types_values[2] = *basic_types_msgs[2];

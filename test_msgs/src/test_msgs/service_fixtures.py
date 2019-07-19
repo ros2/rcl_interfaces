@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# TODO(jacobperron): Rename functions to match C++ equlivalents
+# TODO(jacobperron): Rename functions to match C++ equivalents
 from test_msgs.message_fixtures import get_msg_basic_types as get_messages_basic_types
 from test_msgs.srv import Arrays
 from test_msgs.srv import BasicTypes
@@ -146,12 +146,12 @@ def get_msg_arrays():
 
 
 def get_test_srv(service_name):
-    if 'Empty' == service_name:
-        srv = get_msg_empty()
+    if 'Arrays' == service_name:
+        srv = get_msg_arrays()
     elif 'BasicTypes' == service_name:
         srv = get_msg_basic_types()
-    elif 'Arrays' == service_name:
-        srv = get_msg_arrays()
+    elif 'Empty' == service_name:
+        srv = get_msg_empty()
     else:
         raise NotImplementedError('%s service is not part of the test suite', service_name)
     return srv
