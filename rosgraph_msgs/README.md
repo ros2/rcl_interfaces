@@ -7,3 +7,6 @@ For more information about ROS 2 interfaces, see [index.ros2.org](https://index.
 
 ## Messages (.msg)
 * [Clock](msg/Clock.msg): Communicates the current ROS time.
+
+## Quality Declaration
+This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.

@@ -8,3 +8,6 @@ For more information about ROS 2 interfaces, see [index.ros2.org](https://index.
 ## Messages (.msg)
 * [Duration](msg/Duration.msg): Describes a time duration composed of seconds and nanoseconds components.
 * [Time](msg/Time.msg): Describes a point in time, composed of seconds and nanoseconds components.
+
+## Quality Declaration
+This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.

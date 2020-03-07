@@ -18,3 +18,7 @@ For more information about ROS 2 interfaces, see [index.ros2.org](https://index.
 * [GetAvailableStates](srv/GetAvailableStates.srv): Request an array of states that this node can transition to.
 * [GetAvailableTransitions](srv/GetAvailableTransitions.srv): Request an array of lifecycle state transitions available for this node.
 * [GetState](srv/GetState.srv): Request the current lifecycle state of this node.
+
+
+## Quality Declaration
+This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
