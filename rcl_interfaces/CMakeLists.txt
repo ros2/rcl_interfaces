@@ -19,7 +19,6 @@ find_package(builtin_interfaces REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/FloatingPointRange.msg"
   "msg/IntegerRange.msg"
-  "msg/IntraProcessMessage.msg"
   "msg/ListParametersResult.msg"
   "msg/Log.msg"
   "msg/ParameterDescriptor.msg"
