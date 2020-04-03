@@ -160,7 +160,6 @@ def get_msg_strings():
 
 def get_msg_nested():
     msgs = []
-    msg = Nested()
 
     basic_types_msgs = get_msg_basic_types()
     for basic_types_msg in basic_types_msgs:
