@@ -44,6 +44,14 @@ uint8 TRANSITION_ON_ERROR_SUCCESS = 60
 uint8 TRANSITION_ON_ERROR_FAILURE = 61
 uint8 TRANSITION_ON_ERROR_ERROR = 62
 
+# These transitions are internally
+# available to the lifecycle node to
+# be called when an error arises during
+# normal operation that causes the node
+# to need reconfiguration.
+uint8 TRANSITION_ACTIVE_ERROR = 63
+uint8 TRANSITION_INACTIVE_ERROR = 64
+
 # These return values ought to be set
 # as a return value for each callback.
 # Depending on which return value,
