@@ -20,4 +20,4 @@
 uint8 data_type
 
 # The value of the data point
-float32 data
+float64 data
