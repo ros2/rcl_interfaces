@@ -26,6 +26,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${test_interface_files_ACTION_FILES}
   ${test_interface_files_IDL_FILES}
   "msg/Builtins.msg"
+  "msg/Header.msg"
+  "msg/MessageWithHeader.msg"
   "action/NestedMessage.action"
   DEPENDENCIES builtin_interfaces
   ADD_LINTER_TESTS
