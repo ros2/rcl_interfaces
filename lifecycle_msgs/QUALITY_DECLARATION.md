@@ -1,8 +1,8 @@
-This document is a declaration of software quality for the `lifecycle_interfaces` package, based on the guidelines in [REP-2004](https://www.ros.org/reps/rep-2004.html).
+This document is a declaration of software quality for the `lifecycle_msgs` package, based on the guidelines in [REP-2004](https://www.ros.org/reps/rep-2004.html).
 
-# `lifecycle_interfaces` Quality Declaration
+# `lifecycle_msgs` Quality Declaration
 
-The package `lifecycle_interfaces` claims to be in the **Quality Level 4** category.
+The package `lifecycle_msgs` claims to be in the **Quality Level 4** category.
 
 Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
@@ -10,11 +10,11 @@ Below are the rationales, notes, and caveats for this claim, organized by each r
 
 ### Version Scheme [1.i]
 
-`lifecycle_interfaces` uses `semver` according to the recommendation for ROS Core packages in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#versioning).
+`lifecycle_msgs` uses `semver` according to the recommendation for ROS Core packages in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#versioning).
 
 ### Version Stability [1.ii]
 
-`lifecycle_interfaces` is not yet at a stable version, i.e. `>= 1.0.0`.
+`lifecycle_msgs` is not yet at a stable version, i.e. `>= 1.0.0`.
 
 ### Public API Declaration [1.iii]
 
@@ -22,15 +22,15 @@ All message and service definition files located in `msg` and `srv` directories 
 
 ### API Stability Within a Released ROS Distribution [1.iv]/[1.vi]
 
-`lifecycle_interfaces` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released.
+`lifecycle_msgs` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released.
 
 ### ABI Stability Within a Released ROS Distribution [1.v]/[1.vi]
 
-`lifecycle_interfaces` does not contain any c or c++ code and therefore will not affect ABI stability.
+`lifecycle_msgs` does not contain any c or c++ code and therefore will not affect ABI stability.
 
 ## Change Control Process [2]
 
-`lifecycle_interfaces` follows the recommended guidelines for ROS Core packages in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#package-requirements).
+`lifecycle_msgs` follows the recommended guidelines for ROS Core packages in the [ROS 2 Developer Guide](https://index.ros.org/doc/ros2/Contributing/Developer-Guide/#package-requirements).
 
 ### Change Requests [2.i]
 
@@ -56,24 +56,26 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Feature Documentation [3.i]
 
-`lifecycle_interfaces` has a list of provided [messages and services](README.md).
+`lifecycle_msgs` has a list of provided [messages and services](README.md).
 New messages and services require their own documentation in order to be added.
 
 ### Public API Documentation [3.ii]
 
-`lifecycle_interfaces` has embedded API documentation, but it is not currently hosted.
+`lifecycle_msgs` has embedded API documentation, but it is not currently hosted.
 
 ### License [3.iii]
 
-The license for `lifecycle_interfaces` is Apache 2.0, the type is declared in the `package.xml` manifest file, and a full copy of the license is in the repository level [`LICENSE`](../LICENSE) file.
+The license for `lifecycle_msgs` is Apache 2.0, the type is declared in the [package.xml](package.xml) manifest file, and a full copy of the license is in the repository level [LICENSE](../LICENSE) file.
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
 ### Copyright Statements [3.iv]
 
-The copyright holders each provide a statement of copyright in each source code file in `lifecycle_interfaces`.
+The copyright holders each provide a statement of copyright in each source code file in `lifecycle_msgs`.
 
 There is an automated test which runs a linter that ensures each file has at least one copyright statement.
+
+The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__rcl_interfaces__ubuntu_bionic_amd64/lastBuild/)
 
 ## Testing [4]
 

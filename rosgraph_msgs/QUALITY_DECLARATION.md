@@ -65,7 +65,7 @@ New messages and services require their own documentation in order to be added.
 
 ### License [3.iii]
 
-The license for `rosgraph_msgs` is Apache 2.0, the type is declared in the `package.xml` manifest file, and a full copy of the license is in the repository level [`LICENSE`](../LICENSE) file.
+The license for `rosgraph_msgs` is Apache 2.0, the type is declared in the [package.xml](package.xml) manifest file, and a full copy of the license is in the repository level [LICENSE](../LICENSE) file.
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
@@ -74,6 +74,8 @@ There is an automated test which runs a linter that ensures each file has a lice
 The copyright holders each provide a statement of copyright in each source code file in `rosgraph_msgs`.
 
 There is an automated test which runs a linter that ensures each file has at least one copyright statement.
+
+The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__rcl_interfaces__ubuntu_bionic_amd64/lastBuild/)
 
 ## Testing [4]
 
