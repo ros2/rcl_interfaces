@@ -1,6 +1,6 @@
 # This is the message to communicate a parameter's descriptor.
 
-# The name of the parameter
+# The name of the parameter.
 string name
 
 # Enum values are defined in the `ParameterType.msg` message.

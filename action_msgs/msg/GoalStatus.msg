@@ -3,7 +3,7 @@
 #
 # For more information, see http://design.ros2.org/articles/actions.html
 
-# Indicates status has not been properly set
+# Indicates status has not been properly set.
 int8 STATUS_UNKNOWN   = 0
 
 # The goal has been accepted and is awaiting execution.
@@ -28,5 +28,5 @@ int8 STATUS_ABORTED   = 6
 # Goal info (contains ID and timestamp)
 GoalInfo goal_info
 
-# Action goal state-machine status
+# Action goal state-machine status.
 int8 status

@@ -1,2 +1,2 @@
-# An array of goal statuses
+# An array of goal statuses.
 GoalStatus[] status_list

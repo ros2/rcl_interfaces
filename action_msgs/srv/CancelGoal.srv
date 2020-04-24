@@ -8,11 +8,11 @@
 # - If the goal ID is not zero and timestamp is not zero, cancel the goal with
 #   the given ID and all goals accepted at or before the timestamp.
 
-# Goal info describing the goals to cancel, see above
+# Goal info describing the goals to cancel, see above.
 GoalInfo goal_info
 ---
 ##
-## Return codes
+## Return codes.
 ##
 
 # Indicates the request was accepted without any errors.
@@ -39,8 +39,8 @@ int8 ERROR_UNKNOWN_GOAL_ID=2
 # empty.
 int8 ERROR_GOAL_TERMINATED=3
 
-# Return code, see above definitions
+# Return code, see above definitions.
 int8 return_code
 
-# Goals that accepted the cancel request
+# Goals that accepted the cancel request.
 GoalInfo[] goals_canceling

@@ -1,6 +1,6 @@
 # These types correspond to the value that is set in the ParameterValue message.
 
-# Default value, which implies this is not a valid parameter
+# Default value, which implies this is not a valid parameter.
 uint8 PARAMETER_NOT_SET=0
 
 uint8 PARAMETER_BOOL=1

@@ -1,4 +1,4 @@
-# Recursively get parameters with unlimited depth
+# Recursively get parameters with unlimited depth.
 uint64 DEPTH_RECURSIVE=0
 
 # The list of parameter prefixes to query.
@@ -10,5 +10,5 @@ string[] prefixes
 uint64 depth
 
 ---
-# The list of parameter names and their prefixes
+# The list of parameter names and their prefixes.
 ListParametersResult result
