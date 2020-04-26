@@ -2,6 +2,12 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.9.0 (2020-04-25)
+------------------
+* Remove commented code line (`#99 <https://github.com/ros2/rcl_interfaces/issues/99>`_)
+* Remove unused IntraProcessMessage (`#89 <https://github.com/ros2/rcl_interfaces/issues/89>`_)
+* Contributors: Dirk Thomas, Stephen Brawner
+
 0.8.0 (2019-09-26)
 ------------------
 

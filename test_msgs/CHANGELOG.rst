@@ -2,6 +2,11 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.9.0 (2020-04-25)
+------------------
+* Remove unused local variable (`#96 <https://github.com/ros2/rcl_interfaces/issues/96>`_)
+* Contributors: Dirk Thomas
+
 0.8.0 (2019-09-26)
 ------------------
 * Add test fixtures for Arrays.srv (`#84 <https://github.com/ros2/rcl_interfaces/issues/84>`_)

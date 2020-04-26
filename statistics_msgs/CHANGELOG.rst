@@ -1,9 +1,11 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package rosgraph_msgs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package statistics_msgs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 0.9.0 (2020-04-25)
 ------------------
+* Add new messages for topic statistics (`#98 <https://github.com/ros2/rcl_interfaces/issues/98>`_)
+* Contributors: Prajakta Gokhale
 
 0.8.0 (2019-09-26)
 ------------------
@@ -31,13 +33,9 @@ Changelog for package rosgraph_msgs
 
 0.6.0 (2018-11-16)
 ------------------
-* use add_compile_options instead of setting only cxx flags
-* Contributors: Mikael Arguedas
 
 0.5.0 (2018-06-24)
 ------------------
-* move rosgraph_msgs to rcl_interfaces (`#34 <https://github.com/ros2/rcl_interfaces/issues/34>`_)
-* Contributors: Mikael Arguedas
 
 0.4.0 (2017-12-08)
 ------------------
