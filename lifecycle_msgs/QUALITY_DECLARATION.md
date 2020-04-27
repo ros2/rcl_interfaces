@@ -26,7 +26,7 @@ All message and service definition files located in `msg` and `srv` directories 
 
 ### ABI Stability Within a Released ROS Distribution [1.v]/[1.vi]
 
-`lifecycle_msgs` does not contain any c or c++ code and therefore will not affect ABI stability.
+`lifecycle_msgs` does not contain any C or C++ code and therefore will not affect ABI stability.
 
 ## Change Control Process [2]
 
@@ -42,7 +42,7 @@ This package uses DCO as its confirmation of contributor origin policy. More inf
 
 ### Peer Review Policy [2.iii]
 
- Following the recommended guidelines for ROS Core packages, all pull requests must have at least 1 peer review.
+Following the recommended guidelines for ROS Core packages, all pull requests must have at least 1 peer review.
 
 ### Continuous Integration [2.iv]
 
