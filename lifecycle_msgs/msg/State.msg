@@ -1,4 +1,4 @@
-# Primary state definitions as depicted in
+# Primary state definitions as depicted in:
 # http://design.ros2.org/articles/node_lifecycle.html
 
 # These are the primary states. State changes can only be requested when the
@@ -19,8 +19,8 @@ uint8 PRIMARY_STATE_INACTIVE = 2
 # data, produces output, etc.
 uint8 PRIMARY_STATE_ACTIVE = 3
 
-# The Finalized state is the state in which the node ends immediately before
-# being destroyed
+# The finalized state is the state in which the node ends immediately before
+# being destroyed.
 uint8 PRIMARY_STATE_FINALIZED = 4
 
 # Temporary intermediate states. When a transition is requested, the node
