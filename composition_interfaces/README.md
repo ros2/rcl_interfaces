@@ -7,7 +7,7 @@ For more information about ROS 2 interfaces, see [index.ros2.org](https://index.
 ## Services (.srv)
 * [ListNodes](srv/ListNodes.srv): Retrieve a list of running composable nodes, including their names and ids.
 * [LoadNodes](srv/LoadNode.srv): Load a composable node.
-* [UnloadNode](UnloadNode.srv): Unload a specified node by its id.
+* [UnloadNode](srv/UnloadNode.srv): Unload a specified node by its id.
 
 ## Quality Declaration
 This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.

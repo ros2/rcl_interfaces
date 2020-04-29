@@ -29,7 +29,7 @@ rcl_interfaces/Parameter[] parameters
 # key/value arguments that are specific to a type of container process.
 rcl_interfaces/Parameter[] extra_arguments
 ---
-# True if the node was successfully loaded
+# True if the node was successfully loaded.
 bool success
 
 # Human readable error message if success is false, else empty string.

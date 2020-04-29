@@ -4,7 +4,7 @@
 # These are the primary states. State changes can only be requested when the
 # node is in one of these states.
 
-# Indicates state has not yet been set
+# Indicates state has not yet been set.
 uint8 PRIMARY_STATE_UNKNOWN = 0
 
 # This is the life cycle state the node is in immediately after being
@@ -36,22 +36,22 @@ uint8 TRANSITION_STATE_CONFIGURING = 10
 uint8 TRANSITION_STATE_CLEANINGUP = 11
 
 # In this transition state the callback onShutdown will be executed to do any
-# cleanup necessary before destruction
+# cleanup necessary before destruction.
 uint8 TRANSITION_STATE_SHUTTINGDOWN = 12
 
 # In this transition state the callback onActivate will be executed to do any
-# final preparations to start executing
+# final preparations to start executing.
 uint8 TRANSITION_STATE_ACTIVATING = 13
 
 # In this transition state the callback onDeactivate will be executed to do any
 # cleanup to start executing, and reverse the onActivate changes.
 uint8 TRANSITION_STATE_DEACTIVATING = 14
 
-# This transition state is where any error may be cleaned up
+# This transition state is where any error may be cleaned up.
 uint8 TRANSITION_STATE_ERRORPROCESSING = 15
 
-# The state id value from the above definitions
+# The state id value from the above definitions.
 uint8 id
 
-# A text label of the state
+# A text label of the state.
 string label
