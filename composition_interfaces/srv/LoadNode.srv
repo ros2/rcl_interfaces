@@ -1,28 +1,42 @@
-# A ROS package the composable node can be found in
+# The ROS package in which the composable node can be found.
 string package_name
-# a plugin within that package
+
+# A plugin within the ROS package "package_name".
 string plugin_name
 
-# Name the composable node should use, or empty to use the node's default name
+# The assigned name of the composable node. Leave empty to use the node's
+# default name.
 string node_name
-# Namespace the composable node should use, or empty to use the node's default namespace
+
+# The assigned namespace of the composable node. Leave empty to use the node's
+# default namespace.
 string node_namespace
-# Values from message rcl_interfaces/Log
+
+# The assigned log level of the composable node. Enum values are found in
+# message rcl_interfaces/Log.
 uint8 log_level
-# Remap rules
+
+# Remapping rules for this composable node.
+#
+# For more info about static_remapping rules and their syntax, see
+# https://design.ros2.org/articles/static_remapping.html
 # TODO(sloretz) rcl_interfaces message for remap rules?
 string[] remap_rules
-# Parameters to set
+
+# The Parameters of this composable node to set.
 rcl_interfaces/Parameter[] parameters
 
-# key/value arguments that are specific to a type of container process
+# key/value arguments that are specific to a type of container process.
 rcl_interfaces/Parameter[] extra_arguments
 ---
-# True if the node was successfully loaded
+# True if the node was successfully loaded.
 bool success
-# Human readable error message if success is false, else empty string
+
+# Human readable error message if success is false, else empty string.
 string error_message
-# Name of the loaded composable node (including namespace)
+
+# Name of the loaded composable node (including namespace).
 string full_node_name
-# A unique identifier for the loaded node
+
+# A unique identifier for the loaded node.
 uint64 unique_id

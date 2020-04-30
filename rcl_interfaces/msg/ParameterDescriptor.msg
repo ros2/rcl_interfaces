@@ -1,5 +1,6 @@
 # This is the message to communicate a parameter's descriptor.
 
+# The name of the parameter.
 string name
 
 # Enum values are defined in the `ParameterType.msg` message.
@@ -12,6 +13,7 @@ string description
 
 # Plain English description of additional constraints which cannot be expressed
 # with the available constraints, e.g. "only prime numbers".
+#
 # By convention, this should only be used to clarify constraints which cannot
 # be completely expressed with the parameter constraints below.
 string additional_constraints
@@ -22,11 +24,11 @@ bool read_only false
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
+#
+# FloatingPointRange and IntegerRange are mutually exclusive.
 
 # FloatingPointRange consists of a from_value, a to_value, and a step.
-# FloatingPointRange and IntegerRange are mutually exclusive.
 FloatingPointRange[<=1] floating_point_range
 
 # IntegerRange consists of a from_value, a to_value, and a step.
-# FloatingPointRange and IntegerRange are mutually exclusive.
 IntegerRange[<=1] integer_range
