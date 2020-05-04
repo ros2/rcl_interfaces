@@ -35,3 +35,6 @@ statistics for topics and system resources.
    * `window_stop`: End time of the metric measurement window.
    * `statistics`: A list of `StatisticDataPoint` representing the values
    of collected metrics.
+
+## Quality Declaration
+This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
