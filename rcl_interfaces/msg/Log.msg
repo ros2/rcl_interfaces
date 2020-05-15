@@ -5,9 +5,10 @@
 ## https://docs.python.org/3/library/logging.html#logging-levels
 ## And are implemented in rcutils as well
 ## https://github.com/ros2/rcutils/blob/35f29850064e0c33a4063cbc947ebbfeada11dba/include/rcutils/logging.h#L164-L172
-## This leaves space for other logging levels to be inserted in the middle in the future.
-## Since there are several other logging enumeration standard for different implementations.
-## Other logging implementations may need to provide level translations to match their internal implementations.
+## This leaves space for other standard logging levels to be inserted in the middle in the future,
+## as well as custom user defined levels.
+## Since there are several other logging enumeration standard for different implementations,
+## other logging implementations may need to provide level mappings to match their internal implementations.
 ##
 byte DEBUG=10 #debug level
 byte INFO=20  #general level
