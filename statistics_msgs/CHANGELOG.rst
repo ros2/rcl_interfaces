@@ -2,6 +2,11 @@
 Changelog for package statistics_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add quality declaration for statistics_msgs (`#102 <https://github.com/ros2/rcl_interfaces/issues/102>`_)
+* Contributors: brawner
+
 0.9.0 (2020-04-25)
 ------------------
 * Add new messages for topic statistics (`#98 <https://github.com/ros2/rcl_interfaces/issues/98>`_)

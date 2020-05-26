@@ -2,6 +2,12 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add documentation of log levels (`#93 <https://github.com/ros2/rcl_interfaces/issues/93>`_)
+* Add quality declarations for each package except test_msgs (`#92 <https://github.com/ros2/rcl_interfaces/issues/92>`_)
+* Contributors: Tully Foote, brawner
+
 0.9.0 (2020-04-25)
 ------------------
 * Remove commented code line (`#99 <https://github.com/ros2/rcl_interfaces/issues/99>`_)
