@@ -2,8 +2,8 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2020-05-26)
+------------------
 * Add quality declarations for each package except test_msgs (`#92 <https://github.com/ros2/rcl_interfaces/issues/92>`_)
 * Contributors: brawner
 

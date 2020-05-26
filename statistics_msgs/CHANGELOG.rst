@@ -2,8 +2,8 @@
 Changelog for package statistics_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2020-05-26)
+------------------
 * Add quality declaration for statistics_msgs (`#102 <https://github.com/ros2/rcl_interfaces/issues/102>`_)
 * Contributors: brawner
 
