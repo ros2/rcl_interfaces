@@ -2,9 +2,9 @@ This document is a declaration of software quality for the `rcl_interfaces` pack
 
 # `rcl_interfaces` Quality Declaration
 
-The package `rcl_interfaces` claims to be in the **Quality Level 4** category.
+The package `rcl_interfaces` claims to be in the **Quality Level 3** category.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 3 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -84,9 +84,9 @@ There is an automated test which runs a linter that ensures each file has at lea
 
 ### Direct Runtime ROS Dependencies [5.i]/[5.ii]
 
-`rcl_interfaces` has the following ROS dependencies:
-* `builtin_interfaces`
-* `rosidl_default_runtime`
+`rcl_interfaces` has the following ROS dependencies, which are at or above QL 3:
+* `builtin_interfaces`: [QL 3](../builtin_interfaces/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QL 3](https://raw.githubusercontent.com/ros2/rosidl_defaults/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
