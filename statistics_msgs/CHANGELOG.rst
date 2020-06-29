@@ -2,6 +2,13 @@
 Changelog for package statistics_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Increase Quality level of packages to 3 (`#108 <https://github.com/ros2/rcl_interfaces/issues/108>`_)
+* Add Security Vulnerability Policy pointing to REP-2006. (`#106 <https://github.com/ros2/rcl_interfaces/issues/106>`_)
+* Updating QD to reflect package versions (`#107 <https://github.com/ros2/rcl_interfaces/issues/107>`_)
+* Contributors: Chris Lalancette, brawner
+
 1.0.0 (2020-05-26)
 ------------------
 * Add quality declaration for statistics_msgs (`#102 <https://github.com/ros2/rcl_interfaces/issues/102>`_)
