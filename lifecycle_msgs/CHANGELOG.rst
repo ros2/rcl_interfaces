@@ -2,8 +2,8 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2020-06-29)
+------------------
 * Increase Quality level of packages to 3 (`#108 <https://github.com/ros2/rcl_interfaces/issues/108>`_)
 * Add Security Vulnerability Policy pointing to REP-2006. (`#106 <https://github.com/ros2/rcl_interfaces/issues/106>`_)
 * Updating QD to reflect package versions (`#107 <https://github.com/ros2/rcl_interfaces/issues/107>`_)

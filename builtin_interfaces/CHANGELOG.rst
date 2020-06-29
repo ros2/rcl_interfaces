@@ -2,8 +2,8 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2020-06-29)
+------------------
 * Increase Quality level of packages to 3 (`#108 <https://github.com/ros2/rcl_interfaces/issues/108>`_)
 * Document that Time and Duration are explictly ROS Time (`#103 <https://github.com/ros2/rcl_interfaces/issues/103>`_)
 * Add Security Vulnerability Policy pointing to REP-2006. (`#106 <https://github.com/ros2/rcl_interfaces/issues/106>`_)
