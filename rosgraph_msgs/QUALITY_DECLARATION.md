@@ -88,7 +88,7 @@ The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__
 
 `rosgraph_msgs` has the following ROS dependencies, which are at or above QL 3:
 * `builtin_interfaces`: [QL 3](../builtin_interfaces/QUALITY_DECLARATION.md)
-* `rosidl_default_runtime`: [QL 3](https://raw.githubusercontent.com/ros2/rosidl_defaults/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QL 3](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
