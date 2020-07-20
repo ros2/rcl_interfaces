@@ -21,6 +21,9 @@ from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
+from test_msgs.msg import ShortVaried
+from test_msgs.msg import ShortVariedMultiNested
+from test_msgs.msg import ShortVariedNested
 from test_msgs.msg import Strings
 from test_msgs.msg import UnboundedSequences
 from test_msgs.msg import WStrings
@@ -366,6 +369,51 @@ def get_msg_wstrings():
     return msgs
 
 
+def get_msg_short_varied():
+    msgs = []
+
+    msg = ShortVaried()
+    msg.bool_value = True
+    msg.bool_values = [True, True, True]
+    msgs.append(msg)
+
+    msg = ShortVaried()
+    msg.bool_value = False
+    msg.bool_values = [False, False, False]
+    msgs.append(msg)
+
+    msg = ShortVaried()
+    msg.bool_value = True
+    msg.bool_values = [True, False, False]
+    msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_short_varied_nested():
+    msgs = []
+
+    short_varied_msgs = get_msg_short_varied()
+    for short_varied_msg in short_varied_msgs:
+        msg = ShortVariedNested()
+        msg.short_varied = short_varied_msg
+        msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_short_varied_multi_nested():
+    msgs = []
+
+    short_varied_nested_msgs = get_msg_short_varied_nested()
+    for short_varied_nested_msg in short_varied_nested_msgs:
+        msg = ShortVariedMultiNested()
+        msg.short_varied_nested = short_varied_nested_msg
+        msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -391,6 +439,12 @@ def get_test_msg(message_name):
         msg = get_msg_multi_nested()
     elif 'WStrings' == message_name:
         msg = get_msg_wstrings()
+    elif 'ShortVaried' == message_name:
+        msg = get_msg_short_varied()
+    elif 'ShortVariedMultiNested' == message_name:
+        msg = get_msg_short_varied_multi_nested()
+    elif 'ShortVariedNested' == message_name:
+        msg = get_msg_short_varied_nested()
     else:
         raise NotImplementedError
     return msg

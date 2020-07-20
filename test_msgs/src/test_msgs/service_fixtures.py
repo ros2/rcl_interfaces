@@ -14,9 +14,12 @@
 
 # TODO(jacobperron): Rename functions to match C++ equivalents
 from test_msgs.message_fixtures import get_msg_basic_types as get_messages_basic_types
+from test_msgs.message_fixtures import (
+    get_msg_short_varied_nested as get_messages_short_varied_nested)
 from test_msgs.srv import Arrays
 from test_msgs.srv import BasicTypes
 from test_msgs.srv import Empty
+from test_msgs.srv import ShortVariedMultiNested
 
 
 def get_msg_empty():
@@ -145,6 +148,20 @@ def get_msg_arrays():
     return srvs
 
 
+def get_msg_short_varied_multi_nested():
+    srvs = []
+
+    short_varied_nested_msgs = get_messages_short_varied_nested()
+    for short_varied_nested_msg in short_varied_nested_msgs:
+        req = ShortVariedMultiNested.Request()
+        req.short_varied_nested = short_varied_nested_msg
+        resp = ShortVariedMultiNested.Response()
+        resp.bool_value = True
+        srvs.append([req, resp])
+
+    return srvs
+
+
 def get_test_srv(service_name):
     if 'Arrays' == service_name:
         srv = get_msg_arrays()
@@ -152,6 +169,8 @@ def get_test_srv(service_name):
         srv = get_msg_basic_types()
     elif 'Empty' == service_name:
         srv = get_msg_empty()
+    elif 'ShortVariedMultiNested' == service_name:
+        srv = get_msg_short_varied_multi_nested()
     else:
         raise NotImplementedError('%s service is not part of the test suite', service_name)
     return srv

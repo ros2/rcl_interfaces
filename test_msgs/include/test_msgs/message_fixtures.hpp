@@ -31,6 +31,9 @@
 #include "test_msgs/msg/empty.hpp"
 #include "test_msgs/msg/multi_nested.hpp"
 #include "test_msgs/msg/nested.hpp"
+#include "test_msgs/msg/short_varied.hpp"
+#include "test_msgs/msg/short_varied_multi_nested.hpp"
+#include "test_msgs/msg/short_varied_nested.hpp"
 #include "test_msgs/msg/strings.hpp"
 #include "test_msgs/msg/unbounded_sequences.hpp"
 #include "test_msgs/msg/w_strings.hpp"
@@ -510,4 +513,54 @@ get_messages_wstrings()
   return messages;
 }
 
+std::vector<test_msgs::msg::ShortVaried::SharedPtr>
+get_messages_short_varied()
+{
+  std::vector<test_msgs::msg::ShortVaried::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_msgs::msg::ShortVaried>();
+    msg->bool_value = true;
+    msg->bool_values = {true, true, true};
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::ShortVaried>();
+    msg->bool_value = false;
+    msg->bool_values = {false, true, true};
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::ShortVaried>();
+    msg->bool_value = false;
+    msg->bool_values = {false, false, false};
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_msgs::msg::ShortVariedNested::SharedPtr>
+get_messages_short_varied_nested()
+{
+  std::vector<test_msgs::msg::ShortVariedNested::SharedPtr> messages;
+  auto short_varied_msgs = get_messages_short_varied();
+  for (auto short_varied_msg : short_varied_msgs) {
+    auto msg = std::make_shared<test_msgs::msg::ShortVariedNested>();
+    msg->short_varied = *short_varied_msg;
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+std::vector<test_msgs::msg::ShortVariedMultiNested::SharedPtr>
+get_messages_short_varied_multi_nested()
+{
+  std::vector<test_msgs::msg::ShortVariedMultiNested::SharedPtr> messages;
+  auto short_varied_nested_msgs = get_messages_short_varied_nested();
+  for (auto short_varied_nested_msg : short_varied_nested_msgs) {
+    auto msg = std::make_shared<test_msgs::msg::ShortVariedMultiNested>();
+    msg->short_varied_nested = *short_varied_nested_msg;
+    messages.push_back(msg);
+  }
+  return messages;
+}
 #endif  // TEST_MSGS__MESSAGE_FIXTURES_HPP_

@@ -24,6 +24,7 @@
 #include "test_msgs/srv/arrays.hpp"
 #include "test_msgs/srv/basic_types.hpp"
 #include "test_msgs/srv/empty.hpp"
+#include "test_msgs/srv/short_varied_multi_nested.hpp"
 
 
 std::vector<
@@ -209,6 +210,33 @@ get_services_arrays()
     reply->basic_types_values[1] = *basic_types_msgs[0];
     reply->basic_types_values[2] = *basic_types_msgs[2];
 
+    services.emplace_back(request, reply);
+  }
+  return services;
+}
+
+std::vector<
+  std::pair<
+    test_msgs::srv::ShortVariedMultiNested::Request::SharedPtr,
+    test_msgs::srv::ShortVariedMultiNested::Response::SharedPtr
+  >
+>
+get_services_short_varied_multi_nested()
+{
+  std::vector<
+    std::pair<
+      test_msgs::srv::ShortVariedMultiNested::Request::SharedPtr,
+      test_msgs::srv::ShortVariedMultiNested::Response::SharedPtr
+    >
+  > services;
+  auto short_varied_nested_msgs = get_messages_short_varied_nested();
+  for (auto short_varied_nested_msg : short_varied_nested_msgs) {
+    auto request = std::make_shared<
+      test_msgs::srv::ShortVariedMultiNested::Request>();
+    request->short_varied_nested = *short_varied_nested_msg;
+    auto reply = std::make_shared<
+      test_msgs::srv::ShortVariedMultiNested::Response>();
+    reply->bool_value = true;
     services.emplace_back(request, reply);
   }
   return services;
