@@ -526,13 +526,13 @@ get_messages_short_varied()
   {
     auto msg = std::make_shared<test_msgs::msg::ShortVaried>();
     msg->bool_value = false;
-    msg->bool_values = {false, true, true};
+    msg->bool_values = {false, false, false};
     messages.push_back(msg);
   }
   {
     auto msg = std::make_shared<test_msgs::msg::ShortVaried>();
-    msg->bool_value = false;
-    msg->bool_values = {false, false, false};
+    msg->bool_value = true;
+    msg->bool_values = {true, false, false};
     messages.push_back(msg);
   }
   return messages;
