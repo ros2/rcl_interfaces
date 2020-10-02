@@ -10,4 +10,4 @@ For more information about ROS 2 interfaces, see [index.ros2.org](https://index.
 * [Time](msg/Time.msg): Describes a point in time, composed of seconds and nanoseconds components.
 
 ## Quality Declaration
-This package claims to be in the **Quality Level 3** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
+This package claims to be in the **Quality Level 2** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
