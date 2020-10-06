@@ -7,8 +7,10 @@
     Messages relating to the ROS Computation Graph.
     These are generally considered to be low-level messages that end users do not interact with.
   </description>
-  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
   <license>Apache License 2.0</license>
+  <author email="dthomas@osrfoundation.org">Dirk Thomas</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

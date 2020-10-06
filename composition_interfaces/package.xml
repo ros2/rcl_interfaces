@@ -4,8 +4,10 @@
   <name>composition_interfaces</name>
   <version>1.0.1</version>
   <description>A package containing message and service definitions for managing composable nodes in a container process.</description>
-  <maintainer email="sloretz@osrfoundation.org">Shane Loretz</maintainer>
+  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
   <license>Apache License 2.0</license>
+  <author email="sloretz@osrfoundation.org">Shane Loretz</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
