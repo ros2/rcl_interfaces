@@ -5,7 +5,7 @@
   <version>1.0.1</version>
   <description>Messages and service definitions common among all ROS actions.</description>
   <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
-  <maintainer email="clalancette@openrobotics.org">Michel Hidalgo</maintainer>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
   <license>Apache License 2.0</license>
   <author email="karsten@osrfoundation.org">Karsten Knese</author>
   <author email="jacob@openrobotics.org">Jacob Perron</author>
