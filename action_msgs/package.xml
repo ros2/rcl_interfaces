@@ -4,9 +4,10 @@
   <name>action_msgs</name>
   <version>1.0.1</version>
   <description>Messages and service definitions common among all ROS actions.</description>
-  <maintainer email="karsten@osrfoundation.org">Karsten Knese</maintainer>
+  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
   <license>Apache License 2.0</license>
-
+  <author email="karsten@osrfoundation.org">Karsten Knese</author>
   <author email="jacob@openrobotics.org">Jacob Perron</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

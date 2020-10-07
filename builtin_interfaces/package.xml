@@ -4,8 +4,10 @@
   <name>builtin_interfaces</name>
   <version>1.0.1</version>
   <description>A package containing message and service definitions for types defined in the OMG IDL Platform Specific Model.</description>
-  <maintainer email="dthomas@osrfoundation.org">Dirk Thomas</maintainer>
+  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
   <license>Apache License 2.0</license>
+  <author email="dthomas@osrfoundation.org">Dirk Thomas</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
