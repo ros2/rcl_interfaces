@@ -88,8 +88,8 @@ The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__
 
 `action_msgs` has the following runtime ROS dependencies, which are at or above QL 2:
 * `builtin_interfaces`: [QL 2](../builtin_interfaces/QUALITY_DECLARATION.md)
-* `rosidl_default_runtime`: [QL 2](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
-* `unique_identifier_msgs`: [QL 2](https://github.com/ros2/unique_identifier_msgs/tree/master/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QL 2](https://github.com/ros2/rosidl_defaults/tree/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md)
+* `unique_identifier_msgs`: [QL 2](https://github.com/ros2/unique_identifier_msgs/tree/foxy/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
