@@ -2,9 +2,9 @@ This document is a declaration of software quality for the `statistics_msgs` pac
 
 # `statistics_msgs` Quality Declaration
 
-The package `statistics_msgs` claims to be in the **Quality Level 4** category.
+The package `statistics_msgs` claims to be in the **Quality Level 2** category.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 4 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 2 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -86,9 +86,9 @@ The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__
 
 ### Direct Runtime ROS Dependencies [5.i]/[5.ii]
 
-`statistics_msgs` has the following ROS dependencies:
-* `builtin_interfaces`
-* `rosidl_default_runtime`
+`statistics_msgs` has the following ROS dependencies, which are at or above QL 2:
+* `builtin_interfaces`: [QL 2](../builtin_interfaces/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QL 2](https://github.com/ros2/rosidl_defaults/tree/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
