@@ -21,8 +21,8 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# If 'true', duck typing is allowed.
-bool allow_duck_typing false
+# If 'true', the parameter is not allowed to change its type.
+bool static_typing true
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
