@@ -56,4 +56,4 @@ The ROS API for a node will be as follows inside the node's namespace.
 * [SetParametersAtomically](srv/SetParametersAtomically.srv): Add or change all parameters in a list or none at all.
 
 ## Quality Declaration
-This package claims to be in the **Quality Level 2** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
+This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
