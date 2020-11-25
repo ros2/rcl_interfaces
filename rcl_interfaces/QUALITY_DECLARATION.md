@@ -2,9 +2,9 @@ This document is a declaration of software quality for the `rcl_interfaces` pack
 
 # `rcl_interfaces` Quality Declaration
 
-The package `rcl_interfaces` claims to be in the **Quality Level 2** category.
+The package `rcl_interfaces` claims to be in the **Quality Level 1** category as long as it is used with a **Quality Level 1** middleware.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 2 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 1 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -70,11 +70,15 @@ The license for `rcl_interfaces` is Apache 2.0, the type is declared in the `pac
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
+The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport)
+
 ### Copyright Statements [3.iv]
 
 The copyright holders each provide a statement of copyright in each source code file in `rcl_interfaces`.
 
 There is an automated test which runs a linter that ensures each file has at least one copyright statement.
+
+The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport)
 
 ## Testing [4]
 
@@ -84,9 +88,9 @@ There is an automated test which runs a linter that ensures each file has at lea
 
 ### Direct Runtime ROS Dependencies [5.i]/[5.ii]
 
-`rcl_interfaces` has the following ROS dependencies, which are at or above QL 2:
-* `builtin_interfaces`: [QL 2](../builtin_interfaces/QUALITY_DECLARATION.md)
-* `rosidl_default_runtime`: [QL 2](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
+`rcl_interfaces` has the following ROS dependencies, which are at **Quality Level 1**:
+* `builtin_interfaces`: [QUALITY DECLARATION](../builtin_interfaces/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
