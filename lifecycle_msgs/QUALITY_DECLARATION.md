@@ -70,7 +70,7 @@ The license for `lifecycle_msgs` is Apache 2.0, the type is declared in the [pac
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
-The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
+The nightly test can be found at [here](http://build.ros2.org/view/Fpr/job/Fpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
 
 ### Copyright Statements [3.iv]
 
@@ -78,7 +78,7 @@ The copyright holders each provide a statement of copyright in each source code 
 
 There is an automated test which runs a linter that ensures each file has at least one copyright statement.
 
-The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
+The nightly test can be found at [here](http://build.ros2.org/view/Fpr/job/Fpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
 
 ## Testing [4]
 
