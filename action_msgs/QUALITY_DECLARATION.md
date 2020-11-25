@@ -2,9 +2,9 @@ This document is a declaration of software quality for the `action_msgs` package
 
 # `action_msgs` Quality Declaration
 
-The package `action_msgs` claims to be in the **Quality Level 2** category.
+The package `action_msgs` claims to be in the **Quality Level 1** category as long as it is used with a **Quality Level 1** middleware.
 
-Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 2 in REP-2004](https://www.ros.org/reps/rep-2004.html).
+Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the [Package Requirements for Quality Level 1 in REP-2004](https://www.ros.org/reps/rep-2004.html).
 
 ## Version Policy [1]
 
@@ -70,13 +70,15 @@ The license for `action_msgs` is Apache 2.0, the type is declared in the [packag
 
 There is an automated test which runs a linter that ensures each file has a license statement.
 
+The nightly test can be found at [here](http://build.ros2.org/view/Fpr/job/Fpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
+
 ### Copyright Statements [3.iv]
 
 The copyright holders each provide a statement of copyright in each source code file in `action_msgs`.
 
 There is an automated test which runs a linter that ensures each file has at least one copyright statement.
 
-The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__rcl_interfaces__ubuntu_bionic_amd64/lastBuild/)
+The nightly test can be found at [here](http://build.ros2.org/view/Fpr/job/Fpr__rcl_interfaces__ubuntu_focal_amd64/lastCompletedBuild/testReport/)
 
 ## Testing [4]
 
@@ -86,10 +88,10 @@ The nightly test can be found at [here](http://build.ros2.org/view/Epr/job/Epr__
 
 ### Direct Runtime ROS Dependencies [5.i]/[5.ii]
 
-`action_msgs` has the following runtime ROS dependencies, which are at or above QL 2:
-* `builtin_interfaces`: [QL 2](../builtin_interfaces/QUALITY_DECLARATION.md)
-* `rosidl_default_runtime`: [QL 2](https://github.com/ros2/rosidl_defaults/tree/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md)
-* `unique_identifier_msgs`: [QL 2](https://github.com/ros2/unique_identifier_msgs/tree/foxy/QUALITY_DECLARATION.md)
+`action_msgs` has the following runtime ROS dependencies, which are at **Quality Level 1**:
+* `builtin_interfaces`: [QUALITY DECLARATION](../builtin_interfaces/QUALITY_DECLARATION.md)
+* `rosidl_default_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_defaults/tree/foxy/rosidl_default_runtime/QUALITY_DECLARATION.md)
+* `unique_identifier_msgs`: [QUALITY DECLARATION](https://github.com/ros2/unique_identifier_msgs/tree/foxy/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
@@ -101,11 +103,11 @@ It has several "buildtool" dependencies, which do not affect the resulting quali
 
 `action_msgs` supports all of the tier 1 platforms as described in [REP-2000](https://www.ros.org/reps/rep-2000.html#support-tiers), and tests each change against all of them.
 
-Currently nightly results can be seen here:
-* [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/action_msgs/)
-* [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/action_msgs/)
-* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/action_msgs/)
-* [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/action_msgs/)
+Though there are no nightly jobs for foxy outside of linux, each change is tested on ci.ros2.org.
+* [linux-aarch64](https://ci.ros2.org/job/ci_linux-aarch64)
+* [linux](https://ci.ros2.org/job/ci_linux)
+* [mac_osx](https://ci.ros2.org/job/ci_osx)
+* [windows](https://ci.ros2.org/job/ci_windows)
 
 ## Vulnerability Disclosure Policy [7.i]
 
