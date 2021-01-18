@@ -21,8 +21,9 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# If 'true', the parameter is not allowed to change its type.
-bool static_typing true
+# Type that the parameter is allowed to take.
+# When PARAMETER_NOT_SET (0), the parameter can take any type.
+uint8 allowed_type 0
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
