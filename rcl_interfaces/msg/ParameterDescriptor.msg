@@ -22,8 +22,8 @@ string additional_constraints
 bool read_only false
 
 # Type that the parameter is allowed to take.
-# When PARAMETER_NOT_SET (0), the parameter can take any type.
-uint8 allowed_type 0
+# rcl_interfaces::msg::ParameterType::PARAMETER_DYNAMIC
+uint8 allowed_type 10
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
