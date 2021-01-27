@@ -21,9 +21,8 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# Type that the parameter is allowed to take.
-# rcl_interfaces::msg::ParameterType::PARAMETER_DYNAMIC
-uint8 allowed_type 10
+# If true, the parameter is allowed to change of type.
+bool dynamic_typing false
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.

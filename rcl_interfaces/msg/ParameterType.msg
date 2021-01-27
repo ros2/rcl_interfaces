@@ -2,9 +2,6 @@
 
 # Default value, which implies this is not a valid parameter.
 uint8 PARAMETER_NOT_SET=0
-# Used to specify dynamic typing of a parameter.
-# WARN: if you modify this value, also modify it in rcl_interfaces::msg::ParameterDescriptor
-uint8 PARAMETER_DYNAMIC=10
 
 uint8 PARAMETER_BOOL=1
 uint8 PARAMETER_INTEGER=2
