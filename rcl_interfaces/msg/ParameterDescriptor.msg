@@ -21,7 +21,7 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# If true, the parameter is allowed to change of type.
+# If true, the parameter is allowed to change type.
 bool dynamic_typing false
 
 # If any of the following sequences are not empty, then the constraint inside of
