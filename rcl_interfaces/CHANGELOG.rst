@@ -2,6 +2,13 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add field to the parameter description to specify dynamic/static typing. (`#118 <https://github.com/ros2/rcl_interfaces/issues/118>`_)
+* Update quality declaration to QL 1. (`#116 <https://github.com/ros2/rcl_interfaces/issues/116>`_)
+* Update package maintainers. (`#112 <https://github.com/ros2/rcl_interfaces/issues/112>`_)
+* Contributors: Chris Lalancette, Ivan Santiago Paunovic, Michel Hidalgo, Stephen Brawner
+
 1.0.1 (2020-06-29)
 ------------------
 * Increase Quality level of packages to 3 (`#108 <https://github.com/ros2/rcl_interfaces/issues/108>`_)
