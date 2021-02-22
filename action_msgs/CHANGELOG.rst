@@ -2,8 +2,8 @@
 Changelog for package action_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2021-02-22)
+------------------
 * Update quality declaration to QL 1. (`#116 <https://github.com/ros2/rcl_interfaces/issues/116>`_)
 * Update package maintainers. (`#112 <https://github.com/ros2/rcl_interfaces/issues/112>`_)
 * Contributors: Chris Lalancette, Michel Hidalgo, Stephen Brawner

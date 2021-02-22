@@ -2,8 +2,8 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2021-02-22)
+------------------
 * Add field to the parameter description to specify dynamic/static typing. (`#118 <https://github.com/ros2/rcl_interfaces/issues/118>`_)
 * Update quality declaration to QL 1. (`#116 <https://github.com/ros2/rcl_interfaces/issues/116>`_)
 * Update package maintainers. (`#112 <https://github.com/ros2/rcl_interfaces/issues/112>`_)
