@@ -2,7 +2,7 @@
 This package contains several messages and services useful for ROS 2 actions.
 More information about actions can be found on its [design article](http://design.ros2.org/articles/actions.html).
 
-For more information about ROS 2 interfaces, see [index.ros2.org](https://index.ros.org/doc/ros2/Concepts/About-ROS-Interfaces/).
+For more information about ROS 2 interfaces, see [docs.ros.org](https://docs.ros.org/en/rolling/Concepts/About-ROS-Interfaces.html).
 
 ## Messages (.msg)
 * [GoalInfo](msg/GoalInfo.msg): Goal identifier message, with a goal id and time stamp.
