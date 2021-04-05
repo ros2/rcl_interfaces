@@ -1,7 +1,7 @@
 # rcl_interfaces
 This package contains the messages and services which ROS client libraries will use under the hood to communicate higher level concepts such as parameters.
 
-For more information about ROS 2 interfaces, see [index.ros2.org](https://index.ros.org/doc/ros2/Concepts/About-ROS-Interfaces/)
+For more information about ROS 2 interfaces, see [docs.ros.org](https://docs.ros.org/en/rolling/Concepts/About-ROS-Interfaces.html)
 
 ## Parameter Groups
 Parameters are contained in groups.

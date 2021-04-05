@@ -5,7 +5,7 @@ managed nodes through a known state-machine.
 
 For more information about life cycle nodes see: [design.ros2.org](http://design.ros2.org/articles/node_lifecycle.html).
 
-For more information about ROS 2 interfaces, see [index.ros2.org](https://index.ros.org/doc/ros2/Concepts/About-ROS-Interfaces/).
+For more information about ROS 2 interfaces, see [docs.ros.org](https://docs.ros.org/en/rolling/Concepts/About-ROS-Interfaces.html).
 
 ## Messages (.msg)
 * [State](msg/State.msg): A lifecycle node's state-machine state.
