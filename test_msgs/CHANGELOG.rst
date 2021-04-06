@@ -2,6 +2,9 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.2 (2021-02-22)
 ------------------
 * Update package maintainers. (`#112 <https://github.com/ros2/rcl_interfaces/issues/112>`_)

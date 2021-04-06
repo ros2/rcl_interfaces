@@ -2,6 +2,12 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change index.ros.org -> docs.ros.org. (`#122 <https://github.com/ros2/rcl_interfaces/issues/122>`_)
+* Updating Quality Declaration (`#120 <https://github.com/ros2/rcl_interfaces/issues/120>`_)
+* Contributors: Chris Lalancette, shonigmann
+
 1.0.2 (2021-02-22)
 ------------------
 * Update quality declaration to QL 1. (`#116 <https://github.com/ros2/rcl_interfaces/issues/116>`_)

@@ -2,6 +2,12 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Change index.ros.org -> docs.ros.org. (`#122 <https://github.com/ros2/rcl_interfaces/issues/122>`_)
+* Updating Quality Declaration (`#120 <https://github.com/ros2/rcl_interfaces/issues/120>`_)
+* Contributors: Chris Lalancette, shonigmann
+
 1.0.2 (2021-02-22)
 ------------------
 * Add field to the parameter description to specify dynamic/static typing. (`#118 <https://github.com/ros2/rcl_interfaces/issues/118>`_)
