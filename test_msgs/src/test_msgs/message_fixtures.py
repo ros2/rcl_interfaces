@@ -14,8 +14,8 @@
 
 from test_msgs.msg import Arrays
 from test_msgs.msg import BasicTypes
+from test_msgs.msg import BoundedPlainSequences
 from test_msgs.msg import BoundedSequences
-from test_msgs.msg import BoundedSequencesNoStrings
 from test_msgs.msg import Builtins
 from test_msgs.msg import Constants
 from test_msgs.msg import Defaults
@@ -24,7 +24,6 @@ from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
 from test_msgs.msg import Strings
 from test_msgs.msg import UnboundedSequences
-from test_msgs.msg import UnboundedSequencesNoStrings
 from test_msgs.msg import WStrings
 
 
@@ -285,90 +284,6 @@ def get_msg_unbounded_sequences():
     return msgs
 
 
-def get_msg_unbounded_sequences_no_strings():
-    basic_types_msgs = get_msg_basic_types()
-    msgs = []
-    msg = UnboundedSequencesNoStrings()
-    msg.bool_values = []
-    msg.char_values = []
-    msg.byte_values = []
-    msg.float32_values = []
-    msg.float64_values = []
-    msg.int8_values = []
-    msg.uint8_values = []
-    msg.int16_values = []
-    msg.uint16_values = []
-    msg.int32_values = []
-    msg.uint32_values = []
-    msg.int64_values = []
-    msg.uint64_values = []
-    msg.basic_types_values = []
-    msg.alignment_check = 0
-    msgs.append(msg)
-
-    msg = UnboundedSequencesNoStrings()
-    msg.bool_values = [True]
-    msg.byte_values = [bytes([255])]
-    msg.char_values = [255]
-    msg.float32_values = [1.125]
-    msg.float64_values = [1.125]
-    msg.int8_values = [127]
-    msg.uint8_values = [255]
-    msg.int16_values = [32767]
-    msg.uint16_values = [65535]
-    msg.int32_values = [2147483647]
-    msg.uint32_values = [4294967295]
-    msg.int64_values = [9223372036854775807]
-    msg.uint64_values = [18446744073709551615]
-    msg.basic_types_values = [basic_types_msgs[0]]
-    msg.alignment_check = 1
-    msgs.append(msg)
-
-    msg = UnboundedSequencesNoStrings()
-    msg.bool_values = [False, True]
-    msg.byte_values = [bytes([0]), bytes([255])]
-    msg.char_values = [0, 255]
-    msg.float32_values = [0.0, 1.125, -2.125]
-    msg.float64_values = [0.0, 1.125, -2.125]
-    msg.int8_values = [0, 127, -128]
-    msg.uint8_values = [0, 255]
-    msg.int16_values = [0, 32767, -32768]
-    msg.uint16_values = [0, 65535]
-    msg.int32_values = [0, 2147483647, -2147483648]
-    msg.uint32_values = [0, 4294967295]
-    msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
-    msg.uint64_values = [0, 18446744073709551615]
-    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(3)]
-    msg.alignment_check = 2
-    msgs.append(msg)
-
-    size = 1000
-
-    msg = UnboundedSequencesNoStrings()
-    msg.bool_values = [i % 2 != 0 for i in range(size)]
-    msg.byte_values = [bytes([i % (1 << 8)]) for i in range(size)]
-    msg.char_values = [i % (1 << 8) for i in range(size)]
-    msg.float32_values = [float(1.125 * i) for i in range(size)]
-    msg.float64_values = [1.125 * i for i in range(size)]
-    msg.int8_values = [int_from_uint(i, 8) for i in range(size)]
-    msg.uint8_values = [i % (1 << 8) for i in range(size)]
-    msg.int16_values = [int_from_uint(i, 16) for i in range(size)]
-    msg.uint16_values = [i % (1 << 16) for i in range(size)]
-    msg.int32_values = [int_from_uint(i, 32) for i in range(size)]
-    msg.uint32_values = [i % (1 << 32) for i in range(size)]
-    msg.int64_values = [int_from_uint(i, 64) for i in range(size)]
-    msg.uint64_values = [i % (1 << 64) for i in range(size)]
-    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(size)]
-    msg.alignment_check = 3
-    msgs.append(msg)
-
-    msg = UnboundedSequencesNoStrings()
-    msg.alignment_check = 4
-    msgs.append(msg)
-
-    return msgs
-
-
 def get_msg_bounded_sequences():
     basic_types_msgs = get_msg_basic_types()
     msgs = []
@@ -398,10 +313,10 @@ def get_msg_bounded_sequences():
     return msgs
 
 
-def get_msg_bounded_sequences_no_strings():
+def get_msg_bounded_plain_sequences():
     basic_types_msgs = get_msg_basic_types()
     msgs = []
-    msg = BoundedSequencesNoStrings()
+    msg = BoundedPlainSequences()
     msg.bool_values = [False, True, False]
     msg.byte_values = [bytes([0]), bytes([1]), bytes([255])]
     msg.char_values = [0, 1, 255]
@@ -419,7 +334,7 @@ def get_msg_bounded_sequences_no_strings():
     msg.alignment_check = 2
     msgs.append(msg)
 
-    msg = BoundedSequencesNoStrings()
+    msg = BoundedPlainSequences()
     msg.alignment_check = 4
     msgs.append(msg)
 
