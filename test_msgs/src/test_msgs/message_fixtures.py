@@ -14,6 +14,7 @@
 
 from test_msgs.msg import Arrays
 from test_msgs.msg import BasicTypes
+from test_msgs.msg import BoundedPlainSequences
 from test_msgs.msg import BoundedSequences
 from test_msgs.msg import Builtins
 from test_msgs.msg import Constants
@@ -306,6 +307,34 @@ def get_msg_bounded_sequences():
     msgs.append(msg)
 
     msg = BoundedSequences()
+    msg.alignment_check = 4
+    msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_bounded_plain_sequences():
+    basic_types_msgs = get_msg_basic_types()
+    msgs = []
+    msg = BoundedPlainSequences()
+    msg.bool_values = [False, True, False]
+    msg.byte_values = [bytes([0]), bytes([1]), bytes([255])]
+    msg.char_values = [0, 1, 255]
+    msg.float32_values = [0.0, 1.125, -2.125]
+    msg.float64_values = [0.0, 1.125, -2.125]
+    msg.int8_values = [0, 127, -128]
+    msg.uint8_values = [0, 1, 255]
+    msg.int16_values = [0, 32767, -32768]
+    msg.uint16_values = [0, 1, 65535]
+    msg.int32_values = [0, 2147483647, -2147483648]
+    msg.uint32_values = [0, 1, 4294967295]
+    msg.int64_values = [0, 9223372036854775807, -9223372036854775808]
+    msg.uint64_values = [0, 1, 18446744073709551615]
+    msg.basic_types_values = [basic_types_msgs[i % len(basic_types_msgs)] for i in range(3)]
+    msg.alignment_check = 2
+    msgs.append(msg)
+
+    msg = BoundedPlainSequences()
     msg.alignment_check = 4
     msgs.append(msg)
 
