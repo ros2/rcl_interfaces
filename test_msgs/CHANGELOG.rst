@@ -2,6 +2,12 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add test fixures for BoundedPlainSequences (`#125 <https://github.com/ros2/rcl_interfaces/issues/125>`_)
+* Added BoundedPlainSequences to test_msgs (`#123 <https://github.com/ros2/rcl_interfaces/issues/123>`_)
+* Contributors: Miguel Company, Shane Loretz
+
 1.0.3 (2021-04-06)
 ------------------
 

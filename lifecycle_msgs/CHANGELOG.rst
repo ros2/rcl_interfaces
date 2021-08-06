@@ -2,6 +2,9 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.0.3 (2021-04-06)
 ------------------
 * Change index.ros.org -> docs.ros.org. (`#122 <https://github.com/ros2/rcl_interfaces/issues/122>`_)
