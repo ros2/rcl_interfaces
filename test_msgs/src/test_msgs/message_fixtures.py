@@ -414,6 +414,8 @@ def get_test_msg(message_name):
         msg = get_msg_arrays()
     elif 'BoundedSequences' == message_name:
         msg = get_msg_bounded_sequences()
+    elif 'BoundedPlainSequences' == message_name:
+        msg = get_msg_bounded_plain_sequences()
     elif 'UnboundedSequences' == message_name:
         msg = get_msg_unbounded_sequences()
     elif 'MultiNested' == message_name:
