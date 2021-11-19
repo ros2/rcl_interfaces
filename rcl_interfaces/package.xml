@@ -7,9 +7,12 @@
     This package contains the messages and services which ROS client libraries will use under the hood to
     communicate higher level concepts such as parameters.
   </description>
+
   <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
-  <maintainer email="michel@ekumenlabs.com">Michel Hidalgo</maintainer>
+
   <license>Apache License 2.0</license>
+
+  <author email="michel@ekumenlabs.com">Michel Hidalgo</author>
   <author email="tfoote@osrfoundation.org">Tully Foote</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
