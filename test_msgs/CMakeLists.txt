@@ -20,7 +20,7 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(test_interface_files REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
+rosidl_generate_interfaces(generate_test_msgs
   ${test_interface_files_MSG_FILES}
   ${test_interface_files_SRV_FILES}
   ${test_interface_files_ACTION_FILES}
@@ -40,14 +40,14 @@ if(BUILD_TESTING)
   target_include_directories(test_action_typesupport_c_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_c_builds
-    ${_AMENT_EXPORT_LIBRARIES})
+    generate_test_msgs__rosidl_typesupport_c)
 
   ament_add_gtest(test_action_typesupport_cpp_builds
     test/test_cpp_type_support.cpp)
   target_include_directories(test_action_typesupport_cpp_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_cpp_builds
-    ${_AMENT_EXPORT_LIBRARIES})
+    generate_test_msgs__rosidl_typesupport_cpp)
 endif()
 
 if(DEFINED PYTHON_INSTALL_DIR)
