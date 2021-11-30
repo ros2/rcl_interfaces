@@ -40,14 +40,14 @@ if(BUILD_TESTING)
   target_include_directories(test_action_typesupport_c_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_c_builds
-    ${_AMENT_EXPORT_LIBRARIES})
+    ${_AMENT_CMAKE_EXPORT_TARGETS})
 
   ament_add_gtest(test_action_typesupport_cpp_builds
     test/test_cpp_type_support.cpp)
   target_include_directories(test_action_typesupport_cpp_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_cpp_builds
-    ${_AMENT_EXPORT_LIBRARIES})
+    ${_AMENT_CMAKE_EXPORT_TARGETS})
 endif()
 
 if(DEFINED PYTHON_INSTALL_DIR)
