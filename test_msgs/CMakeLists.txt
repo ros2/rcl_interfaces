@@ -31,6 +31,13 @@ rosidl_generate_interfaces(generate_test_msgs
   ADD_LINTER_TESTS
 )
 
+add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME} INTERFACE
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  "$<INSTALL_INTERFACE:include>")
+
+ament_export_targets(export_${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
@@ -58,6 +65,7 @@ endif()
 install(DIRECTORY include/
   DESTINATION include)
 
+install(TARGETS ${PROJECT_NAME} EXPORT export_${PROJECT_NAME})
+
 ament_export_dependencies(rosidl_default_runtime)
-ament_export_include_directories(include)
 ament_package()
