@@ -42,19 +42,22 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 
+  rosidl_get_typesupport_target(c_typesupport_target "generate_test_msgs" "rosidl_typesupport_c")
+  rosidl_get_typesupport_target(cpp_typesupport_target "generate_test_msgs" "rosidl_typesupport_cpp")
+
   ament_add_gtest(test_action_typesupport_c_builds
     test/test_c_type_support.cpp)
   target_include_directories(test_action_typesupport_c_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_c_builds
-    generate_test_msgs__rosidl_typesupport_c)
+    "${c_typesupport_target}")
 
   ament_add_gtest(test_action_typesupport_cpp_builds
     test/test_cpp_type_support.cpp)
   target_include_directories(test_action_typesupport_cpp_builds PRIVATE
     include)
   target_link_libraries(test_action_typesupport_cpp_builds
-    generate_test_msgs__rosidl_typesupport_cpp)
+    "${cpp_typesupport_target}")
 endif()
 
 if(DEFINED PYTHON_INSTALL_DIR)
