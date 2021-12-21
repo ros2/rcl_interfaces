@@ -19,6 +19,7 @@ string description
 string additional_constraints
 
 # If 'true' then the value cannot change after it has been initialized.
+# But parameter still can be undeclared by the node that declared it.
 bool read_only false
 
 # If true, the parameter is allowed to change type.
