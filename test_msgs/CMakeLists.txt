@@ -47,15 +47,11 @@ if(BUILD_TESTING)
 
   ament_add_gtest(test_action_typesupport_c_builds
     test/test_c_type_support.cpp)
-  target_include_directories(test_action_typesupport_c_builds PRIVATE
-    include)
   target_link_libraries(test_action_typesupport_c_builds
     "${c_typesupport_target}")
 
   ament_add_gtest(test_action_typesupport_cpp_builds
     test/test_cpp_type_support.cpp)
-  target_include_directories(test_action_typesupport_cpp_builds PRIVATE
-    include)
   target_link_libraries(test_action_typesupport_cpp_builds
     "${cpp_typesupport_target}")
 endif()
