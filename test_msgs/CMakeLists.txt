@@ -20,7 +20,7 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(test_interface_files REQUIRED)
 
-rosidl_generate_interfaces(generate_test_msgs
+rosidl_generate_interfaces(test_msgs_interfaces
   ${test_interface_files_MSG_FILES}
   ${test_interface_files_SRV_FILES}
   ${test_interface_files_ACTION_FILES}
@@ -42,8 +42,8 @@ if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   ament_lint_auto_find_test_dependencies()
 
-  rosidl_get_typesupport_target(c_typesupport_target "generate_test_msgs" "rosidl_typesupport_c")
-  rosidl_get_typesupport_target(cpp_typesupport_target "generate_test_msgs" "rosidl_typesupport_cpp")
+  rosidl_get_typesupport_target(c_typesupport_target "test_msgs_interfaces" "rosidl_typesupport_c")
+  rosidl_get_typesupport_target(cpp_typesupport_target "test_msgs_interfaces" "rosidl_typesupport_cpp")
 
   ament_add_gtest(test_action_typesupport_c_builds
     test/test_c_type_support.cpp)
