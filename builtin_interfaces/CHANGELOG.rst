@@ -2,8 +2,8 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.0 (2022-03-01)
+------------------
 * Update maintainers to Chris Lalancette (`#130 <https://github.com/ros2/rcl_interfaces/issues/130>`_)
 * Contributors: Audrow Nash
 

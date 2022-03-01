@@ -2,8 +2,8 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.0 (2022-03-01)
+------------------
 * Install headers to include/${PROJECT_NAME} and Depend on rosidl_typesupport\_* targets directly (`#133 <https://github.com/ros2/rcl_interfaces/issues/133>`_)
 * Update maintainers to Chris Lalancette (`#130 <https://github.com/ros2/rcl_interfaces/issues/130>`_)
 * Contributors: Audrow Nash, Shane Loretz
