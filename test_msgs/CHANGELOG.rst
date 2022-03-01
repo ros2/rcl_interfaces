@@ -2,6 +2,12 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Install headers to include/${PROJECT_NAME} and Depend on rosidl_typesupport\_* targets directly (`#133 <https://github.com/ros2/rcl_interfaces/issues/133>`_)
+* Update maintainers to Chris Lalancette (`#130 <https://github.com/ros2/rcl_interfaces/issues/130>`_)
+* Contributors: Audrow Nash, Shane Loretz
+
 1.1.0 (2021-08-06)
 ------------------
 * Add test fixures for BoundedPlainSequences (`#125 <https://github.com/ros2/rcl_interfaces/issues/125>`_)

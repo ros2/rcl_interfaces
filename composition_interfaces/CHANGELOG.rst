@@ -2,6 +2,11 @@
 Changelog for package composition_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update maintainers to Chris Lalancette (`#130 <https://github.com/ros2/rcl_interfaces/issues/130>`_)
+* Contributors: Audrow Nash
+
 1.1.0 (2021-08-06)
 ------------------
 
