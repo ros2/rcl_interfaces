@@ -2,6 +2,9 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.0 (2022-04-29)
+------------------
+
 1.2.0 (2022-03-01)
 ------------------
 * Install headers to include/${PROJECT_NAME} and Depend on rosidl_typesupport\_* targets directly (`#133 <https://github.com/ros2/rcl_interfaces/issues/133>`_)
