@@ -13,6 +13,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(builtin_interfaces REQUIRED)
+find_package(unique_identifier_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/FloatingPointRange.msg"
@@ -25,6 +26,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Parameter.msg"
   "msg/ParameterType.msg"
   "msg/ParameterValue.msg"
+  "msg/ServiceEvent.msg"
+  "msg/ServiceEventType.msg"
   "msg/SetParametersResult.msg"
   "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
@@ -32,7 +35,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ListParameters.srv"
   "srv/SetParametersAtomically.srv"
   "srv/SetParameters.srv"
-  DEPENDENCIES builtin_interfaces
+  DEPENDENCIES builtin_interfaces unique_identifier_msgs
 )
 
 install(FILES mapping_rules.yaml DESTINATION share/${PROJECT_NAME})
