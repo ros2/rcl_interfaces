@@ -14,7 +14,5 @@ unique_identifier_msgs/UUID client_id
 int64 sequence_number
 
 string service_name
-string request_type_name
-string response_type_name
-byte[] serialized_request
-byte[] serialized_response
+string event_name
+byte[] serialized_event
