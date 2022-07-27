@@ -16,9 +16,3 @@ unique_identifier_msgs/UUID client_id
 # Sequence number for the request
 # Combined with the client ID, this creates a unique ID for the service transaction
 int64 sequence_number
-
-# Name of the service, i.e. add_two_ints_service
-string service_name
-
-# Name of the service event, i.e. AddTwoInts_Request
-string event_name
