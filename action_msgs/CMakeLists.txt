@@ -12,7 +12,9 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
+# Depend on "core" generators instead of "default" generators
+# because ROS actions depend on this package
+find_package(rosidl_core_generators REQUIRED)
 find_package(unique_identifier_msgs REQUIRED)
 
 set(msg_files
