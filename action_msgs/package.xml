@@ -17,6 +17,9 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>rosidl_core_generators</buildtool_depend>
 
+  <!-- actions define action services -->
+  <depend>service_msgs</depend>
+
   <depend>builtin_interfaces</depend>
   <depend>unique_identifier_msgs</depend>
 
