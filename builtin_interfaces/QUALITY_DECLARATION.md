@@ -89,7 +89,7 @@ The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__
 ### Direct Runtime ROS Dependencies [5.i]/[5.ii]
 
 `builtin_interfaces` has the following ROS dependencies, which are at **Quality Level 1**:
-* `rosidl_default_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
+* `rosidl_core_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_core/tree/master/rosidl_core_runtime/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
 
