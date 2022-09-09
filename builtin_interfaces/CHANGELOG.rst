@@ -2,6 +2,12 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.1 (2022-09-09)
+------------------
+* Depend on rosidl_core_generators for packages required by actions (`#144 <https://github.com/ros2/rcl_interfaces/issues/144>`_)
+* Fix documented range (`#139 <https://github.com/ros2/rcl_interfaces/issues/139>`_)
+* Contributors: Jacob Perron, Tully Foote
+
 1.3.0 (2022-04-29)
 ------------------
 
