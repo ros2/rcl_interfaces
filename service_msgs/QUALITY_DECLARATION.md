@@ -57,8 +57,8 @@ All pull requests must resolve related documentation changes before merging.
 
 ### Feature Documentation [3.i]
 
-`service_msgs` has a list of provided [messages and services](README.md).
-New messages and services require their own documentation in order to be added.
+`service_msgs` has a list of provided [ROS interfaces](README.md).
+New interfaces require their own documentation in order to be added.
 
 ### Public API Documentation [3.ii]
 
@@ -90,7 +90,7 @@ The nightly test can be found at [here](http://build.ros2.org/view/Rpr/job/Rpr__
 
 `service_msgs` has the following runtime ROS dependencies, which are at **Quality Level 1**:
 * `builtin_interfaces`: [QUALITY DECLARATION](../builtin_interfaces/QUALITY_DECLARATION.md)
-* `rosidl_default_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_defaults/tree/master/rosidl_default_runtime/QUALITY_DECLARATION.md)
+* `rosidl_core_runtime`: [QUALITY DECLARATION](https://github.com/ros2/rosidl_core/tree/master/rosidl_core_runtime/QUALITY_DECLARATION.md)
 * `unique_identifier_msgs`: [QUALITY DECLARATION](https://github.com/ros2/unique_identifier_msgs/tree/master/QUALITY_DECLARATION.md)
 
 It has several "buildtool" dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.
@@ -106,7 +106,6 @@ It has several "buildtool" dependencies, which do not affect the resulting quali
 Currently nightly results can be seen here:
 * [linux-aarch64_release](https://ci.ros2.org/view/nightly/job/nightly_linux-aarch64_release/lastBuild/testReport/service_msgs/)
 * [linux_release](https://ci.ros2.org/view/nightly/job/nightly_linux_release/lastBuild/testReport/service_msgs/)
-* [mac_osx_release](https://ci.ros2.org/view/nightly/job/nightly_osx_release/lastBuild/testReport/service_msgs/)
 * [windows_release](https://ci.ros2.org/view/nightly/job/nightly_win_rel/lastBuild/testReport/service_msgs/)
 
 ## Vulnerability Disclosure Policy [7.i]
