@@ -9,11 +9,11 @@
 # the constructor.
 uint8 TRANSITION_CREATE = 0
 
-# The node’s onConfigure callback will be called to allow the node to load its
+# The node's onConfigure callback will be called to allow the node to load its
 # configuration and conduct any required setup.
 uint8 TRANSITION_CONFIGURE = 1
 
-# The node’s callback onCleanup will be called in this transition to allow the
+# The node's callback onCleanup will be called in this transition to allow the
 # node to load its configuration and conduct any required setup.
 uint8 TRANSITION_CLEANUP = 2
 
