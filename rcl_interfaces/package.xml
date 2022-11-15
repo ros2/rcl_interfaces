@@ -8,10 +8,11 @@
     communicate higher level concepts such as parameters.
   </description>
 
-  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="geoff@openrobotics.org">Geoffrey Biggs</maintainer>
 
   <license>Apache License 2.0</license>
 
+  <author email="clalancette@openrobotics.org">Chris Lalancette</author>
   <author email="michel@ekumenlabs.com">Michel Hidalgo</author>
   <author email="tfoote@osrfoundation.org">Tully Foote</author>
 
