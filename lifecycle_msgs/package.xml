@@ -5,10 +5,11 @@
   <version>1.3.1</version>
   <description>A package containing some lifecycle related message and service definitions.</description>
 
-  <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
+  <maintainer email="geoff@openrobotics.org">Geoffrey Biggs</maintainer>
 
   <license>Apache License 2.0</license>
 
+  <author email="clalancette@openrobotics.org">Chris Lalancette</author>
   <author email="karsten@osrfoundation.org">Karsten Knese</author>
   <author email="michel@ekumenlabs.com">Michel Hidalgo</author>
 
