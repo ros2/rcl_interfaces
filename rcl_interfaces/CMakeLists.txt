@@ -27,12 +27,16 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ParameterType.msg"
   "msg/ParameterValue.msg"
   "msg/SetParametersResult.msg"
+  "msg/LoggerLevel.msg"
+  "msg/SetLoggerLevelsResult.msg"
   "srv/DescribeParameters.srv"
   "srv/GetParameters.srv"
   "srv/GetParameterTypes.srv"
   "srv/ListParameters.srv"
   "srv/SetParametersAtomically.srv"
   "srv/SetParameters.srv"
+  "srv/GetLoggerLevels.srv"
+  "srv/SetLoggerLevels.srv"
   DEPENDENCIES builtin_interfaces
 )
 
