@@ -10,8 +10,11 @@ uint8 event_type
 builtin_interfaces/Time stamp
 
 # Unique identifier for the client that sent the service request
-# Note, this is only unique for the current session
-unique_identifier_msgs/UUID client_id
+# Note, this is only unique for the current session.
+# The size here has to match the size of rmw_dds_common/msg/Gid,
+# but unfortunately we cannot use that message directly due to a
+# circular dependency.
+char[16] client_gid
 
 # Sequence number for the request
 # Combined with the client ID, this creates a unique ID for the service transaction

@@ -15,7 +15,6 @@ find_package(builtin_interfaces REQUIRED)
 # Depend on "core" generators instead of "default" generators
 # because ROS actions depend on this package
 find_package(rosidl_core_generators REQUIRED)
-find_package(unique_identifier_msgs REQUIRED)
 
 set(msg_files
   "msg/ServiceEventInfo.msg"
@@ -23,7 +22,7 @@ set(msg_files
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
-  DEPENDENCIES builtin_interfaces unique_identifier_msgs
+  DEPENDENCIES builtin_interfaces
   ADD_LINTER_TESTS
 )
 

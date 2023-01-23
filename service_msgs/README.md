@@ -15,4 +15,4 @@ This is part of the Service Introspection feature of ROS 2 (see [REP 2012](https
 
 ## Quality Declaration
 
-This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
+See the [Quality Declaration](QUALITY_DECLARATION.md) for more details.

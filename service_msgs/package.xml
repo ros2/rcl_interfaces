@@ -15,7 +15,6 @@
   <buildtool_depend>rosidl_core_generators</buildtool_depend>
 
   <depend>builtin_interfaces</depend>
-  <depend>unique_identifier_msgs</depend>
 
   <exec_depend>rosidl_core_runtime</exec_depend>
 
