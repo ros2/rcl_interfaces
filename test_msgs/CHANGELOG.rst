@@ -2,6 +2,12 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update common_interfaces to C++17. (`#215 <https://github.com/ros2/rcl_interfaces/issues/215>`_) (`#151 <https://github.com/ros2/rcl_interfaces/issues/151>`_)
+* [rolling] Update maintainers - 2022-11-07 (`#150 <https://github.com/ros2/rcl_interfaces/issues/150>`_)
+* Contributors: Audrow Nash, Chris Lalancette
+
 1.3.1 (2022-09-09)
 ------------------
 * Depend on rosidl_core_generators for packages required by actions (`#144 <https://github.com/ros2/rcl_interfaces/issues/144>`_)
