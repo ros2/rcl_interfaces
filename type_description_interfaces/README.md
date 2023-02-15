@@ -15,8 +15,6 @@ This package claims to be in the **Quality Level 1** category, see the [Quality 
 
 ## TODO
 
-* How to store default values, should store default values? Current storing as string, but will impact hashing.
 * Do we (will we) support fixed sized strings vs. just having bounded strings?
 * Should we pick limits (bounds) for strings in these types, e.g. type names, default values, etc?
 * Should we pick limits (bounds) for sequences in these types, e.g. number of referenced types?
-* How should we handle Services and Actions?
