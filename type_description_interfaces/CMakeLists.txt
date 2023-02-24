@@ -20,6 +20,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/FieldType.msg"
   "msg/IndividualTypeDescription.msg"
   "msg/TypeDescription.msg"
+  "srv/GetTypeDescription.srv"
   ADD_LINTER_TESTS
 )
 
