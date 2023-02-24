@@ -12,6 +12,7 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <buildtool_depend>rosidl_core_generators</buildtool_depend>
+  <depend>service_msgs</depend>
 
   <exec_depend>rosidl_core_runtime</exec_depend>
 
