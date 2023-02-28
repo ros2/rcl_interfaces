@@ -21,7 +21,6 @@ uint8 FIELD_TYPE_NOT_SET = 0
 # Nested type defined in other .msg/.idl files.
 uint8 FIELD_TYPE_NESTED_TYPE = 1
 
-# Basic Types
 # Integer Types
 uint8 FIELD_TYPE_INT8 = 2
 uint8 FIELD_TYPE_UINT8 = 3
@@ -132,25 +131,25 @@ uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
 uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
 
 # Identifying number for the type of the field, using one of the above constants.
-uint8 type_id
+uint8 type_id 0
 
 # Only used when the type is an array or a bounded sequence.
 # In the case of an array, this is the fixed length of the array.
-# In the case of a bounded sequence, this is the maximum size of the sequence.
+# In the case of a bounded sequence, this is the maximum capacity of the sequence.
 # In all other cases this field is unused.
-uint64 length
+uint64 capacity
 
 # Only used when the type is a fixed or bounded string/wstring, or a array/sequence of those.
 # In the case of a fixed string/wstring, it is the fixed length of the string.
 # In the case of a bounded string/wstring, it is the maximum length of the string.
 # In the case of an array/sequence of fixed string/wstring, it is the fixed length of the strings.
 # In the case of an array/sequence of bounded string/wstring, it is the maximum length of the strings.
-# It is not currently possible to have different string lengths per element in the array/sequences.
+# It is not currently possible to have different string lengths per element in the array/sequence.
 uint64 string_length
 
 # Only used when the type is a nested type or array/sequence of nested types.
 # This is limited to 255 characters.
-# TODO(wjwwood): this 255 character limit was choosen due to this being the limit
+# TODO(wjwwood): this 255 character limit was chosen due to this being the limit
 #   for DDSI-RTPS based middlewares, which is the most commonly used right now.
 #   We lack a ROS 2 specific limit in our design documents, but we should update
 #   this and/or link to the design doc when that is available.
