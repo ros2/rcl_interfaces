@@ -11,11 +11,10 @@ A package containing message and service definitions for describing and communic
 
 ## Quality Declaration
 
-This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
+See the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
 
 ## TODO
 
-* Do we (will we) support fixed sized strings vs. just having bounded strings?
 * Should we pick limits (bounds) for strings in these types, e.g. type names, default values, etc?
 * Should we pick limits (bounds) for sequences in these types, e.g. number of referenced types?
 * Consider how to support constants and annotations (currently excluded) and potentially enums in the future.
