@@ -134,18 +134,18 @@ uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
 uint8 type_id 0
 
 # Only used when the type is an array or a bounded sequence.
-# In the case of an array, this is the fixed length of the array.
+# In the case of an array, this is the fixed capacity of the array.
 # In the case of a bounded sequence, this is the maximum capacity of the sequence.
 # In all other cases this field is unused.
 uint64 capacity
 
 # Only used when the type is a fixed or bounded string/wstring, or a array/sequence of those.
 # In the case of a fixed string/wstring, it is the fixed length of the string.
-# In the case of a bounded string/wstring, it is the maximum length of the string.
+# In the case of a bounded string/wstring, it is the maximum capacity of the string.
 # In the case of an array/sequence of fixed string/wstring, it is the fixed length of the strings.
-# In the case of an array/sequence of bounded string/wstring, it is the maximum length of the strings.
-# It is not currently possible to have different string lengths per element in the array/sequence.
-uint64 string_length
+# In the case of an array/sequence of bounded string/wstring, it is the maximum capacity of the strings.
+# It is not currently possible to have different string capacities per element in the array/sequence.
+uint64 string_capacity
 
 # Only used when the type is a nested type or array/sequence of nested types.
 # This is limited to 255 characters.
