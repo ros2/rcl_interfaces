@@ -37,6 +37,20 @@
 #include <type_description_interfaces/msg/type_description.h>
 
 
+// Modified from https://stackoverflow.com/questions/4398711/round-to-the-nearest-power-of-two
+int next_power_of_two(int v)
+{
+  v--;
+  v |= v >> 1;
+  v |= v >> 2;
+  v |= v >> 4;
+  v |= v >> 8;
+  v |= v >> 16;
+  v++;   // next power of 2
+
+  return v > 1 ? v : 1;
+}
+
 // =================================================================================================
 // GET BY NAME
 // =================================================================================================
@@ -122,7 +136,7 @@ type_description_interfaces_utils_get_field_map(
   rcutils_ret_t fail_ret = RCUTILS_RET_ERROR;
 
   ret = rcutils_hash_map_init(
-    out, individual_description->fields.size,
+    out, next_power_of_two(individual_description->fields.size),
     sizeof(char *), sizeof(type_description_interfaces__msg__Field *),
     rcutils_hash_map_string_hash_func, rcutils_hash_map_string_cmp_func,
     allocator);
@@ -185,7 +199,7 @@ type_description_interfaces_utils_get_referenced_type_description_map(
   rcutils_ret_t fail_ret = RCUTILS_RET_ERROR;
 
   ret = rcutils_hash_map_init(
-    out, referenced_types->size,
+    out, next_power_of_two(referenced_types->size),
     sizeof(char *), sizeof(type_description_interfaces__msg__IndividualTypeDescription *),
     rcutils_hash_map_string_hash_func, rcutils_hash_map_string_cmp_func,
     allocator);
@@ -197,6 +211,30 @@ type_description_interfaces_utils_get_referenced_type_description_map(
 
   for (size_t i = 0; i < referenced_types->size; i++) {
     type_description_interfaces__msg__IndividualTypeDescription * tmp = &referenced_types->data[i];
+
+    // Check for duplicate referenced types
+    if (rcutils_hash_map_key_exists(out, &referenced_types->data[i].type_name.data)) {
+      type_description_interfaces__msg__IndividualTypeDescription * stored_description;
+      ret = rcutils_hash_map_get(
+        out, &referenced_types->data[i].type_name.data, &stored_description);
+      if (ret != RCUTILS_RET_OK) {
+        RCUTILS_LOG_ERROR(
+          "Could not get stored description: %s", referenced_types->data[i].type_name.data);
+        fail_ret = ret;  // Most likely a RCUTILS_RET_NOT_FOUND
+        goto fail;
+      }
+
+      if (!type_description_interfaces__msg__IndividualTypeDescription__are_equal(
+          &referenced_types->data[i], stored_description))
+      {
+        // Non-identical duplicate referenced types is invalid (it's ambiguous which one to use)
+        RCUTILS_LOG_ERROR(
+          "Passed referenced IndividualTypeDescriptions has non-identical duplicate types");
+        fail_ret = RCUTILS_RET_INVALID_ARGUMENT;
+        goto fail;
+      }
+    }
+
     // Passing tmp is fine even if tmp goes out of scope later since it copies in the set method...
     ret = rcutils_hash_map_set(out, &referenced_types->data[i].type_name.data, &tmp);
     if (ret != RCUTILS_RET_OK) {
@@ -213,12 +251,6 @@ type_description_interfaces_utils_get_referenced_type_description_map(
   if (ret != RCUTILS_RET_OK) {
     RCUTILS_LOG_ERROR("Could not get size of hash map for validation");
     fail_ret = RCUTILS_RET_ERROR;
-    goto fail;
-  }
-
-  if (referenced_types->size != map_length) {  // Duplicate referenced types is invalid
-    RCUTILS_LOG_ERROR("Passed referenced IndividualTypeDescriptions has duplicate types");
-    fail_ret = RCUTILS_RET_INVALID_ARGUMENT;
     goto fail;
   }
 
@@ -279,7 +311,7 @@ type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map
     }
 
     ret = rcutils_hash_map_init(
-      *seen_map, referenced_types_map_size,
+      *seen_map, next_power_of_two(referenced_types_map_size),
       sizeof(char *), sizeof(type_description_interfaces__msg__IndividualTypeDescription *),
       rcutils_hash_map_string_hash_func, rcutils_hash_map_string_cmp_func,
       allocator);
@@ -297,14 +329,14 @@ type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map
     // 3. Skip cases
     // continue if field is not nested type or nested type is in seen map:
     if ((field->type.type_id % TYPE_DESCRIPTION_INTERFACES_UTILS_SEQUENCE_TYPE_ID_DELIMITER) != 1 ||
-      rcutils_hash_map_key_exists(*seen_map, field->type.nested_type_name.data))
+      rcutils_hash_map_key_exists(*seen_map, &field->type.nested_type_name.data))
     {
       continue;
     }
 
     // 4. Error cases
     // Referenced type does not exist
-    if (!rcutils_hash_map_key_exists(referenced_types_map, field->type.nested_type_name.data)) {
+    if (!rcutils_hash_map_key_exists(referenced_types_map, &field->type.nested_type_name.data)) {
       RCUTILS_LOG_ERROR("Missing referenced type: %s", field->type.nested_type_name.data);
       fail_ret = RCUTILS_RET_NOT_FOUND;
       goto fail;
@@ -318,11 +350,12 @@ type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map
 
     // 5. Add to seen map (we didn't skip and didn't error out)
     type_description_interfaces__msg__IndividualTypeDescription * necessary_description;
+
     ret = rcutils_hash_map_get(
-      *seen_map, field->type.nested_type_name.data, &necessary_description);
+      referenced_types_map, &field->type.nested_type_name.data, &necessary_description);
     if (ret != RCUTILS_RET_OK) {
       RCUTILS_LOG_ERROR(
-        "Couldn't get necessary referenced type: %s", field->type.nested_type_name.data);
+        "Could not get necessary referenced type: %s", field->type.nested_type_name.data);
       fail_ret = ret;  // Most likely a RCUTILS_RET_NOT_FOUND
       goto fail;
     }
@@ -339,7 +372,7 @@ type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map
 
     // Add to map (finally!!)
     ret = rcutils_hash_map_set(
-      *seen_map, &field->type.nested_type_name.data, necessary_description);
+      *seen_map, &field->type.nested_type_name.data, &necessary_description);
     if (ret != RCUTILS_RET_OK) {
       RCUTILS_LOG_ERROR("Failed to set hash map for key: %s", field->type.nested_type_name.data);
       fail_ret = ret;
@@ -374,7 +407,8 @@ fail:
 rcutils_ret_t
 type_description_interfaces_utils_copy_init_sequence_from_referenced_type_descriptions_map(
   const rcutils_hash_map_t * hash_map,
-  type_description_interfaces__msg__IndividualTypeDescription__Sequence ** sequence)
+  type_description_interfaces__msg__IndividualTypeDescription__Sequence ** sequence,
+  bool sort)
 {
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(hash_map, RCUTILS_RET_INVALID_ARGUMENT);
   if (*sequence != NULL) {
@@ -421,6 +455,14 @@ type_description_interfaces_utils_copy_init_sequence_from_referenced_type_descri
     status = rcutils_hash_map_get_next_key_and_data(hash_map, &key, &key, &data);
   }
 
+  if (sort) {
+    rcutils_ret_t ret =
+      type_description_interfaces_utils_sort_referenced_type_descriptions_in_place(*sequence);
+    if (ret != RCUTILS_RET_OK) {
+      RCUTILS_LOG_WARN("Could not sort copy of referenced type descriptions for validation");
+    }
+  }
+
   return RCUTILS_RET_OK;
 }
 
@@ -430,9 +472,9 @@ type_description_interfaces_utils_referenced_type_description_sequence_sort_comp
   const void * lhs, const void * rhs)
 {
   type_description_interfaces__msg__IndividualTypeDescription * left =
-    *(type_description_interfaces__msg__IndividualTypeDescription **)lhs;
+    (type_description_interfaces__msg__IndividualTypeDescription *)lhs;
   type_description_interfaces__msg__IndividualTypeDescription * right =
-    *(type_description_interfaces__msg__IndividualTypeDescription **)rhs;
+    (type_description_interfaces__msg__IndividualTypeDescription *)rhs;
   if (left == NULL) {
     return right == NULL ? 0 : 1;
   } else if (right == NULL) {
@@ -450,7 +492,7 @@ type_description_interfaces_utils_sort_referenced_type_descriptions_in_place(
   return rcutils_qsort(
     sequence->data,
     sequence->size,
-    sizeof(sequence->data[0]),
+    sizeof(type_description_interfaces__msg__IndividualTypeDescription),
     type_description_interfaces_utils_referenced_type_description_sequence_sort_compare);
 }
 
@@ -465,9 +507,10 @@ type_description_interfaces_utils_prune_referenced_type_descriptions_in_place(
 
   rcutils_ret_t ret = RCUTILS_RET_ERROR;
   rcutils_ret_t end_ret = RCUTILS_RET_ERROR;
+  rcutils_ret_t fini_ret = RCUTILS_RET_ERROR;
 
   rcutils_hash_map_t * referenced_types_map = NULL;
-  rcutils_hash_map_t * seen_map = NULL;
+  rcutils_hash_map_t * necessary_map = NULL;
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
 
   ret = type_description_interfaces_utils_get_referenced_type_description_map(
@@ -478,86 +521,96 @@ type_description_interfaces_utils_prune_referenced_type_descriptions_in_place(
   }
 
   ret = type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map(
-    main_type_description, referenced_types_map, &allocator, &seen_map);
+    main_type_description, referenced_types_map, &allocator, &necessary_map);
   if (ret != RCUTILS_RET_OK) {
     RCUTILS_LOG_ERROR("Could not construct necessary referenced type description map");
-    return ret;
+    end_ret = ret;
+    goto end_ref;
   }
 
   size_t map_length;
-  ret = rcutils_hash_map_get_size(seen_map, &map_length);
+  ret = rcutils_hash_map_get_size(necessary_map, &map_length);
   if (ret != RCUTILS_RET_OK) {
     RCUTILS_LOG_ERROR("Could not get size of hash map for validation");
     end_ret = RCUTILS_RET_ERROR;
-    goto end;
+    goto end_necessary;
   }
   // End early if pruning was not needed
-  if ((referenced_types)->size == map_length) {
+  if (referenced_types->size == map_length) {
     end_ret = RCUTILS_RET_OK;
-    goto end;
+    goto end_necessary;
   }
 
-  // Otherwise, we need to rearrange and resize the sequence
-  type_description_interfaces__msg__IndividualTypeDescription__Sequence * out =
-    type_description_interfaces__msg__IndividualTypeDescription__Sequence__create(map_length);
-
-  // First obtain all necessary types
   size_t append_count = 0;
-  for (size_t i = 0; i < referenced_types->size; i++) {
-    if (rcutils_hash_map_key_exists(seen_map, referenced_types->data[i].type_name.data)) {
-      // Transfer ownership of necessary referenced types from input sequence to output sequence,
-      // NOTE(methylDragon): We can't just swap the sequence elements with NULL since they're
-      //                     values, not pointers...
-      out->data[append_count++] = referenced_types->data[i];
-    } else {
-      // Deleting unnecessary referenced types otherwise
-      type_description_interfaces__msg__IndividualTypeDescription__destroy(
-        &referenced_types->data[i]);
+  char * key;
+  type_description_interfaces__msg__IndividualTypeDescription * data = NULL;
+  rcutils_ret_t status = rcutils_hash_map_get_next_key_and_data(necessary_map, NULL, &key, &data);
+  while (RCUTILS_RET_OK == status) {
+    if (strcmp(key, data->type_name.data) != 0) {
+      RCUTILS_LOG_ERROR(
+        "Necessary referenced type name (%s) did not match key (%s)", data->type_name.data, key);
+      end_ret = RCUTILS_RET_ERROR;
+      goto end_necessary;
     }
+
+    // Deep copy if necessary
+    if (!type_description_interfaces__msg__IndividualTypeDescription__are_equal(
+        data, &referenced_types->data[append_count]))
+    {
+      if (!type_description_interfaces__msg__IndividualTypeDescription__copy(
+          data, &referenced_types->data[append_count++]))
+      {
+        RCUTILS_LOG_ERROR(
+          "Could not copy necessary referenced type description %s to rearrange", key);
+        end_ret = RCUTILS_RET_ERROR;
+        goto end_necessary;
+      }
+    } else {
+      append_count++;
+    }
+    status = rcutils_hash_map_get_next_key_and_data(necessary_map, &key, &key, &data);
   }
 
-  // Then rearrange the input referenced types sequence
-  for (size_t i = 0; i < append_count; i++) {
-    // This is a deep copy, so we don't need to worry about managing pointers in the rearrange
-    if (!type_description_interfaces__msg__IndividualTypeDescription__copy(
-        &out->data[i], &referenced_types->data[i]))
-    {
-      RCUTILS_LOG_ERROR(
-        "Could not copy necessary referenced type description sequence during rearrangement! "
-        "Beware! The referenced type descriptions was likely already partially modified in place!");
-      end_ret = RCUTILS_RET_ERROR;
-      type_description_interfaces__msg__IndividualTypeDescription__Sequence__destroy(out);
-      goto end;
-    }
-  }
-  // Delete entries after the section of necessary referenced types, and shrink the input sequence
+  // Finalize entries after the section of necessary referenced types, and shrink the input sequence
   for (size_t i = append_count; i < referenced_types->size; i++) {
-    type_description_interfaces__msg__IndividualTypeDescription__destroy(
+    type_description_interfaces__msg__IndividualTypeDescription__fini(
       &referenced_types->data[i]);
   }
-  if (allocator.reallocate(referenced_types->data, append_count, allocator.state) == NULL) {
+  size_t allocation_size =
+    append_count * sizeof(type_description_interfaces__msg__IndividualTypeDescription);
+
+  type_description_interfaces__msg__IndividualTypeDescription * next_ptr =
+    allocator.reallocate(referenced_types->data, allocation_size, allocator.state);
+  if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR(
       "Could not shrink the necessary referenced type descriptions sequence during rearrangement! "
       "Beware! The referenced type descriptions was likely already partially modified in place!");
     end_ret = RCUTILS_RET_BAD_ALLOC;
-    type_description_interfaces__msg__IndividualTypeDescription__Sequence__destroy(out);
-    goto end;
+    goto end_necessary;
   }
+  referenced_types->data = next_ptr;
   referenced_types->size = append_count;
   referenced_types->capacity = append_count;
 
-  type_description_interfaces__msg__IndividualTypeDescription__Sequence__destroy(out);
   end_ret = RCUTILS_RET_OK;
 
-end:
+end_necessary:
   {
-    rcutils_ret_t fini_ret = rcutils_hash_map_fini(seen_map);
+    fini_ret = rcutils_hash_map_fini(necessary_map);
     if (fini_ret != RCUTILS_RET_OK) {
       RCUTILS_LOG_ERROR("Failed to finalize hash map");
     }
-    allocator.deallocate(seen_map, allocator.state);
+    allocator.deallocate(necessary_map, allocator.state);
   }
 
+end_ref:
+  {
+    fini_ret = rcutils_hash_map_fini(referenced_types_map);
+    if (fini_ret != RCUTILS_RET_OK) {
+      RCUTILS_LOG_ERROR("Failed to finalize hash map");
+    }
+    allocator.deallocate(referenced_types_map, allocator.state);
+  }
   return end_ret;
 }
 
@@ -573,7 +626,7 @@ type_description_interfaces_utils_field_is_valid(type_description_interfaces__ms
     RCUTILS_LOG_WARN("Field is invalid: Empty name");
     return false;
   }
-  if ((field->type.type_id % TYPE_DESCRIPTION_INTERFACES_UTILS_SEQUENCE_TYPE_ID_DELIMITER) != 0) {
+  if ((field->type.type_id % TYPE_DESCRIPTION_INTERFACES_UTILS_SEQUENCE_TYPE_ID_DELIMITER) == 0) {
     RCUTILS_LOG_WARN("Field `%s` is invalid: Unset type ID", field->name.data);
     return false;
   }
@@ -936,42 +989,46 @@ type_description_interfaces_utils_append_field(
     (individual_type_description->fields.size + 1) *
     sizeof(type_description_interfaces__msg__Field)
   );
+  size_t last_index = individual_type_description->fields.size;
   type_description_interfaces__msg__Field * next_ptr = allocator.reallocate(
     individual_type_description->fields.data, allocation_size, allocator.state);
   if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR("Could not realloc individual type description fields sequence");
     return RCUTILS_RET_BAD_ALLOC;
   }
+  individual_type_description->fields.data = next_ptr;
+  individual_type_description->fields.size += 1;
+  individual_type_description->fields.capacity += 1;
 
-  if (!type_description_interfaces__msg__Field__init(next_ptr)) {
+  if (!type_description_interfaces__msg__Field__init(&next_ptr[last_index])) {
     RCUTILS_LOG_ERROR("Could not init new individual type description field element");
     fini_ret = RCUTILS_RET_BAD_ALLOC;
     goto fail;
   }
 
-  if (!type_description_interfaces__msg__Field__copy(field, next_ptr)) {
+  if (!type_description_interfaces__msg__Field__copy(field, &next_ptr[last_index])) {
     RCUTILS_LOG_ERROR("Could not copy into new individual type description field element");
-    type_description_interfaces__msg__Field__fini(next_ptr);
+    type_description_interfaces__msg__Field__fini(&next_ptr[last_index]);
     fini_ret = RCUTILS_RET_ERROR;
     goto fail;
   }
 
-  individual_type_description->fields.data = next_ptr;
-  individual_type_description->fields.size += 1;
-  individual_type_description->fields.capacity += 1;
   return RCUTILS_RET_OK;
 
 fail:
+  // Attempt to undo on failure
   next_ptr = allocator.reallocate(
     individual_type_description->fields.data,
-    individual_type_description->fields.size,
+    individual_type_description->fields.size * sizeof(type_description_interfaces__msg__Field),
     allocator.state);
   if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR(
       "Could not shorten individual type description fields sequence. "
       "Excess memory will be UNINITIALIZED!");
-    individual_type_description->fields.size += 1;
-    individual_type_description->fields.capacity += 1;
+  } else {
+    individual_type_description->fields.data = next_ptr;
+    individual_type_description->fields.size -= 1;
+    individual_type_description->fields.capacity -= 1;
   }
   return fini_ret;
 }
@@ -987,40 +1044,39 @@ type_description_interfaces_utils_append_referenced_individual_type_description(
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(referenced_type_description, RCUTILS_RET_INVALID_ARGUMENT);
 
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
+  rcutils_ret_t fini_ret = RCUTILS_RET_ERROR;
+
+  size_t allocation_size = (
+    (type_description->referenced_type_descriptions.size + 1) *
+    sizeof(type_description_interfaces__msg__IndividualTypeDescription)
+  );
+  size_t last_index = type_description->referenced_type_descriptions.size;
 
   type_description_interfaces__msg__IndividualTypeDescription * next_ptr = allocator.reallocate(
-    type_description->referenced_type_descriptions.data,
-    type_description->referenced_type_descriptions.size + 1,
-    allocator.state);
+    type_description->referenced_type_descriptions.data, allocation_size, allocator.state);
   if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR("Could not realloc type description referenced type descriptions sequence");
     return RCUTILS_RET_BAD_ALLOC;
   }
+  type_description->referenced_type_descriptions.data = next_ptr;
+  type_description->referenced_type_descriptions.size += 1;
+  type_description->referenced_type_descriptions.capacity += 1;
 
-  if (!type_description_interfaces__msg__IndividualTypeDescription__init(next_ptr)) {
+  if (!type_description_interfaces__msg__IndividualTypeDescription__init(&next_ptr[last_index])) {
     RCUTILS_LOG_ERROR("Could not init new type description referenced type descriptions element");
-    return RCUTILS_RET_BAD_ALLOC;
+    fini_ret = RCUTILS_RET_BAD_ALLOC;
+    goto fail;
   }
 
   if (!type_description_interfaces__msg__IndividualTypeDescription__copy(
-      referenced_type_description, next_ptr))
+      referenced_type_description, &next_ptr[last_index]))
   {
     // Attempt to undo changes on failure
     RCUTILS_LOG_ERROR(
       "Could not copy into new type description referenced type descriptions element");
-    type_description_interfaces__msg__IndividualTypeDescription__fini(next_ptr);
-    next_ptr = allocator.reallocate(
-      type_description->referenced_type_descriptions.data,
-      type_description->referenced_type_descriptions.size,
-      allocator.state);
-    if (next_ptr == NULL) {
-      RCUTILS_LOG_ERROR(
-        "Could not shorten type description referenced type descriptions sequence. "
-        "Excess memory will be UNINITIALIZED!");
-      type_description->referenced_type_descriptions.size += 1;
-      type_description->referenced_type_descriptions.capacity += 1;
-    }
-    return RCUTILS_RET_ERROR;
+    type_description_interfaces__msg__IndividualTypeDescription__fini(&next_ptr[last_index]);
+    fini_ret = RCUTILS_RET_ERROR;
+    goto fail;
   }
 
   if (sort) {
@@ -1031,10 +1087,27 @@ type_description_interfaces_utils_append_referenced_individual_type_description(
       RCUTILS_LOG_WARN("Could not sort copy of referenced type descriptions for validation");
     }
   }
-
-  type_description->referenced_type_descriptions.size += 1;
-  type_description->referenced_type_descriptions.capacity += 1;
   return RCUTILS_RET_OK;
+
+fail:
+  // Attempt to undo on failure
+  next_ptr = allocator.reallocate(
+    type_description->referenced_type_descriptions.data,
+    (
+      type_description->referenced_type_descriptions.size *
+      sizeof(type_description_interfaces__msg__IndividualTypeDescription)
+    ),
+    allocator.state);
+  if (next_ptr == NULL) {
+    RCUTILS_LOG_ERROR(
+      "Could not shorten type description referenced type descriptions sequence. "
+      "Excess memory will be UNINITIALIZED!");
+  } else {
+    type_description->referenced_type_descriptions.data = next_ptr;
+    type_description->referenced_type_descriptions.size -= 1;
+    type_description->referenced_type_descriptions.capacity -= 1;
+  }
+  return fini_ret;
 }
 
 
@@ -1046,30 +1119,26 @@ type_description_interfaces_utils_append_referenced_type_description(
 {
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(type_description, RCUTILS_RET_INVALID_ARGUMENT);
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(type_description_to_append, RCUTILS_RET_INVALID_ARGUMENT);
-  if (coerce_to_valid &&
-    !type_description_interfaces_utils_type_description_is_valid(type_description_to_append))
-  {
-    RCUTILS_LOG_ERROR(
-      "`type_description_to_append` is invalid, it must be valid if `coerce_to_valid is true`");
-    return RCUTILS_RET_INVALID_ARGUMENT;
-  }
 
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
   rcutils_ret_t fini_ret = RCUTILS_RET_ERROR;
 
   // +1 for the type_description_to_append's main type description
-  size_t extend_size = type_description_to_append->referenced_type_descriptions.size + 1;
+  size_t extend_count = type_description_to_append->referenced_type_descriptions.size + 1;
+  size_t allocation_size = (
+    (type_description->referenced_type_descriptions.size + extend_count) *
+    sizeof(type_description_interfaces__msg__IndividualTypeDescription)
+  );
   type_description_interfaces__msg__IndividualTypeDescription * next_ptr = allocator.reallocate(
-    type_description->referenced_type_descriptions.data,
-    type_description->referenced_type_descriptions.size + extend_size,
-    allocator.state);
+    type_description->referenced_type_descriptions.data, allocation_size, allocator.state);
   if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR("Could not realloc type description referenced type descriptions sequence");
     return RCUTILS_RET_BAD_ALLOC;
   }
 
   size_t init_reset_size = 0;
-  for (size_t i = 0; i < extend_size; i++) {
+  size_t last_index = type_description->referenced_type_descriptions.size;
+  for (size_t i = last_index; i < last_index + extend_count; i++) {
     if (!type_description_interfaces__msg__IndividualTypeDescription__init(&next_ptr[i])) {
       RCUTILS_LOG_ERROR("Could not init new type description referenced type descriptions element");
       fini_ret = RCUTILS_RET_BAD_ALLOC;
@@ -1080,7 +1149,7 @@ type_description_interfaces_utils_append_referenced_type_description(
 
   // Copy type_description_to_append's main type description
   if (!type_description_interfaces__msg__IndividualTypeDescription__copy(
-      &type_description_to_append->type_description, next_ptr))
+      &type_description_to_append->type_description, &next_ptr[last_index]))
   {
     RCUTILS_LOG_ERROR(
       "Could not copy into new type description referenced type descriptions element");
@@ -1089,20 +1158,22 @@ type_description_interfaces_utils_append_referenced_type_description(
   }
 
   // Copy type_description_to_append's referenced type descriptions
-  // There are (extend_size - 1) referenced type descriptions to copy
-  for (size_t i = 1; i < extend_size; i++) {
+  // There are (extend_count - 1) referenced type descriptions to copy
+  for (size_t i = last_index + 1; i < last_index + extend_count; i++) {
     if (!type_description_interfaces__msg__IndividualTypeDescription__copy(
-        &type_description_to_append->referenced_type_descriptions.data[i - 1], &next_ptr[i]))
+        &type_description_to_append->referenced_type_descriptions.data[i - 1 - last_index],
+        &next_ptr[i]))
     {
-      RCUTILS_LOG_ERROR("Could not init new type description referenced type descriptions element");
+      RCUTILS_LOG_ERROR("Could not copy new type description referenced type descriptions element");
       fini_ret = RCUTILS_RET_BAD_ALLOC;
       goto fail;
     }
     init_reset_size += 1;
   }
 
-  type_description->referenced_type_descriptions.size += extend_size;
-  type_description->referenced_type_descriptions.capacity += extend_size;
+  type_description->referenced_type_descriptions.data = next_ptr;
+  type_description->referenced_type_descriptions.size += extend_count;
+  type_description->referenced_type_descriptions.capacity += extend_count;
 
   if (coerce_to_valid) {
     rcutils_ret_t ret =
@@ -1117,19 +1188,22 @@ type_description_interfaces_utils_append_referenced_type_description(
 
 fail:
   // Attempt to undo changes on failure
-  for (size_t j = 0; j < init_reset_size; j++) {
+  for (size_t j = last_index; j < last_index + init_reset_size; j++) {
     type_description_interfaces__msg__IndividualTypeDescription__fini(&next_ptr[j]);
   }
   next_ptr = allocator.reallocate(
     type_description->referenced_type_descriptions.data,
-    type_description->referenced_type_descriptions.size,
+    (
+      type_description->referenced_type_descriptions.size *
+      sizeof(type_description_interfaces__msg__IndividualTypeDescription)
+    ),
     allocator.state);
   if (next_ptr == NULL) {
     RCUTILS_LOG_ERROR(
       "Could not shorten type description referenced type descriptions sequence. "
       "Excess memory will be UNINITIALIZED!");
-    type_description->referenced_type_descriptions.size += extend_size;
-    type_description->referenced_type_descriptions.capacity += extend_size;
+    type_description->referenced_type_descriptions.size += extend_count;
+    type_description->referenced_type_descriptions.capacity += extend_count;
   }
   return fini_ret;
 }
@@ -1139,7 +1213,8 @@ rcutils_ret_t
 type_description_interfaces_utils_get_referenced_type_description_as_type_description(
   type_description_interfaces__msg__TypeDescription * parent_description,
   type_description_interfaces__msg__IndividualTypeDescription * referenced_description,
-  type_description_interfaces__msg__TypeDescription ** output_description)
+  type_description_interfaces__msg__TypeDescription ** output_description,
+  bool coerce_to_valid)
 {
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(parent_description, RCUTILS_RET_INVALID_ARGUMENT);
   RCUTILS_CHECK_ARGUMENT_FOR_NULL(referenced_description, RCUTILS_RET_INVALID_ARGUMENT);
@@ -1173,13 +1248,15 @@ type_description_interfaces_utils_get_referenced_type_description_as_type_descri
     return RCUTILS_RET_ERROR;
   }
 
-  rcutils_ret_t ret =
-    type_description_interfaces_utils_coerce_to_valid_type_description_in_place(*output_description);
-  if (ret != RCUTILS_RET_OK) {
-    RCUTILS_LOG_ERROR("Could not coerce output type description to valid");
-    type_description_interfaces__msg__TypeDescription__destroy(*output_description);
-    *output_description = NULL;
-    return ret;
+  if (coerce_to_valid) {
+    rcutils_ret_t ret = type_description_interfaces_utils_coerce_to_valid_type_description_in_place(
+      *output_description);
+    if (ret != RCUTILS_RET_OK) {
+      RCUTILS_LOG_ERROR("Could not coerce output type description to valid");
+      type_description_interfaces__msg__TypeDescription__destroy(*output_description);
+      *output_description = NULL;
+      return ret;
+    }
   }
   return RCUTILS_RET_OK;
 }
@@ -1279,9 +1356,9 @@ type_description_interfaces_utils_print_field_map(const rcutils_hash_map_t * has
   rcutils_ret_t status = rcutils_hash_map_get_next_key_and_data(hash_map, NULL, &key, &data);
   while (RCUTILS_RET_OK == status) {
     if (key == NULL) {
-      printf("== KEY: %s ==\n", key);
+      printf("\n== KEY: %s ==\n", key);
     } else {
-      printf("== KEY: \"%s\" ==\n", key);
+      printf("\n== KEY: \"%s\" ==\n", key);
     }
     type_description_interfaces_utils_print_field(data);
     status = rcutils_hash_map_get_next_key_and_data(hash_map, &key, &key, &data);
@@ -1298,9 +1375,9 @@ type_description_interfaces_utils_print_referenced_type_description_map(
   rcutils_ret_t status = rcutils_hash_map_get_next_key_and_data(hash_map, NULL, &key, &data);
   while (RCUTILS_RET_OK == status) {
     if (key == NULL) {
-      printf("== KEY: %s ==\n", key);
+      printf("\n== KEY: %s ==\n", key);
     } else {
-      printf("== KEY: \"%s\" ==\n", key);
+      printf("\n== KEY: \"%s\" ==\n", key);
     }
     type_description_interfaces_utils_print_individual_type_description(data);
     status = rcutils_hash_map_get_next_key_and_data(hash_map, &key, &key, &data);

@@ -162,6 +162,8 @@ type_description_interfaces_utils_get_field_map(
 /// objects, keyed by type name.
 /**
  * NOTE: The `hash_map` output arg must be passed in pointing to `NULL`.
+ *       Furthermore, if the input `referenced_types` sequence has types with identical names but
+ *       differing structures, this function will return `RCUTILS_RET_INVALID_ARGUMENT` and fail.
  *
  * Ownership:
  * - The caller assumes ownership of the output `rcutils_hash_map_t` and must free it and its
@@ -289,6 +291,7 @@ type_description_interfaces_utils_get_necessary_referenced_type_descriptions_map
  * \param[out] sequence the `IndividualTypeDescription__Sequence` containing copies of the
  *                      `IndividualTypeDescription` objects stored in the values of the input
  *                      `hash_map` arg. Must point to `NULL`, outputs pointing to `NULL` if error.
+ * \param[in] sort sorts the referenced type descriptions if true, best effort
  * \return #RCUTILS_RET_OK if successful, or
  * \return #RCUTILS_RET_INVALID_ARGUMENT for invalid arguments, or
  * \return #RCUTILS_RET_BAD_ALLOC if memory allocation fails, or
@@ -298,7 +301,8 @@ TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
 rcutils_ret_t
 type_description_interfaces_utils_copy_init_sequence_from_referenced_type_descriptions_map(
   const rcutils_hash_map_t * hash_map,
-  type_description_interfaces__msg__IndividualTypeDescription__Sequence ** sequence);
+  type_description_interfaces__msg__IndividualTypeDescription__Sequence ** sequence,
+  bool sort);
 
 /// Comparison for type_description_interfaces_utils_sort_referenced_type_descriptions_in_place
 TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
@@ -312,8 +316,9 @@ type_description_interfaces_utils_sort_referenced_type_descriptions_in_place(
   type_description_interfaces__msg__IndividualTypeDescription__Sequence * sequence);
 
 /// Remove unnecessary referenced type descriptions from a sequence of referenced types.
-/// IndividualTypeDescription elements are moved around in-place.
-/// DOES NOT SORT AFTER PRUNING!!
+/// IndividualTypeDescription elements are COPY ASSIGNED in-place, and the original sequence is
+/// shrunken afterwards.
+/// NOTE: DOES NOT SORT AFTER PRUNING! Call sort separately.
 TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
 rcutils_ret_t
 type_description_interfaces_utils_prune_referenced_type_descriptions_in_place(
@@ -363,7 +368,7 @@ type_description_interfaces_utils_type_description_is_valid(
   type_description_interfaces__msg__TypeDescription * description);
 
 /// This is on a best effort basis, it won't work if the fields of the main or necessary referenced
-/// types are invalid
+/// types are invalid. It prunes then sorts.
 TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
 rcutils_ret_t
 type_description_interfaces_utils_coerce_to_valid_type_description_in_place(
@@ -587,13 +592,14 @@ type_description_interfaces_utils_append_referenced_type_description(
   type_description_interfaces__msg__TypeDescription * type_description_to_append,
   bool coerce_to_valid);
 
-// Copy main type description, then validate
+// Copy main type description, then validate if coerce_to_valid is true
 TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
 rcutils_ret_t
 type_description_interfaces_utils_get_referenced_type_description_as_type_description(
   type_description_interfaces__msg__TypeDescription * parent_description,
   type_description_interfaces__msg__IndividualTypeDescription * referenced_description,
-  type_description_interfaces__msg__TypeDescription ** output_description);
+  type_description_interfaces__msg__TypeDescription ** output_description,
+  bool coerce_to_valid);
 
 
 // =================================================================================================
