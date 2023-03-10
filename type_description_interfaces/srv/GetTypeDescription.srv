@@ -1,4 +1,7 @@
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format
 string type_name
+
+# REP-2011 RIHS hash string, which looks like RIHSxx_hashvalue
 string type_version_hash
 ---
 # True if the type description information is available and populated in the response
@@ -8,9 +11,14 @@ string failure_reason
 
 # The idl or msg file name
 string type_description_raw_file_name
+
 # The idl or msg file, with comments and whitespace
 # The file extension and/or the contents can be used to determine the format
+# This contains all recursive raw files, each separated by a line of 80 '=' characters
+# The order will be the same as the TypeDescription -
+# which is top level interface then referenced type descriptions in alphabetical order by type_name
 string type_description_raw
+
 # The parsed type description which can be used programmatically
 TypeDescription type_description
 
