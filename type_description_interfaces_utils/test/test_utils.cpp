@@ -12,20 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdlib.h>
-
-#include <cstring>
-#include <gtest/gtest.h>
-
+#include <type_description_interfaces/msg/field.h>
+#include <type_description_interfaces/msg/individual_type_description.h>
+#include <type_description_interfaces/msg/type_description.h>
 #include <type_description_interfaces_utils/utils.h>
 
 #include <rcutils/types/rcutils_ret.h>
 #include <rcutils/types/hash_map.h>
 #include <rosidl_runtime_c/string_functions.h>
 
-#include <type_description_interfaces/msg/field.h>
-#include <type_description_interfaces/msg/individual_type_description.h>
-#include <type_description_interfaces/msg/type_description.h>
+#include <stdlib.h>
+#include <gtest/gtest.h>
+
+#include <cstring>
 
 
 TEST(TestUtils, test_basic_construction)

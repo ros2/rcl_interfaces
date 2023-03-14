@@ -20,10 +20,9 @@
 //                     borrows, whereas the message structs copy.
 //                     So lifetime should be managed by the message structs.
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-
+#include <type_description_interfaces/msg/field.h>
+#include <type_description_interfaces/msg/individual_type_description.h>
+#include <type_description_interfaces/msg/type_description.h>
 #include <type_description_interfaces_utils/utils.h>
 
 #include <rcutils/logging_macros.h>
@@ -32,9 +31,9 @@
 #include <rcutils/types/hash_map.h>
 #include <rosidl_runtime_c/string_functions.h>
 
-#include <type_description_interfaces/msg/field.h>
-#include <type_description_interfaces/msg/individual_type_description.h>
-#include <type_description_interfaces/msg/type_description.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
 
 // Modified from https://stackoverflow.com/questions/4398711/round-to-the-nearest-power-of-two
