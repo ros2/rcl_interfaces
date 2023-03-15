@@ -13,11 +13,10 @@
 
   <buildtool_depend>ament_cmake_ros</buildtool_depend>
 
-  <build_depend>rcutils</build_depend>
-  <build_depend>type_description_interfaces</build_depend>
+  <depend>rcutils</depend>
+  <depend>type_description_interfaces_static</depend>
 
-  <test_depend>rcutils</test_depend>
-  <test_depend>type_description_interfaces</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

@@ -19,7 +19,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 find_package(ament_cmake_ros REQUIRED)
 find_package(rcutils REQUIRED)
-find_package(type_description_interfaces REQUIRED)
+find_package(type_description_interfaces_static REQUIRED)
 
 ###########
 ## Build ##
@@ -31,7 +31,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC
   rcutils::rcutils
-  ${type_description_interfaces_TARGETS}
+  type_description_interfaces_static::type_description_interfaces_static
 )
 
 #############
@@ -61,8 +61,8 @@ install(DIRECTORY include/
 ament_export_targets(${PROJECT_NAME}-export HAS_LIBRARY_TARGET)
 ament_export_dependencies(
   ament_cmake_ros
-  type_description_interfaces
   rcutils
+  type_description_interfaces_static
 )
 
 ament_package()
