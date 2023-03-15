@@ -3,25 +3,40 @@ string type_name
 
 # REP-2011 RIHS hash string, which looks like RIHSxx_hashvalue
 string type_version_hash
+
+# Whether to return the raw idl or msg file(s) in the response, if available
+bool include_raw_description true
 ---
+# include_raw_description requested, and provided successfully
+uint8 RAW_DESCRIPTION_REQUESTED_PROVIDED = 0
+# include_raw_description disabled, so type_description_raw was left empty
+uint8 RAW_DESCRIPTION_NOT_REQUESTED_NOT_PROVIDED = 1
+# include_raw_description requested, but no raw version available (perhaps for )
+uint8 RAW_DESCRIPTION_REQUESTED_NOT_AVAILABLE = 2
+
 # True if the type description information is available and populated in the response
 bool successful
-# Empty if 'successful' was true, otherwise contains details on why it failed
-string failure_reason
+# If `successful` is false, contains a reason for failure.
+# On success, may contain a reason for missing type_description_raw.
+string reason
+
+# Contains a value from RAW_DESCRIPTION_ constants,
+# explaining the value of `type_description_raw_file_name` and  `type_description_raw`
+uint8 type_description_raw_result
 
 # The idl or msg file name
+# Empty if not available, which will be noted in `reason`
 string type_description_raw_file_name
 
 # The idl or msg file, with comments and whitespace
 # The file extension and/or the contents can be used to determine the format
 # This contains all recursive raw files, each separated by a line of 80 '=' characters
 # The order will be the same as the TypeDescription -
-# which is top level interface then referenced type descriptions in alphabetical order by type_name
+# which is top level interface, then referenced type descriptions in alphabetical order by type_name
 string type_description_raw
 
 # The parsed type description which can be used programmatically
 TypeDescription type_description
 
 # Key-value pairs of extra information.
-string[] extra_information_keys
-string[] extra_information_values
+KeyValue[] extra_information
