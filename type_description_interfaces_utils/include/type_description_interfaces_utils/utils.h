@@ -596,7 +596,7 @@ type_description_interfaces_utils_append_referenced_type_description(
 TYPE_DESCRIPTION_INTERFACES_UTILS_PUBLIC
 rcutils_ret_t
 type_description_interfaces_utils_get_referenced_type_description_as_type_description(
-  type_description_interfaces__msg__TypeDescription * parent_description,
+  type_description_interfaces__msg__IndividualTypeDescription__Sequence * referenced_descriptions,
   type_description_interfaces__msg__IndividualTypeDescription * referenced_description,
   type_description_interfaces__msg__TypeDescription ** output_description,
   bool coerce_to_valid);
