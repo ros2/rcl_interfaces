@@ -11,17 +11,18 @@ bool include_raw_description true
 uint8 RAW_DESCRIPTION_REQUESTED_PROVIDED = 0
 # include_raw_description disabled, so type_description_raw was left empty
 uint8 RAW_DESCRIPTION_NOT_REQUESTED_NOT_PROVIDED = 1
-# include_raw_description requested, but no raw version available (perhaps for )
+# include_raw_description requested, but no raw version available (perhaps for dynamically created types)
 uint8 RAW_DESCRIPTION_REQUESTED_NOT_AVAILABLE = 2
 
 # True if the type description information is available and populated in the response
+# If false, all other fields except `reason` are considered undefined
 bool successful
 # If `successful` is false, contains a reason for failure.
 # On success, may contain a reason for missing type_description_raw.
 string reason
 
-# Contains a value from RAW_DESCRIPTION_ constants,
-# explaining the value of `type_description_raw_file_name` and  `type_description_raw`
+# Contains a value from RAW_DESCRIPTION_ constants, explaining whether the
+# `type_description_raw_file_name` and `type_description_raw` fields contain valid data.
 uint8 type_description_raw_result
 
 # The idl or msg file name
