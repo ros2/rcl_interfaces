@@ -2,7 +2,7 @@
 string type_name
 
 # REP-2011 RIHS hash string, which looks like RIHSxx_hashvalue
-string type_version_hash
+string type_hash
 
 # Whether to return the original idl or msg file(s) in the response, if available
 bool include_type_sources true
