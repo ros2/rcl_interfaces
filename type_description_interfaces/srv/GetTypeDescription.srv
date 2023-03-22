@@ -1,36 +1,26 @@
-# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
 string type_name
 
-# REP-2011 RIHS hash string, which looks like RIHSxx_hashvalue
+# REP-2011 RIHS hash string.
 string type_hash
 
-# Whether to return the original idl or msg file(s) in the response, if available
+# Whether to return the original idl/msg/etc. source file(s) in the response.
 bool include_type_sources true
 ---
-# sources requested, and provided successfully
-uint8 SOURCES_REQUESTED_PROVIDED = 0
-# sources disabled, so type_sources was left empty
-uint8 SOURCES_NOT_REQUESTED_NOT_PROVIDED = 1
-# sources requested, but no source available (perhaps for dynamically created types)
-uint8 SOURCES_REQUESTED_NOT_AVAILABLE = 2
-
-# True if the type description information is available and populated in the response
-# If false, all other fields except `reason` are considered undefined
+# True if the type description information is available and populated in the response.
+# If false, all other fields except `failure_reason` are considered undefined.
 bool successful
 # If `successful` is false, contains a reason for failure.
-# On success, may contain a reason for missing sources.
-string reason
+# If `successful` is true, this is left empty.
+string failure_reason
 
-# Contains a value from above constants, explaining whether the
-# `type_sources` fields contain valid data.
-uint8 type_sources_result
-
-# List of idl or msg/srv/action source files, including all comments and whitespace.
-# Sources can be matched with IndividualTypeDescriptions by their type_name
-TypeSource[] type_sources
-
-# The parsed type description which can be used programmatically
+# The parsed type description which can be used programmatically.
 TypeDescription type_description
+
+# List of sources, including all comments and whitespace.
+# Sources can be matched with IndividualTypeDescriptions by their `type_name`.
+# The `encoding` field of each entry informs how to interpret its contents.
+TypeSource[] type_sources
 
 # Key-value pairs of extra information.
 KeyValue[] extra_information

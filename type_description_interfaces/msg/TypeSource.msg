@@ -1,16 +1,12 @@
 # Represents the original source of a ROS 2 interface definition.
 
-uint8 ENCODING_NOT_SET = 0
-uint8 ENCODING_MSG = 1
-uint8 ENCODING_SRV = 2
-uint8 ENCODING_ACTION = 3
-uint8 ENCODING_IDL = 4
-
-# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
 string type_name
 
-# The type of the original source file, from the above constants
-uint8 encoding
+# The type of the original source file, typically matching the file extension.
+# Well-known encodings: "idl", "msg", "srv", "action", "dynamic".
+string encoding
 
-# Dumped contents of the interface definition source file
+# Dumped contents of the interface definition source file.
+# If this was a type created programmatically (encoding "dynamic"), this field will be empty.
 string raw_file_contents
