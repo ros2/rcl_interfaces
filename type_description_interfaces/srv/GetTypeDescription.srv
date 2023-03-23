@@ -17,7 +17,10 @@ string failure_reason
 # The parsed type description which can be used programmatically.
 TypeDescription type_description
 
-# List of sources, including all comments and whitespace.
+# A list containing the interface definition source text of the requested type,
+# plus all types it recursively depends on.
+# Each source text is a copy of the original contents of the
+# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.
 # Sources can be matched with IndividualTypeDescriptions by their `type_name`.
 # The `encoding` field of each entry informs how to interpret its contents.
 TypeSource[] type_sources
