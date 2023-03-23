@@ -13,6 +13,8 @@
 
   <buildtool_depend>rosidl_core_generators</buildtool_depend>
 
+  <depend>service_msgs</depend>
+
   <exec_depend>rosidl_core_runtime</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
