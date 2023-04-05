@@ -24,6 +24,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ParameterEventDescriptors.msg"
   "msg/ParameterEvent.msg"
   "msg/Parameter.msg"
+  "msg/Parameters.msg"
   "msg/ParameterType.msg"
   "msg/ParameterValue.msg"
   "msg/SetParametersResult.msg"
