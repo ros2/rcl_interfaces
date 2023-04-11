@@ -2,8 +2,8 @@
 Changelog for package type_description_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.5.0 (2023-04-11)
+------------------
 * Add GetTypeDescription.srv (rep2011) (`#153 <https://github.com/ros2/rcl_interfaces/issues/153>`_)
 * new package and interfaces for describing other types (`#146 <https://github.com/ros2/rcl_interfaces/issues/146>`_)
 * Contributors: Emerson Knapp, William Woodall
