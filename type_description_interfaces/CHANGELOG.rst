@@ -1,15 +1,15 @@
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package service_msgs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package type_description_interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Forthcoming
 -----------
+* Add GetTypeDescription.srv (rep2011) (`#153 <https://github.com/ros2/rcl_interfaces/issues/153>`_)
+* new package and interfaces for describing other types (`#146 <https://github.com/ros2/rcl_interfaces/issues/146>`_)
+* Contributors: Emerson Knapp, William Woodall
 
 1.4.0 (2023-02-13)
 ------------------
-* Update common_interfaces to C++17. (`#215 <https://github.com/ros2/rcl_interfaces/issues/215>`_) (`#151 <https://github.com/ros2/rcl_interfaces/issues/151>`_)
-* Add service_msgs package (`#143 <https://github.com/ros2/rcl_interfaces/issues/143>`_)
-* Contributors: Brian, Chris Lalancette
 
 1.3.1 (2022-09-09)
 ------------------
