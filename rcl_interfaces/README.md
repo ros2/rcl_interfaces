@@ -33,9 +33,9 @@ The ROS API for a node will be as follows inside the node's namespace.
  * `set_parameters`: `SetParameters`
   * Set parameters on this node.
  * `get_logger_levels`: `GetLoggerLevels`
-  * Get the logger levels of nodes which in the same process space.
+  * Get the logger levels of nodes which are in the same process space.
  * `set_logger_levels`: `SetLoggerLevels`
-  * Set the logger levels of nodes which in the same process space.
+  * Set the logger levels of nodes which are in the same process space.
 
 ## Messages (.msg)
 * [FloatingPointRange](msg/FloatingPointRange.msg): Represents bounds and a step value for a floating point typed parameter
@@ -58,9 +58,9 @@ The ROS API for a node will be as follows inside the node's namespace.
 * [GetParameterTypes](srv/GetParametersTypes.srv): Get the enum type of a list of parameters
 * [ListParameters](srv/ListParameters.srv): Get the list of parameters given a list of prefixes
 * [SetParameters](srv/SetParameters.srv): Add or change a list of parameters individually
-* [SetParametersAtomically](srv/SetParametersAtomically.srv): Add or change all parameters in a list or none at all.
-* [GetLoggerLevels](srv/GetLoggerLevels.srv): Get the logger levels of a specific list of nodes which are in the same process space.
-* [SetLoggerLevels](srv/SetLoggerLevels.srv): Change a list of logger levels of nodes which are in the same process space.
+* [SetParametersAtomically](srv/SetParametersAtomically.srv): Add or change all parameters in a list or none at all
+* [GetLoggerLevels](srv/GetLoggerLevels.srv): Get the logger levels of a specific list of nodes which are in the same process space
+* [SetLoggerLevels](srv/SetLoggerLevels.srv): Change a list of logger levels of nodes which are in the same process space
 
 ## Quality Declaration
 This package claims to be in the **Quality Level 1** category, see the [Quality Declaration](QUALITY_DECLARATION.md) for more details.
