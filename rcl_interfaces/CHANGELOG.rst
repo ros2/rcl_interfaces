@@ -2,6 +2,11 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add interfaces for logging service. (`#154 <https://github.com/ros2/rcl_interfaces/issues/154>`_)
+* Contributors: Lei Liu
+
 1.5.0 (2023-04-11)
 ------------------
 

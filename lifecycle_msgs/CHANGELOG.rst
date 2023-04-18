@@ -2,6 +2,9 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.5.0 (2023-04-11)
 ------------------
 
