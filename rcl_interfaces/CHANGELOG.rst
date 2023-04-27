@@ -2,6 +2,9 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.7.0 (2023-04-27)
+------------------
+
 1.6.0 (2023-04-18)
 ------------------
 * Add interfaces for logging service. (`#154 <https://github.com/ros2/rcl_interfaces/issues/154>`_)
