@@ -12,21 +12,21 @@
 ##
 
 # Debug is for pedantic information, which is useful when debugging issues.
-byte DEBUG=10
+uint8 DEBUG=10
 
 # Info is the standard informational level and is used to report expected
 # information.
-byte INFO=20
+uint8 INFO=20
 
 # Warning is for information that may potentially cause issues or possibly unexpected
 # behavior.
-byte WARN=30
+uint8 WARN=30
 
 # Error is for information that this node cannot resolve.
-byte ERROR=40
+uint8 ERROR=40
 
 # Information about a impending node shutdown.
-byte FATAL=50
+uint8 FATAL=50
 
 ##
 ## Fields
