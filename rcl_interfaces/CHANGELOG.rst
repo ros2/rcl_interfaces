@@ -2,6 +2,12 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update the Log.msg constant types. (`#161 <https://github.com/ros2/rcl_interfaces/issues/161>`_)
+* Update the comments for SetParametersResult to reflect reality. (`#159 <https://github.com/ros2/rcl_interfaces/issues/159>`_)
+* Contributors: Chris Lalancette
+
 1.7.0 (2023-04-27)
 ------------------
 
