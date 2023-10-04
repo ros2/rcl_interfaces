@@ -2,6 +2,9 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.0 (2023-09-07)
 ------------------
 * Update the Log.msg constant types. (`#161 <https://github.com/ros2/rcl_interfaces/issues/161>`_)

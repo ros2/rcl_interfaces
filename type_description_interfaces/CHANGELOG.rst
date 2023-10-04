@@ -2,6 +2,9 @@
 Changelog for package type_description_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.0 (2023-09-07)
 ------------------
 

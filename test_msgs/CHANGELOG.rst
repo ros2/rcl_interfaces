@@ -2,6 +2,11 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix for invalid conversion from const char8_t* to char for C++20 (`#160 <https://github.com/ros2/rcl_interfaces/issues/160>`_)
+* Contributors: AiVerisimilitude
+
 2.0.0 (2023-09-07)
 ------------------
 
