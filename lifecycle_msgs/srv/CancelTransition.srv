@@ -1,0 +1,5 @@
+---
+# Indicates if the cancel request was handled successfully
+bool success
+# Error response if the request was rejected or failed
+string error_msg
