@@ -23,6 +23,7 @@ from test_msgs.msg import Empty
 from test_msgs.msg import KeyedString
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
+from test_msgs.msg import NonKeyedWithNestedKey
 from test_msgs.msg import Strings
 from test_msgs.msg import UnboundedSequences
 from test_msgs.msg import WStrings
@@ -412,6 +413,19 @@ def get_msg_keyed_string():
     return msgs
 
 
+def get_msg_non_keyed_with_nested_key():
+    msgs = []
+
+    keyed_string_msgs = get_msg_keyed_string()
+    for keyed_string_msg in keyed_string_msgs:
+        msg = NonKeyedWithNestedKey()
+        msg.nested_data = keyed_string_msg
+        msg.some_int = -1
+        msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -441,6 +455,8 @@ def get_test_msg(message_name):
         msg = get_msg_wstrings()
     elif 'KeyedString' == message_name:
         msg = get_msg_keyed_string()
+    elif 'NonKeyedWithNestedKey' == message_name:
+        msg = get_msg_non_keyed_with_nested_key()
     else:
         raise NotImplementedError
     return msg
