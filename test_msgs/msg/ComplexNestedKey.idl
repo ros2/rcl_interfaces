@@ -1,0 +1,11 @@
+#include "test_msgs/msg/NonKeyedWithNestedKey.idl"
+
+module test_msgs{
+  module msg {
+    struct ComplexNestedKey {
+      @key uint32 uint32_key;
+      @key test_msgs::msg::NonKeyedWithNestedKey nested_keys;
+      double float64_value;
+    };
+  };
+};

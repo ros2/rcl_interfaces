@@ -1,0 +1,8 @@
+module test_msgs{
+  module msg {
+    struct KeyedString {
+      @key string key;
+      string value;
+    };
+  };
+};
