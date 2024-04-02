@@ -57,6 +57,10 @@ if(BUILD_TESTING)
     test/test_cpp_type_support.cpp)
   target_link_libraries(test_action_typesupport_cpp_builds
     "${cpp_typesupport_target}")
+
+  if(TEST cpplint_rosidl_generated_cpp)
+    set_tests_properties(cpplint_rosidl_generated_cpp PROPERTIES TIMEOUT 180)
+  endif()
 endif()
 
 if(DEFINED PYTHON_INSTALL_DIR)
