@@ -20,6 +20,7 @@ from test_msgs.msg import Builtins
 from test_msgs.msg import Constants
 from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
+from test_msgs.msg import KeyedString
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
 from test_msgs.msg import Strings
@@ -395,6 +396,22 @@ def get_msg_wstrings():
     return msgs
 
 
+def get_msg_keyed_string():
+    msgs = []
+
+    msg = KeyedString()
+    msg.key = 'key_1'
+    msg.value = 'value_1'
+    msgs.append(msg)
+
+    msg = KeyedString()
+    msg.key = 'key_2'
+    msg.value = 'value_2'
+    msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -422,6 +439,8 @@ def get_test_msg(message_name):
         msg = get_msg_multi_nested()
     elif 'WStrings' == message_name:
         msg = get_msg_wstrings()
+    elif 'KeyedString' == message_name:
+        msg = get_msg_keyed_string()
     else:
         raise NotImplementedError
     return msg
