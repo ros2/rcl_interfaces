@@ -35,6 +35,7 @@
 #include "test_msgs/msg/keyed_string.hpp"
 #include "test_msgs/msg/multi_nested.hpp"
 #include "test_msgs/msg/nested.hpp"
+#include "test_msgs/msg/non_keyed_with_nested_key.hpp"
 #include "test_msgs/msg/strings.hpp"
 #include "test_msgs/msg/unbounded_sequences.hpp"
 #include "test_msgs/msg/w_strings.hpp"
@@ -595,6 +596,20 @@ get_messages_keyed_string()
     auto msg = std::make_shared<test_msgs::msg::KeyedString>();
     msg->key = "key_2";
     msg->value = "value_2";
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+static inline std::vector<test_msgs::msg::NonKeyedWithNestedKey::SharedPtr>
+get_messages_non_keyed_with_nested_key()
+{
+  std::vector<test_msgs::msg::NonKeyedWithNestedKey::SharedPtr> messages;
+  auto keyed_string_msgs = get_messages_keyed_string();
+  for (auto keyed_string_msg : keyed_string_msgs) {
+    auto msg = std::make_shared<test_msgs::msg::NonKeyedWithNestedKey>();
+    msg->nested_data = *keyed_string_msg;
+    msg->some_int = -1;
     messages.push_back(msg);
   }
   return messages;
