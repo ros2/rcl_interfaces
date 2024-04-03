@@ -17,6 +17,7 @@ from test_msgs.msg import BasicTypes
 from test_msgs.msg import BoundedPlainSequences
 from test_msgs.msg import BoundedSequences
 from test_msgs.msg import Builtins
+from test_msgs.msg import ComplexNestedKey
 from test_msgs.msg import Constants
 from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
@@ -426,6 +427,20 @@ def get_msg_non_keyed_with_nested_key():
     return msgs
 
 
+def get_msg_complex_nested_key():
+    msgs = []
+
+    non_keyed_with_nested_key_msgs = get_msg_non_keyed_with_nested_key()
+    for nested_msg in non_keyed_with_nested_key_msgs:
+        msg = ComplexNestedKey()
+        msg.nested_keys = nested_msg
+        msg.uint32_key = 3
+        msg.float64_value = 1.125
+        msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -457,6 +472,8 @@ def get_test_msg(message_name):
         msg = get_msg_keyed_string()
     elif 'NonKeyedWithNestedKey' == message_name:
         msg = get_msg_non_keyed_with_nested_key()
+    elif 'ComplexNestedKey' == message_name:
+        msg = get_msg_complex_nested_key()
     else:
         raise NotImplementedError
     return msg
