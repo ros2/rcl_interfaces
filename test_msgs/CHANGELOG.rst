@@ -2,6 +2,12 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.2 (2024-04-16)
+------------------
+* Increase the timeout for the test_msgs rosidl_generated_cpp cpplint. (`#163 <https://github.com/ros2/rcl_interfaces/issues/163>`_)
+  This should make it much more likely to succeed on Windows.
+* Contributors: Chris Lalancette
+
 2.0.1 (2023-10-04)
 ------------------
 * Fix for invalid conversion from const char8_t* to char for C++20 (`#160 <https://github.com/ros2/rcl_interfaces/issues/160>`_)
