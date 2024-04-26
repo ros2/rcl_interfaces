@@ -2,6 +2,9 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.2 (2024-04-16)
 ------------------
 
