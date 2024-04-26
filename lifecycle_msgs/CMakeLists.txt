@@ -21,6 +21,7 @@ set(msg_files
   "msg/TransitionEvent.msg"
 )
 set(srv_files
+  "srv/CancelTransition.srv"
   "srv/ChangeState.srv"
   "srv/GetAvailableStates.srv"
   "srv/GetAvailableTransitions.srv"
