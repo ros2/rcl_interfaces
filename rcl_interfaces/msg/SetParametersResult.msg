@@ -10,4 +10,4 @@ string reason
 # is only allowed to set values for declared parameters, and the parameter that
 # the request was trying to set not declared by the node. Use the ListParameters
 # service to see which parameters are declared.
-string REASON_UNDECLARED_NOT_ALLOWED = "Parameter is not declared by the node, which only allows declared parameters"
+string REASON_UNDECLARED_NOT_ALLOWED = "parameter is not declared by the node, which only allows declared parameters"
