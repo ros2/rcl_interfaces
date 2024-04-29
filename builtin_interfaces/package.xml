@@ -14,8 +14,9 @@
   <author email="michel@ekumenlabs.com">Michel Hidalgo</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-
   <buildtool_depend>rosidl_core_generators</buildtool_depend>
+
+  <build_export_depend>rosidl_core_runtime</build_export_depend>
 
   <exec_depend>rosidl_core_runtime</exec_depend>
 
