@@ -2,6 +2,11 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add missing build_export_depend on rosidl_core_runtime (`#165 <https://github.com/ros2/rcl_interfaces/issues/165>`_)
+* Contributors: Scott K Logan
+
 2.1.0 (2024-04-26)
 ------------------
 

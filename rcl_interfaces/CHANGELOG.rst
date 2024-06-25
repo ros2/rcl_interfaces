@@ -2,6 +2,9 @@
 Changelog for package rcl_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.1.0 (2024-04-26)
 ------------------
 
