@@ -2,8 +2,8 @@
 Changelog for package service_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.0 (2024-06-25)
+------------------
 * Add missing build_export_depend on rosidl_core_runtime (`#165 <https://github.com/ros2/rcl_interfaces/issues/165>`_)
 * Contributors: Scott K Logan
 
