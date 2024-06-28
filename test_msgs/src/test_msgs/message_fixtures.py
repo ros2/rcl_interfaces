@@ -17,11 +17,14 @@ from test_msgs.msg import BasicTypes
 from test_msgs.msg import BoundedPlainSequences
 from test_msgs.msg import BoundedSequences
 from test_msgs.msg import Builtins
+from test_msgs.msg import ComplexNestedKey
 from test_msgs.msg import Constants
 from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
+from test_msgs.msg import KeyedString
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
+from test_msgs.msg import NonKeyedWithNestedKey
 from test_msgs.msg import Strings
 from test_msgs.msg import UnboundedSequences
 from test_msgs.msg import WStrings
@@ -395,6 +398,49 @@ def get_msg_wstrings():
     return msgs
 
 
+def get_msg_keyed_string():
+    msgs = []
+
+    msg = KeyedString()
+    msg.key = 'key_1'
+    msg.value = 'value_1'
+    msgs.append(msg)
+
+    msg = KeyedString()
+    msg.key = 'key_2'
+    msg.value = 'value_2'
+    msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_non_keyed_with_nested_key():
+    msgs = []
+
+    keyed_string_msgs = get_msg_keyed_string()
+    for keyed_string_msg in keyed_string_msgs:
+        msg = NonKeyedWithNestedKey()
+        msg.nested_data = keyed_string_msg
+        msg.some_int = -1
+        msgs.append(msg)
+
+    return msgs
+
+
+def get_msg_complex_nested_key():
+    msgs = []
+
+    non_keyed_with_nested_key_msgs = get_msg_non_keyed_with_nested_key()
+    for nested_msg in non_keyed_with_nested_key_msgs:
+        msg = ComplexNestedKey()
+        msg.nested_keys = nested_msg
+        msg.uint32_key = 3
+        msg.float64_value = 1.125
+        msgs.append(msg)
+
+    return msgs
+
+
 def get_test_msg(message_name):
     if 'Builtins' == message_name:
         msg = get_msg_builtins()
@@ -422,6 +468,12 @@ def get_test_msg(message_name):
         msg = get_msg_multi_nested()
     elif 'WStrings' == message_name:
         msg = get_msg_wstrings()
+    elif 'KeyedString' == message_name:
+        msg = get_msg_keyed_string()
+    elif 'NonKeyedWithNestedKey' == message_name:
+        msg = get_msg_non_keyed_with_nested_key()
+    elif 'ComplexNestedKey' == message_name:
+        msg = get_msg_complex_nested_key()
     else:
         raise NotImplementedError
     return msg
