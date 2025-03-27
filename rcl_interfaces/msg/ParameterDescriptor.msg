@@ -24,6 +24,9 @@ bool read_only false
 # If true, the parameter is allowed to change type.
 bool dynamic_typing false
 
+#if true, the parameter is allowed to be undeclared
+bool undeclarable false
+
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
 #
