@@ -1,0 +1,8 @@
+module test_msgs{
+  module msg {
+    struct KeyedLong {
+      @key long key;
+      long value;
+    };
+  };
+};

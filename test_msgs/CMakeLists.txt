@@ -28,6 +28,7 @@ rosidl_generate_interfaces(test_msgs
   ${test_interface_files_ACTION_FILES}
   ${test_interface_files_IDL_FILES}
   "msg/Builtins.msg"
+  "msg/KeyedLong.idl"
   "msg/KeyedString.idl"
   "msg/NonKeyedWithNestedKey.idl"
   "msg/ComplexNestedKey.idl"

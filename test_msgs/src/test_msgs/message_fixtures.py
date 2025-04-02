@@ -21,6 +21,7 @@ from test_msgs.msg import ComplexNestedKey
 from test_msgs.msg import Constants
 from test_msgs.msg import Defaults
 from test_msgs.msg import Empty
+from test_msgs.msg import KeyedLong
 from test_msgs.msg import KeyedString
 from test_msgs.msg import MultiNested
 from test_msgs.msg import Nested
@@ -397,6 +398,20 @@ def get_msg_wstrings():
 
     return msgs
 
+def get_msg_keyed_long():
+    msgs = []
+
+    msg = KeyedLong()
+    msg.key = 1
+    msg.value = 1
+    msgs.append(msg)
+
+    msg = KeyedLong()
+    msg.key = 2
+    msg.value = 2
+    msgs.append(msg)
+
+    return msgs
 
 def get_msg_keyed_string():
     msgs = []
@@ -468,6 +483,8 @@ def get_test_msg(message_name):
         msg = get_msg_multi_nested()
     elif 'WStrings' == message_name:
         msg = get_msg_wstrings()
+    elif 'KeyedLong' == message_name:
+        msg = get_msg_keyed_long()
     elif 'KeyedString' == message_name:
         msg = get_msg_keyed_string()
     elif 'NonKeyedWithNestedKey' == message_name:

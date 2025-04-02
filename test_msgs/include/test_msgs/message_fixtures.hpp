@@ -33,6 +33,7 @@
 #include "test_msgs/msg/constants.hpp"
 #include "test_msgs/msg/defaults.hpp"
 #include "test_msgs/msg/empty.hpp"
+#include "test_msgs/msg/keyed_long.hpp"
 #include "test_msgs/msg/keyed_string.hpp"
 #include "test_msgs/msg/multi_nested.hpp"
 #include "test_msgs/msg/nested.hpp"
@@ -578,6 +579,25 @@ get_messages_wstrings()
   {
     auto msg = std::make_shared<test_msgs::msg::WStrings>();
     msg->wstring_value = u"ハローワールド";  // "Hello world" in Japanese
+    messages.push_back(msg);
+  }
+  return messages;
+}
+
+static inline std::vector<test_msgs::msg::KeyedLong::SharedPtr>
+get_messages_keyed_long()
+{
+  std::vector<test_msgs::msg::KeyedLong::SharedPtr> messages;
+  {
+    auto msg = std::make_shared<test_msgs::msg::KeyedLong>();
+    msg->key = 1;
+    msg->value = 1;
+    messages.push_back(msg);
+  }
+  {
+    auto msg = std::make_shared<test_msgs::msg::KeyedLong>();
+    msg->key = 2;
+    msg->value = 2;
     messages.push_back(msg);
   }
   return messages;
