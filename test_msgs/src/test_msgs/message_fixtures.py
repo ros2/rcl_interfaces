@@ -398,6 +398,7 @@ def get_msg_wstrings():
 
     return msgs
 
+
 def get_msg_keyed_long():
     msgs = []
 
@@ -412,6 +413,7 @@ def get_msg_keyed_long():
     msgs.append(msg)
 
     return msgs
+
 
 def get_msg_keyed_string():
     msgs = []
