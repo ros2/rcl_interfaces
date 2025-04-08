@@ -21,7 +21,7 @@ string additional_constraints
 # If 'true' then the value cannot change after it has been initialized.
 bool read_only false
 
-# If true, the parameter is allowed to change type.
+# If true, the parameter is allowed to change type and be undeclared.
 bool dynamic_typing false
 
 #if true, the parameter is allowed to be undeclared
