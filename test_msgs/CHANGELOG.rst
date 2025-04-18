@@ -2,6 +2,11 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.3.0 (2025-04-18)
+------------------
+* Added test messages with keys (`#173 <https://github.com/ros2/rcl_interfaces/issues/173>`_)
+* Contributors: Francisco Gallego Salido
+
 2.2.0 (2024-06-25)
 ------------------
 

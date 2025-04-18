@@ -2,6 +2,9 @@
 Changelog for package type_description_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.3.0 (2025-04-18)
+------------------
+
 2.2.0 (2024-06-25)
 ------------------
 * Add missing build_export_depend on rosidl_core_runtime (`#165 <https://github.com/ros2/rcl_interfaces/issues/165>`_)
