@@ -2,7 +2,7 @@
 # Messages of this datatype are of ROS Time following this design:
 # https://design.ros2.org/articles/clock_and_time.html
 
-# Seconds component, range is valid over any possible int32 value.
+# The seconds component, valid over all int32 values.
 int32 sec
 
 # The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
