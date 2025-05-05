@@ -5,5 +5,8 @@
 # Seconds component, range is valid over any possible int32 value.
 int32 sec
 
-# Nanoseconds component in the range of [0, 1e9).
+# The nanoseconds component, valid in the range [0, 1e9), to be added to the seconds component. 
+# e.g.
+# The duration -1.7 seconds is represented as {sec: -2, nanosec: 3e8}
+# The duration 1.7 seconds is represented as {sec: 1, nanosec: 7e8}
 uint32 nanosec
