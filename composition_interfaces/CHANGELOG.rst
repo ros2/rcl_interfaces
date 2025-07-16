@@ -2,6 +2,9 @@
 Changelog for package composition_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.2.1 (2022-11-07)
 ------------------
 

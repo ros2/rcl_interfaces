@@ -2,6 +2,9 @@
 Changelog for package statistics_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 1.2.1 (2022-11-07)
 ------------------
 
