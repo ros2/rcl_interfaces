@@ -2,6 +2,11 @@
 Changelog for package action_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix cmake deprecation (`#180 <https://github.com/ros2/rcl_interfaces/issues/180>`_)
+* Contributors: mosfet80
+
 2.4.1 (2025-07-01)
 ------------------
 

@@ -2,6 +2,11 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix cmake deprecation (`#180 <https://github.com/ros2/rcl_interfaces/issues/180>`_)
+* Contributors: mosfet80
+
 2.4.1 (2025-07-01)
 ------------------
 * Add info to duration message and time message comments (`#176 <https://github.com/ros2/rcl_interfaces/issues/176>`_)
