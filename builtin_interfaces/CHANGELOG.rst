@@ -2,6 +2,13 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add info to duration message and time message comments (`#176 <https://github.com/ros2/rcl_interfaces/issues/176>`_) (`#178 <https://github.com/ros2/rcl_interfaces/issues/178>`_)
+  (cherry picked from commit 355006bb4f60f99defba0c6c010950ed45e4911c)
+  Co-authored-by: Jimmy McElwain <jimmy.mcelwain@motoman.com>
+* Contributors: mergify[bot]
+
 2.0.2 (2024-04-16)
 ------------------
 
