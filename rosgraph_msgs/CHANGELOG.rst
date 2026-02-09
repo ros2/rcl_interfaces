@@ -2,6 +2,9 @@
 Changelog for package rosgraph_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.3 (2026-02-09)
+------------------
+
 2.4.2 (2025-07-29)
 ------------------
 * Fix cmake deprecation (`#180 <https://github.com/ros2/rcl_interfaces/issues/180>`_)

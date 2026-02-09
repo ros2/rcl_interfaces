@@ -2,6 +2,11 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.3 (2026-02-09)
+------------------
+* Use builtin_interfaces/Time for TransitionEvent stamp (`#185 <https://github.com/ros2/rcl_interfaces/issues/185>`_)
+* Contributors: Jasper van Brakel
+
 2.4.2 (2025-07-29)
 ------------------
 * Fix cmake deprecation (`#180 <https://github.com/ros2/rcl_interfaces/issues/180>`_)
