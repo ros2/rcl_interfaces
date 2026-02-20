@@ -28,6 +28,19 @@ rcl_interfaces/Parameter[] parameters
 
 # key/value arguments that are specific to a type of container process.
 rcl_interfaces/Parameter[] extra_arguments
+
+# Executor used for this node. Leave empty to share the executor
+# used for the ComponentManager. Otherwise, a new executor will
+# be used for this node. Options:
+#   + SingleThreadedExecutor
+#   + MultiThreadedExecutor
+string executor_type
+
+# Number of threads dedicated to the executor for this node. This option
+# is only valid if you choose MultiThreadedExecutor as the executor type.
+# Leave empty to use the default.
+uint8 thread_num
+
 ---
 # True if the node was successfully loaded.
 bool success
