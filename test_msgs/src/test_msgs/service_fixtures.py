@@ -12,21 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Literal
+from typing import overload
+from typing import Union
+
 # TODO(jacobperron): Rename functions to match C++ equivalents
 from test_msgs.message_fixtures import get_msg_basic_types as get_messages_basic_types
 from test_msgs.srv import Arrays
 from test_msgs.srv import BasicTypes
 from test_msgs.srv import Empty
+from typing_extensions import TypeAlias
+
+EmptySrvTupleList: TypeAlias = list[tuple[Empty.Request, Empty.Response]]
+BasicSrvTupleList: TypeAlias = list[tuple[BasicTypes.Request, BasicTypes.Response]]
+ArraysSrvTupleList: TypeAlias = list[tuple[Arrays.Request, Arrays.Response]]
 
 
-def get_msg_empty():
+def get_msg_empty() -> EmptySrvTupleList:
     req = Empty.Request()
     resp = Empty.Response()
 
-    return [[req, resp]]
+    return [(req, resp)]
 
 
-def get_msg_basic_types():
+def get_msg_basic_types() -> BasicSrvTupleList:
     srvs = []
     req = BasicTypes.Request()
     req.bool_value = False
@@ -58,7 +67,7 @@ def get_msg_basic_types():
     resp.int64_value = 0
     resp.uint64_value = 0
     resp.string_value = 'reply'
-    srvs.append([req, resp])
+    srvs.append((req, resp))
 
     req = BasicTypes.Request()
     req.bool_value = True
@@ -96,11 +105,11 @@ def get_msg_basic_types():
     resp.string_value = ''
     for i in range(20000):
         resp.string_value += str(i % 10)
-    srvs.append([req, resp])
+    srvs.append((req, resp))
     return srvs
 
 
-def get_msg_arrays():
+def get_msg_arrays() -> ArraysSrvTupleList:
     srvs = []
     req = Arrays.Request()
     req.bool_values = [False, True, False]
@@ -141,17 +150,31 @@ def get_msg_arrays():
     resp.basic_types_values[1] = basic_types_msgs[0]
     resp.basic_types_values[2] = basic_types_msgs[2]
 
-    srvs.append([req, resp])
+    srvs.append((req, resp))
     return srvs
 
 
-def get_test_srv(service_name):
+@overload
+def get_test_srv(service_name: Literal['Empty']) -> EmptySrvTupleList: ...
+
+
+@overload
+def get_test_srv(service_name: Literal['BasicTypes']) -> BasicSrvTupleList: ...
+
+
+@overload
+def get_test_srv(service_name: Literal['Arrays']) -> ArraysSrvTupleList: ...
+
+
+def get_test_srv(service_name: Literal['Empty', 'BasicTypes', 'Arrays']) -> Union[
+        EmptySrvTupleList,
+        BasicSrvTupleList,
+        ArraysSrvTupleList]:
     if 'Arrays' == service_name:
-        srv = get_msg_arrays()
+        return get_msg_arrays()
     elif 'BasicTypes' == service_name:
-        srv = get_msg_basic_types()
+        return get_msg_basic_types()
     elif 'Empty' == service_name:
-        srv = get_msg_empty()
+        return get_msg_empty()
     else:
         raise NotImplementedError('%s service is not part of the test suite', service_name)
-    return srv

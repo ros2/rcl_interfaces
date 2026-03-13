@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Literal
+from typing import overload
+from typing import Union
+
 from test_msgs.msg import Arrays
 from test_msgs.msg import BasicTypes
 from test_msgs.msg import BoundedPlainSequences
@@ -31,14 +35,14 @@ from test_msgs.msg import UnboundedSequences
 from test_msgs.msg import WStrings
 
 
-def int_from_uint(value, nbits):
+def int_from_uint(value: int, nbits: int) -> int:
     value = value % (1 << nbits)
     if value >= (1 << (nbits - 1)):
         value = value - (1 << nbits)
     return value
 
 
-def get_msg_builtins():
+def get_msg_builtins() -> list[Builtins]:
     msg = Builtins()
     msg.duration_value.sec = -1234567890
     msg.duration_value.nanosec = 123456789
@@ -48,13 +52,13 @@ def get_msg_builtins():
     return [msg]
 
 
-def get_msg_empty():
+def get_msg_empty() -> list[Empty]:
     msg = Empty()
 
     return [msg]
 
 
-def get_msg_basic_types():
+def get_msg_basic_types() -> list[BasicTypes]:
     msgs = []
     msg = BasicTypes()
     msg.bool_value = False
@@ -123,17 +127,17 @@ def get_msg_basic_types():
     return msgs
 
 
-def get_msg_constants():
+def get_msg_constants() -> list[Constants]:
     msg = Constants()
     return [msg]
 
 
-def get_msg_defaults():
+def get_msg_defaults() -> list[Defaults]:
     msg = Defaults()
     return [msg]
 
 
-def get_msg_strings():
+def get_msg_strings() -> list[Strings]:
     msgs = []
     msg = Strings()
     msg.string_value = ''
@@ -163,7 +167,7 @@ def get_msg_strings():
     return msgs
 
 
-def get_msg_nested():
+def get_msg_nested() -> list[Nested]:
     msgs = []
 
     basic_types_msgs = get_msg_basic_types()
@@ -175,7 +179,7 @@ def get_msg_nested():
     return msgs
 
 
-def get_msg_arrays():
+def get_msg_arrays() -> list[Arrays]:
     basic_types_msgs = get_msg_basic_types()
     msgs = []
     msg = Arrays()
@@ -200,7 +204,7 @@ def get_msg_arrays():
     return msgs
 
 
-def get_msg_unbounded_sequences():
+def get_msg_unbounded_sequences() -> list[UnboundedSequences]:
     basic_types_msgs = get_msg_basic_types()
     msgs = []
     msg = UnboundedSequences()
@@ -288,7 +292,7 @@ def get_msg_unbounded_sequences():
     return msgs
 
 
-def get_msg_bounded_sequences():
+def get_msg_bounded_sequences() -> list[BoundedSequences]:
     basic_types_msgs = get_msg_basic_types()
     msgs = []
     msg = BoundedSequences()
@@ -317,7 +321,7 @@ def get_msg_bounded_sequences():
     return msgs
 
 
-def get_msg_bounded_plain_sequences():
+def get_msg_bounded_plain_sequences() -> list[BoundedPlainSequences]:
     basic_types_msgs = get_msg_basic_types()
     msgs = []
     msg = BoundedPlainSequences()
@@ -345,7 +349,7 @@ def get_msg_bounded_plain_sequences():
     return msgs
 
 
-def get_msg_multi_nested():
+def get_msg_multi_nested() -> list[MultiNested]:
     arrays_msgs = get_msg_arrays()
     bounded_sequences_msgs = get_msg_bounded_sequences()
     unbounded_sequences_msgs = get_msg_unbounded_sequences()
@@ -374,7 +378,7 @@ def get_msg_multi_nested():
     return [msg]
 
 
-def get_msg_wstrings():
+def get_msg_wstrings() -> list[WStrings]:
     msgs = []
 
     msg = WStrings()
@@ -399,7 +403,7 @@ def get_msg_wstrings():
     return msgs
 
 
-def get_msg_keyed_long():
+def get_msg_keyed_long() -> list[KeyedLong]:
     msgs = []
 
     msg = KeyedLong()
@@ -415,7 +419,7 @@ def get_msg_keyed_long():
     return msgs
 
 
-def get_msg_keyed_string():
+def get_msg_keyed_string() -> list[KeyedString]:
     msgs = []
 
     msg = KeyedString()
@@ -431,7 +435,7 @@ def get_msg_keyed_string():
     return msgs
 
 
-def get_msg_non_keyed_with_nested_key():
+def get_msg_non_keyed_with_nested_key() -> list[NonKeyedWithNestedKey]:
     msgs = []
 
     keyed_string_msgs = get_msg_keyed_string()
@@ -444,7 +448,7 @@ def get_msg_non_keyed_with_nested_key():
     return msgs
 
 
-def get_msg_complex_nested_key():
+def get_msg_complex_nested_key() -> list[ComplexNestedKey]:
     msgs = []
 
     non_keyed_with_nested_key_msgs = get_msg_non_keyed_with_nested_key()
@@ -458,41 +462,150 @@ def get_msg_complex_nested_key():
     return msgs
 
 
-def get_test_msg(message_name):
+@overload
+def get_test_msg(message_name: Literal['Builtins']) -> list[Builtins]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Empty']) -> list[Empty]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['BasicTypes']) -> list[BasicTypes]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Constants']) -> list[Constants]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Defaults']) -> list[Defaults]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Strings']) -> list[Strings]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Nested']) -> list[Nested]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['Arrays']) -> list[Arrays]: ...
+
+
+@overload
+def get_test_msg(
+    message_name: Literal['BoundedPlainSequences']
+) -> list[BoundedPlainSequences]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['BoundedSequences']) -> list[BoundedSequences]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['UnboundedSequences']) -> list[UnboundedSequences]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['MultiNested']) -> list[MultiNested]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['WStrings']) -> list[WStrings]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['KeyedLong']) -> list[KeyedLong]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['KeyedString']) -> list[KeyedString]: ...
+
+
+@overload
+def get_test_msg(
+    message_name: Literal['NonKeyedWithNestedKey']
+) -> list[NonKeyedWithNestedKey]: ...
+
+
+@overload
+def get_test_msg(message_name: Literal['ComplexNestedKey']) -> list[ComplexNestedKey]: ...
+
+
+def get_test_msg(
+    message_name: Literal[
+        'Builtins',
+        'Empty',
+        'BasicTypes',
+        'Constants',
+        'Defaults',
+        'Strings',
+        'Nested',
+        'Arrays',
+        'BoundedPlainSequences',
+        'BoundedSequences',
+        'UnboundedSequences',
+        'MultiNested',
+        'WStrings',
+        'KeyedLong',
+        'KeyedString',
+        'NonKeyedWithNestedKey',
+        'ComplexNestedKey'
+    ]
+) -> Union[
+    list[Builtins],
+    list[Empty],
+    list[BasicTypes],
+    list[Constants],
+    list[Defaults],
+    list[Strings],
+    list[Nested],
+    list[Arrays],
+    list[BoundedPlainSequences],
+    list[BoundedSequences],
+    list[UnboundedSequences],
+    list[MultiNested],
+    list[WStrings],
+    list[KeyedLong],
+    list[KeyedString],
+    list[NonKeyedWithNestedKey],
+    list[ComplexNestedKey]
+]:
     if 'Builtins' == message_name:
-        msg = get_msg_builtins()
+        return get_msg_builtins()
     elif 'Empty' == message_name:
-        msg = get_msg_empty()
+        return get_msg_empty()
     elif 'BasicTypes' == message_name:
-        msg = get_msg_basic_types()
+        return get_msg_basic_types()
     elif 'Constants' == message_name:
-        msg = get_msg_constants()
+        return get_msg_constants()
     elif 'Defaults' == message_name:
-        msg = get_msg_defaults()
+        return get_msg_defaults()
     elif 'Strings' == message_name:
-        msg = get_msg_strings()
+        return get_msg_strings()
     elif 'Nested' == message_name:
-        msg = get_msg_nested()
+        return get_msg_nested()
     elif 'Arrays' == message_name:
-        msg = get_msg_arrays()
+        return get_msg_arrays()
     elif 'BoundedPlainSequences' == message_name:
-        msg = get_msg_bounded_plain_sequences()
+        return get_msg_bounded_plain_sequences()
     elif 'BoundedSequences' == message_name:
-        msg = get_msg_bounded_sequences()
+        return get_msg_bounded_sequences()
     elif 'UnboundedSequences' == message_name:
-        msg = get_msg_unbounded_sequences()
+        return get_msg_unbounded_sequences()
     elif 'MultiNested' == message_name:
-        msg = get_msg_multi_nested()
+        return get_msg_multi_nested()
     elif 'WStrings' == message_name:
-        msg = get_msg_wstrings()
+        return get_msg_wstrings()
     elif 'KeyedLong' == message_name:
-        msg = get_msg_keyed_long()
+        return get_msg_keyed_long()
     elif 'KeyedString' == message_name:
-        msg = get_msg_keyed_string()
+        return get_msg_keyed_string()
     elif 'NonKeyedWithNestedKey' == message_name:
-        msg = get_msg_non_keyed_with_nested_key()
+        return get_msg_non_keyed_with_nested_key()
     elif 'ComplexNestedKey' == message_name:
-        msg = get_msg_complex_nested_key()
+        return get_msg_complex_nested_key()
     else:
         raise NotImplementedError
-    return msg
