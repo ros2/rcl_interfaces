@@ -1,5 +1,8 @@
 # Message-based representation of ROS 2 Quality of Service settings
 # Default values are kept in sync with RMW by integration test
+# Note that SYSTEM_DEFAULT and BEST_AVAILABLE values cannot be an observed value,
+# because they resolve concretely at runtime.
+# They are included here for completeness to match the data structures in RMW
 
 # Depth of the message queue (only meaningful when history==KEEP_LAST)
 uint32 depth

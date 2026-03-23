@@ -3,6 +3,9 @@
 # Fully qualified name of the Action
 string name
 
-InterfaceType request_type
-InterfaceType response_type
-InterfaceType feedback_type
+# An action is actually a composition of the following fundamental ROS entities
+Service send_goal
+Service get_result
+Service cancel_goal
+Topic feedback
+Topic status

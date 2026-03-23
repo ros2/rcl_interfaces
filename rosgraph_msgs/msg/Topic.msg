@@ -3,8 +3,8 @@
 # Fully qualified name of the topic
 string name
 
-# Topic type
+# Type of the topic
 InterfaceType type
 
-# QoS Profile offered or requested by this endpoint
+# Observed QoS of the endpoint
 QoSProfile qos

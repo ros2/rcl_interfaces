@@ -1,8 +1,19 @@
-# Represents the observable state of a ROS Node
+# Represents the observable runtime state of a ROS Node
+# Therefore, does not perfectly align with the abstract specification which created it.
 
-# Node descriptor fields, which can describe a node that is not running
+# Fully qualified node name (FQN)
+string name
 
+# Parameter specifications for the node
 rcl_interfaces/ParameterDescriptor[] parameters
+
+# Current values of the node's parameters
+# NOTE:
+#   parameter_values[] must be empty, or the same size as parameters[]
+#   When set, parameter_values[] match 1:1 with the same index in parameters[]
+rcl_interfaces/ParameterValue[] parameter_values
+
+# Communications endpoints - Topics, Services, and Actions
 Topic[] publishers
 Topic[] subscriptions
 
@@ -11,13 +22,3 @@ Service[] service_servers
 
 Action[] action_clients
 Action[] action_servers
-
-# Node state fields, which only apply to a running instance of a node
-
-# Fully qualified node name (FQN)
-string name
-
-# Current parameter values
-# parameter_values[] must be empty, or the same size as parameters[]
-# When set, parameter_values[] match up 1:1 with the same index in parameters[]
-rcl_interfaces/ParameterValue[] parameter_values
