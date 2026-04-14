@@ -2,6 +2,13 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.4 (2026-04-14)
+------------------
+
+* Add ``ament_cmake_mypy`` to ``test_msgs`` (`#187 <https://github.com/ros2/rcl_interfaces/issues/187>`_)
+
+* Contributors: Michael Carlstrom
+
 2.4.3 (2026-02-09)
 ------------------
 

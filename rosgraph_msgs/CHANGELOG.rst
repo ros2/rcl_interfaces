@@ -2,6 +2,13 @@
 Changelog for package rosgraph_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.4 (2026-04-14)
+------------------
+
+* Add Graph description messages to ``rosgraph_msgs`` (`#188 <https://github.com/ros2/rcl_interfaces/issues/188>`_)
+
+* Contributors: Emerson Knapp
+
 2.4.3 (2026-02-09)
 ------------------
 
