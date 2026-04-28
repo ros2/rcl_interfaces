@@ -9,8 +9,8 @@ For more information about ROS 2 interfaces, see [docs.ros.org](https://docs.ros
 
 ## Messages (.msg)
 
-* [Clock](msg/Clock.msg): Communicates the current ROS time.
 * [Action](msg/Action.msg): Describes an Action endpoint (server or client).
+* [Clock](msg/Clock.msg): Communicates the current ROS time.
 * [Graph](msg/Graph.msg): A list of Nodes, describing a running ROS graph.
 * [InterfaceType](msg/InterfaceType.msg): Describes the name and hash of an interface's type.
 * [Node](msg/Node.msg): Describes a running Node with all realized names and values.
