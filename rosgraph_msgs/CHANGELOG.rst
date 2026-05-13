@@ -2,6 +2,12 @@
 Changelog for package rosgraph_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.3.2 (2026-05-13)
+------------------
+* Actually build the new graph description messages (`#192 <https://github.com/ros2/rcl_interfaces/issues/192>`_) (`#193 <https://github.com/ros2/rcl_interfaces/issues/193>`_)
+* Add Graph description messages to rosgraph_msgs (`#188 <https://github.com/ros2/rcl_interfaces/issues/188>`_) (`#191 <https://github.com/ros2/rcl_interfaces/issues/191>`_)
+* Contributors: mergify[bot]
+
 2.3.1 (2026-02-09)
 ------------------
 * Fix cmake deprecation (`#180 <https://github.com/ros2/rcl_interfaces/issues/180>`_) (`#181 <https://github.com/ros2/rcl_interfaces/issues/181>`_)
