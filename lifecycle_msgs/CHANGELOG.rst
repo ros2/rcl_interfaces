@@ -2,6 +2,9 @@
 Changelog for package lifecycle_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.5 (2026-05-13)
+------------------
+
 2.4.3 (2026-02-09)
 ------------------
 * Use builtin_interfaces/Time for TransitionEvent stamp (`#185 <https://github.com/ros2/rcl_interfaces/issues/185>`_)
