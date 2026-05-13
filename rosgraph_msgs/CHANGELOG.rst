@@ -2,6 +2,12 @@
 Changelog for package rosgraph_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.4 (2026-05-13)
+------------------
+* Actually build the new graph description messages (`#192 <https://github.com/ros2/rcl_interfaces/issues/192>`_) (`#194 <https://github.com/ros2/rcl_interfaces/issues/194>`_)
+* Add Graph description messages to rosgraph_msgs (`#188 <https://github.com/ros2/rcl_interfaces/issues/188>`_) (`#190 <https://github.com/ros2/rcl_interfaces/issues/190>`_)
+* Contributors: mergify[bot]
+
 2.0.3 (2025-08-06)
 ------------------
 
