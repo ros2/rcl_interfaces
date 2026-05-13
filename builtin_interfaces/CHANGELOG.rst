@@ -2,6 +2,9 @@
 Changelog for package builtin_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.3 (2026-05-13)
+------------------
+
 1.2.2 (2025-07-16)
 ------------------
 * Add info to duration message and time message comments (backport `#176 <https://github.com/ros2/rcl_interfaces/issues/176>`_) (`#179 <https://github.com/ros2/rcl_interfaces/issues/179>`_)
