@@ -2,6 +2,11 @@
 Changelog for package composition_interfaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.5.1 (2026-07-15)
+------------------
+* use C++ 20 in default. (`#200 <https://github.com/ros2/rcl_interfaces//issues/200>`_)
+* Contributors: Tomoya Fujita
+
 2.5.0 (2026-05-07)
 ------------------
 

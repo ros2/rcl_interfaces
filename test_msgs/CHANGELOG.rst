@@ -2,6 +2,12 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.5.1 (2026-07-15)
+------------------
+* use C++ 20 in default. (`#200 <https://github.com/ros2/rcl_interfaces//issues/200>`_)
+* fix(test_msgs): add missing find_package for ament_cmake_mypy (`#197 <https://github.com/ros2/rcl_interfaces//issues/197>`_)
+* Contributors: Esteve Fernandez, Tomoya Fujita
+
 2.5.0 (2026-05-07)
 ------------------
 
