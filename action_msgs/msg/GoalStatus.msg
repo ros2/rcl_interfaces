@@ -25,6 +25,9 @@ int8 STATUS_CANCELED  = 5
 # The goal was terminated by the action server without an external request.
 int8 STATUS_ABORTED   = 6
 
+# The goal was preempted by the client.
+int8 STATUS_PREEMPTED = 7
+
 # Goal info (contains ID and timestamp).
 GoalInfo goal_info
 
