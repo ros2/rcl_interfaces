@@ -83,8 +83,5 @@ install(DIRECTORY include/
 
 install(TARGETS ${PROJECT_NAME}_includes EXPORT export_${PROJECT_NAME})
 
-# TODO(sloretz) stop exporting old-style CMake variables in the future
-ament_export_include_directories("include/${PROJECT_NAME}")
-
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()
