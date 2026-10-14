@@ -22,6 +22,9 @@ float64 double_value
 # A textual value with no practical length limit.
 string string_value
 
+# A yaml string with a current upper limit of (100Kb) enforced by RCL
+string yaml_value
+
 # An array of bytes, used for non-textual information.
 byte[] byte_array_value
 
