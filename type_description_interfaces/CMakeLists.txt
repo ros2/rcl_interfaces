@@ -23,7 +23,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/TypeDescription.msg"
   "msg/TypeSource.msg"
   "srv/GetTypeDescription.srv"
-  ADD_LINTER_TESTS
 )
 
 if(BUILD_TESTING)

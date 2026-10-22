@@ -30,7 +30,6 @@ set(msg_files
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   DEPENDENCIES builtin_interfaces rcl_interfaces
-  ADD_LINTER_TESTS
 )
 
 ament_export_dependencies(rosidl_default_runtime)

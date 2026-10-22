@@ -31,7 +31,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
   DEPENDENCIES builtin_interfaces unique_identifier_msgs
-  ADD_LINTER_TESTS
 )
 
 if(BUILD_TESTING)

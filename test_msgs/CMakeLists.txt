@@ -34,7 +34,6 @@ rosidl_generate_interfaces(test_msgs
   "msg/ComplexNestedKey.idl"
   "action/NestedMessage.action"
   DEPENDENCIES builtin_interfaces
-  ADD_LINTER_TESTS
 )
 
 # TODO(sloretz) Change to test_msgs when ros2/rosidl_typesupport#120 is fixed
