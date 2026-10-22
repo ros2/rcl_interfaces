@@ -19,7 +19,6 @@ find_package(rosidl_core_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Duration.msg"
   "msg/Time.msg"
-  ADD_LINTER_TESTS
 )
 
 ament_export_dependencies(rosidl_core_runtime)

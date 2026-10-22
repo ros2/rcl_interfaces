@@ -24,7 +24,6 @@ set(msg_files
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   DEPENDENCIES builtin_interfaces
-  ADD_LINTER_TESTS
 )
 
 if(BUILD_TESTING)

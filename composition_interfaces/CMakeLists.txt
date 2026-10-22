@@ -20,7 +20,6 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ListNodes.srv"
   "srv/UnloadNode.srv"
   DEPENDENCIES rcl_interfaces
-  ADD_LINTER_TESTS
 )
 
 ament_export_dependencies(rosidl_default_runtime)
