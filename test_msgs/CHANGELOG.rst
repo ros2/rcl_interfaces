@@ -2,6 +2,13 @@
 Changelog for package test_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.5.2 (2026-10-23)
+------------------
+* Remove ADD_LINTER_TESTS from generated-code lint on interface packages (`#205 <https://github.com/ros2/rcl_interfaces/issues/205>`_)
+* Remove ament_export_include_directories call from test_msgs (`#204 <https://github.com/ros2/rcl_interfaces/issues/204>`_)
+* Use the SPDX identifier Apache-2.0 in package.xml license tags (`#202 <https://github.com/ros2/rcl_interfaces/issues/202>`_)
+* Contributors: Michael Carroll, Tomoya Fujita
+
 2.5.1 (2026-07-15)
 ------------------
 * use C++ 20 in default. (`#200 <https://github.com/ros2/rcl_interfaces//issues/200>`_)
